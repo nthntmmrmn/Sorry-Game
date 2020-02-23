@@ -1,0 +1,54 @@
+(in-microtheory SorryGameMt)
+
+;;; card is SORRY-ONE /and/ agent has piece in start
+;;; /and/ agent has no piece in pos 1 /and/ no opponent piece in pos 1
+(preconditionForMethod
+ (and
+      (currCard Sorry-One)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (different ?piece1 ?piece2)
+      (piecePosition ?piece1 0)
+      (evaluate ?a (not (piecePosition ?piece2 1)))
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (evaluate ?b (not (piecePosition ?piece3 31)))
+	
+      ;;; get next turn and new card
+      ;;; TODO: fix swapTurn
+      ;;;        right now, saves (whoseTurn (swapTurn ?next)) into KB
+      ;;; (evaluate ?nextTurn (swapTurn ?next))
+	  
+	  ;;; modified 2/23: delete evaluate. because horn clauses can be triggered automatically in precondition part in planner, but not actionSequence part.
+	  (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		(RandomMemberFn 
+			(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+
+ (methodForAction
+  (moveSorryPiece)
+
+  (actionSequence
+   (TheList
+
+    ;;; update piece position
+    (doRecord 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 1)))
+    (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+ 
+    ;;; swap turns and pick new random card
+    (doForget 
+		(ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		(ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		(ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		(ist-Information SorryFactsMt (currCard ?newCard)))
+              ))))
+

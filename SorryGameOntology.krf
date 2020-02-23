@@ -1,0 +1,24 @@
+(in-microtheory SorryGameOntologyMt)
+(genlMt SorryGameMt SorryGameOntologyMt)
+(genlMt Session-ReasonerPlanMt SorryGameMt)
+
+(isa moveSorryPiece ComplexActionPredicate)
+(arity moveSorryPiece 0)
+
+(isa piecePosition Predicate)
+(arity piecePosition 2)
+
+(isa colorOfAgent Predicate)
+(arity colorOfAgent 2)
+
+(isa colorOfPiece Predicate)
+(arity colorOfPiece 2)
+
+(isa currCard Predicate)
+(arity currCard 1)
+
+(isa whoseTurn Predicate)
+(arity whoseTurn 1)
+
+(isa swapTurn Predicate)
+(arity swapTurn 1)
