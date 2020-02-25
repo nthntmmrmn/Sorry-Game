@@ -1,7 +1,9 @@
 (in-microtheory SorryGameMt)
 
-;;; FOR EACH PIECE:
+;;; CHOICES FOR EACH CARD:
 ;;; 1. Can move from start?
+;;;    a. and hit opponent
+;;;    b. and not hit opponent
 ;;; 2. Can move home?
 ;;; 3. Can move and hit opponent?
 ;;; 4. Else, move random piece.
