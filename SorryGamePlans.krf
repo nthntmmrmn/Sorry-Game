@@ -9,6 +9,7 @@
 ;;;    b. will win 
 ;;; 3. Can move and hit opponent? (opponent is not in the safety zone)
 ;;; 4. Else, move random piece.
+;;; 5. If the moving piece will go beyond home, just swap the turn and do nothing.
 ;;;    BUT: Make sure moving piece does not put it beyond home!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,8 +94,8 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; TODO: Rule 2
-;;; agent has one piece one step away from home
+;;; Rule 2a:
+;;; agent has one piece one step away from home but will not win
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -129,7 +130,8 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; Rule 3.
+;;; Rule 2b:
+;;; agent has one piece one step away from home and will win the game
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -137,10 +139,9 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (noSameColorAhead ?piece1 1)
-      (noOppoAhead ?piece1 1)
-      (evaluate ?nextPosition (PlusFn ?position1 1))
-
+      (evaluate 66 (PlusFn ?position1 1))
+      (winner ?agent ?piece1)
+      
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -153,19 +154,10 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))
 
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-One)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+;;; Rule 3.
 
-;;; Rule 4:
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -210,6 +202,44 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
+;;; Rule 4:
+
+(preconditionForMethod
+ (and
+      (currCard Sorry-One)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (noSameColorAhead ?piece1 1)
+      (noOppoAhead ?piece1 1)
+      (evaluate ?nextPosition (PlusFn ?position1 1))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+   (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doRecord 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+
 ;;; END SORRY-ONE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -218,8 +248,68 @@
 ;;; SORRY-THREE
 ;;; piece in start CANNOT move 
 
-;;; TODO: Rule 2
-;;; agent has a piece which is Three steps away from HOME
+;;; Rule 2a
+;;; agent has a piece which is Three steps away from HOME and will not win
+(preconditionForMethod
+ (and
+      (currCard Sorry-Three)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (notWinner ?agent ?piece1)
+      (evaluate 66 (PlusFn ?position1 3))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+   (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doRecord 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Three)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+
+;;; Rule 2b
+;;; agent has a piece which is Three steps away from HOME and will win the game
+(preconditionForMethod
+ (and
+      (currCard Sorry-Three)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (evaluate 66 (PlusFn ?position1 3))
+      (winner ?agent ?piece1)
+      
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+   (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))
 
 ;;; Rule 3
 (preconditionForMethod
@@ -267,7 +357,7 @@
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
 ;;; Rule 4 
-;;; add check that not moving beyond home!
+
 (preconditionForMethod
  (and
       (currCard Sorry-Three)  
@@ -279,7 +369,7 @@
       (noSameColorAhead ?piece1 3)
       (noOppoAhead ?piece1 3)
       (evaluate ?nextPosition (PlusFn ?position1 3))
-
+      (lessThan ?nextPosition 66)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -295,6 +385,40 @@
     (doRecord 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
 
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Three)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; Rule 5
+
+(preconditionForMethod
+ (and
+      (currCard Sorry-Three)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (uninferredSentence (piecePosition ?piece1 0))
+      (piecePosition ?piece1 ?position1)
+      (noSameColorAhead ?piece1 3)
+      (noOppoAhead ?piece1 3)
+      (evaluate ?nextPosition (PlusFn ?position1 3))
+      (greaterThan ?nextPosition 66)
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+
+  (actionSequence
+   (TheList
     ;;; swap turns and pick new random card
     (doForget 
 		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
