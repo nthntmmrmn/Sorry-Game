@@ -169,6 +169,7 @@
 ;;; SORRY-FOUR
 
 ;;; SORRY-TWO
+;;; NOTE: if player pulls 2, gets to pull again, so don't swap turns
 ;;; if piece in start and no pieces in space outside, move piece from start
 (preconditionForMethod
  (and
@@ -185,7 +186,6 @@
       (colorOfPiece ?piece3 ?color2)
       (uninferredSentence (piecePosition ?piece3 31))
 	  
-  	  ;;; (swapTurn ?nextTurn) if player pulls 2, gets to pull again, so don't swap turns
       (evaluate ?newCard 
 		    (RandomMemberFn 
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
