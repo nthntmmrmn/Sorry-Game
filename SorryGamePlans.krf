@@ -11,22 +11,16 @@
       (colorOfPiece ?piece2 ?color1)
       (different ?piece1 ?piece2)
       (piecePosition ?piece1 0)
-      (evaluate ?a (not (piecePosition ?piece2 1)))
+      (uninferredSentence (piecePosition ?piece2 1))
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
-      (evaluate ?b (not (piecePosition ?piece3 31)))
-	
-      ;;; get next turn and new card
-      ;;; TODO: fix swapTurn
-      ;;;        right now, saves (whoseTurn (swapTurn ?next)) into KB
-      ;;; (evaluate ?nextTurn (swapTurn ?next))
+      (uninferredSentence (piecePosition ?piece3 31))
 	  
-	  ;;; modified 2/23: delete evaluate. because horn clauses can be triggered automatically in precondition part in planner, but not actionSequence part.
-	  (swapTurn ?nextTurn)
+  	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
-		(RandomMemberFn 
-			(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
       )
 
  (methodForAction
@@ -48,6 +42,174 @@
 		(ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
     (doForget 
 		(ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		(ist-Information SorryFactsMt (currCard ?newCard)))
+              ))))
+
+
+;;; SORRY-SORRY
+;;; if there is a piece in start and an opponent piece to swap with
+(preconditionForMethod
+  (and
+      (currCard Sorry-Sorry)
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 0)
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (piecePosition ?piece2 ?piece2pos)
+      (greaterThan ?piece2pos 0) ;;; piece not in start
+      (lessThan ?piece2pos 61) ;;; piece not in safe zone
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+    (methodForAction
+      (moveSorryPiece)
+      
+      (actionSequence
+        (TheList
+        
+          (doRecord
+            (ist-Information SorryFactsMt (piecePosition ?piece1 ?piece2pos)))
+          (doForget
+            (ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+          (doRecord
+            (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+          (doForget
+            (ist-Information SorryFactsMt (piecePosition ?piece2 ?piece2pos)))
+            
+          ;;; swap turns and pick new random card
+          (doForget 
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+          (doRecord 
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+          (doForget 
+            (ist-Information SorryFactsMt (currCard Sorry-One)))
+          (doRecord 
+            (ist-Information SorryFactsMt (currCard ?newCard)))
+        ))))
+
+;;; if there is no piece in start, just swap turns and pick new card
+(preconditionForMethod
+  (and
+      (currCard Sorry-Sorry)
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (uninferredSentence (piecePosition ?piece1 0))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+  (methodForAction
+    (moveSorryPiece)
+    
+    (actionSequence
+      (TheList
+        
+        ;;; swap turns and pick new random card
+          (doForget 
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+          (doRecord 
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+          (doForget 
+            (ist-Information SorryFactsMt (currCard Sorry-One)))
+          (doRecord 
+            (ist-Information SorryFactsMt (currCard ?newCard)))
+            ))))
+
+;;; if piece in start, but no opponent piece to swap with
+;;; just swap turn and pick new card
+(preconditionForMethod
+  (and
+      (currCard Sorry-Sorry)
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 0)
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (piecePosition ?piece2 ?piece2pos)
+
+      ;;; all opponent pieces either in start or safe zone
+      (not (greaterThan ?piece2pos 0))
+      (not (lessThan ?piece2pos 61)))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+    (methodForAction
+      (moveSorryPiece)
+      
+      (actionSequence
+        (TheList
+
+          ;;; swap turns and pick new random card
+          (doForget 
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+          (doRecord 
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+          (doForget 
+            (ist-Information SorryFactsMt (currCard Sorry-One)))
+          (doRecord 
+            (ist-Information SorryFactsMt (currCard ?newCard)))
+        ))))
+
+
+;;; SORRY-FOUR
+
+;;; SORRY-TWO
+;;; if piece in start and no pieces in space outside, move piece from start
+(preconditionForMethod
+ (and
+      (currCard Sorry-Two)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (different ?piece1 ?piece2)
+      (piecePosition ?piece1 0)
+      (uninferredSentence (piecePosition ?piece2 1))
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (uninferredSentence (piecePosition ?piece3 31))
+	  
+  	  (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+
+ (methodForAction
+  (moveSorryPiece)
+
+  (actionSequence
+   (TheList
+
+    ;;; update piece position
+    (doRecord 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 1)))
+    (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+ 
+    ;;; swap turns and pick new random card
+    (doForget 
+		(ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		(ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		(ist-Information SorryFactsMt (currCard Sorry-Two)))
     (doRecord 
 		(ist-Information SorryFactsMt (currCard ?newCard)))
               ))))
