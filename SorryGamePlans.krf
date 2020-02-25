@@ -11,11 +11,11 @@
       (colorOfPiece ?piece2 ?color1)
       (different ?piece1 ?piece2)
       (piecePosition ?piece1 0)
-      (evaluate ?a (not (piecePosition ?piece2 1)))
+      (uninferredSentence (piecePosition ?piece2 1))
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
-      (evaluate ?b (not (piecePosition ?piece3 31)))
+      (uninferredSentence (piecePosition ?piece3 31))
 	  
   	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -101,7 +101,7 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (evaluate ?a (not (piecePosition ?piece1 0)))
+      (uninferredSentence (piecePosition ?piece1 0))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -140,8 +140,8 @@
       (piecePosition ?piece2 ?piece2pos)
 
       ;;; all opponent pieces either in start or safe zone
-      (evaluate ?a (not (greaterThan ?piece2pos 0)))
-      (evaluate ?b (not (lessThan ?piece2pos 61)))
+      (not (greaterThan ?piece2pos 0))
+      (not (lessThan ?piece2pos 61)))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -179,11 +179,11 @@
       (colorOfPiece ?piece2 ?color1)
       (different ?piece1 ?piece2)
       (piecePosition ?piece1 0)
-      (evaluate ?a (not (piecePosition ?piece2 1)))
+      (uninferredSentence (piecePosition ?piece2 1))
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
-      (evaluate ?b (not (piecePosition ?piece3 31)))
+      (uninferredSentence (piecePosition ?piece3 31))
 	  
   	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
