@@ -1,8 +1,7 @@
 (in-microtheory SorryGameMt)
 
-;;; card is SORRY-ONE /and/ agent has piece in start
-;;; /and/ agent has no piece in pos 1 /and/ no opponent piece in pos 1
-
+;;; SORRY-ONE 
+;;; agent has piece in start and no piece in pos 1 and no opponent in pos 1
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -37,10 +36,10 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; card is SORRY-ONE /and/ agent has piece in start
-;;; /and/ agent has no piece in pos 1 /and/ THERE IS an opponent piece in pos 1
+;;; agent has piece in start and agent has no piece in pos 1 and THERE IS an opponent piece in pos 1
 
 ;;; Jing 2/24: maybe we don't need to check "agent has no piece in pos 1"
+;;; you're right!
 
 (preconditionForMethod
  (and
@@ -54,13 +53,7 @@
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 31)
 	
-      ;;; get next turn and new card
-      ;;; TODO: fix swapTurn
-      ;;;        right now, saves (whoseTurn (swapTurn ?next)) into KB
-      ;;; (evaluate ?nextTurn (swapTurn ?next))
-	  
-	    ;;; modified 2/23: delete evaluate. because horn clauses can be triggered automatically in precondition part in planner, but not actionSequence part.
-	    (swapTurn ?nextTurn)
+      (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
@@ -206,9 +199,9 @@
 		    (RandomMemberFn 
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
 
-
  (methodForAction
   (moveSorryPiece)
+
   (actionSequence
    (TheList
     (doForget 
@@ -251,6 +244,7 @@
       
  (methodForAction
   (moveSorryPiece)
+  
   (actionSequence
    (TheList
    (doForget 
