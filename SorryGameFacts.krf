@@ -95,7 +95,7 @@
       (unifies ?next YellowAgent))
 
 
-;;; Jing 2/24: check if there is a piece at the destination
+;;; check if there is a piece at the destination
 (<== (noSameColorAhead ?piece1 ?step)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
@@ -132,11 +132,14 @@
       (evaluate ?distance4 (AbsoluteValueFn (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4)))))
       (greaterThan ?distance4 0))
 
+
+
+;;; When a piece is about to get HOME, check if the agent is going to win the game
 (<== (notWinner ?agent ?piece1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
-      (uninferredSentence (piecePosition ?piece2 66)
+      (uninferredSentence (piecePosition ?piece2 66))
       (different ?piece1 ?piece2))
 
 (<== (winner ?agent ?piece1)
