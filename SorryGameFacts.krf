@@ -132,3 +132,21 @@
       (evaluate ?distance4 (AbsoluteValueFn (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4)))))
       (greaterThan ?distance4 0))
 
+(<== (notWinner ?agent ?piece1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (uninferredSentence (piecePosition ?piece2 66)
+      (different ?piece1 ?piece2))
+
+(<== (winner ?agent ?piece1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (colorOfPiece ?piece3 ?color1)
+      (colorOfPiece ?piece4 ?color1)
+      (piecePosition ?piece2 66)
+      (piecePosition ?piece3 66)
+      (piecePosition ?piece4 66)
+      (different ?piece1 ?piece2 ?piece3 ?piece4))
+
