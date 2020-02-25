@@ -185,7 +185,7 @@
       (colorOfPiece ?piece3 ?color2)
       (uninferredSentence (piecePosition ?piece3 31))
 	  
-  	  (swapTurn ?nextTurn)
+  	  ;;; (swapTurn ?nextTurn) if player pulls 2, gets to pull again, so don't swap turns
       (evaluate ?newCard 
 		    (RandomMemberFn 
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
@@ -203,14 +203,10 @@
     (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
  
-    ;;; swap turns and pick new random card
+    ;;; pick new random card
     (doForget 
-		(ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
     (doRecord 
-		(ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		(ist-Information SorryFactsMt (currCard Sorry-Two)))
-    (doRecord 
-		(ist-Information SorryFactsMt (currCard ?newCard)))
+		  (ist-Information SorryFactsMt (currCard ?newCard)))
               ))))
 
