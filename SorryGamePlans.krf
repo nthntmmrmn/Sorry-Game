@@ -48,8 +48,7 @@
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
 ;;; Rule 1b:
-;;; Jing 2/24: maybe we don't need to check "agent has no piece in pos 1"
-;;; you're right!
+
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -95,8 +94,39 @@
 
 ;;; TODO: Rule 2
 ;;; agent has one piece one step away from home
+(preconditionForMethod
+ (and
+      (currCard Sorry-One)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (notWinner ?agent ?piece1)
+      (evaluate 66 (PlusFn ?position1 1))
 
-;;; 2/24: Horn Clauses almostWin ??
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+   (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doRecord 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
 ;;; Rule 3.
 (preconditionForMethod
