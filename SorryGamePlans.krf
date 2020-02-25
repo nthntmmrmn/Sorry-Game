@@ -2,14 +2,17 @@
 
 ;;; CHOICES FOR EACH CARD:
 ;;; 1. Can move from start?
-;;;    a. and hit opponent
-;;;    b. and not hit opponent
+;;;    a. can move, nothing on space 1
+;;;    b. can move, opponent piece on space 1
+;;;    c. can move, opponent piece not on space 1
 ;;; 2. Can move home?
 ;;; 3. Can move and hit opponent?
 ;;; 4. Else, move random piece.
+;;;    BUT: Make sure moving piece does not put it beyond home!
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-ONE 
-;;; agent has piece in start and no piece in pos 1 and no opponent in pos 1
+;;; Rule 1a:
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -44,11 +47,9 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; agent has piece in start and agent has no piece in pos 1 and THERE IS an opponent piece in pos 1
-
+;;; Rule 1b:
 ;;; Jing 2/24: maybe we don't need to check "agent has no piece in pos 1"
 ;;; you're right!
-
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -64,10 +65,12 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
 
  (methodForAction
   (moveSorryPiece)
+
   (actionSequence
    (TheList
     ;;; update piece position
@@ -90,61 +93,12 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; card is SORRY-ONE and agent does not have piece in start
-;;; agent chooses one piece to move forward 1
+;;; TODO: Rule 2
 ;;; agent has one piece one step away from home
 
 ;;; 2/24: Horn Clauses almostWin ??
 
-;;; TODO : card is SORRY-ONE and agent does not have piece in start
-;;;        agent chooses one piece to move forward 1
-
-;;; agent has one piece which is one step away from a piece of the opponent
-(preconditionForMethod
- (and
-      (currCard Sorry-One)  
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (piecePosition ?piece1 ?position1)
-      (colorOfPiece ?piece1 ?color1)
-      (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece3 ?color2)
-      (piecePosition ?piece3 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 1) ?position2)))
-      (evaluate ?a (PlusFn ?position1 1))
-
-      (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-
-
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-    (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
-    (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?a)))
-    (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
-
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-One)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-;;; the piece has no piece and no opponent piece one step in front of it
-
+;;; Rule 3.
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -180,13 +134,63 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; Sorry-Three
+;;; Rule 4:
+(preconditionForMethod
+ (and
+      (currCard Sorry-One)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (piecePosition ?piece3 ?position2)
+      (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 1) ?position2)))
+      (evaluate ?a (PlusFn ?position1 1))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+
+ (methodForAction
+  (moveSorryPiece)
+
+  (actionSequence
+   (TheList
+    (doForget 
+      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doForget 
+      (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
+    (doRecord
+      (ist-Information SorryFactsMt (piecePosition ?piece1 ?a)))
+    (doRecord 
+      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; END SORRY-ONE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; SORRY-THREE
 ;;; piece in start CANNOT move 
 
-;;; TODO: agent has a piece which is Three steps away from HOME
+;;; TODO: Rule 2
+;;; agent has a piece which is Three steps away from HOME
 
-;;; agent has one piece which is THREE steps away from a piece of the opponent
-
+;;; Rule 3
 (preconditionForMethod
  (and
       (currCard Sorry-Three)  
@@ -231,8 +235,8 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; the piece has no piece and no opponent piece THREE steps in front of it
-
+;;; Rule 4 
+;;; add check that not moving beyond home!
 (preconditionForMethod
  (and
       (currCard Sorry-Three)  
@@ -269,8 +273,12 @@
 		  (ist-Information SorryFactsMt (currCard Sorry-Three)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-      
 
+;;; END SORRY-THREE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+      
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-SORRY
 ;;; if there is a piece in start and an opponent piece to swap with
 (preconditionForMethod
@@ -389,12 +397,14 @@
             (ist-Information SorryFactsMt (currCard ?newCard)))
         ))))
 
+;;; END SORRY-SORRY
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; SORRY-FOUR
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-TWO
 ;;; NOTE: if player pulls 2, gets to pull again, so don't swap turns
-;;; if piece in start and no pieces in space outside, move piece from start
+;;; Rule 1a:
 (preconditionForMethod
  (and
       (currCard Sorry-Two)  
@@ -434,3 +444,12 @@
 		  (ist-Information SorryFactsMt (currCard ?newCard)))
               ))))
 
+;;; END SORRY-TWO
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; SORRY-FOUR
+
+;;; end SORRY-FOUR
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
