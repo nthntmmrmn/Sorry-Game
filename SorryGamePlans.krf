@@ -1,5 +1,11 @@
 (in-microtheory SorryGameMt)
 
+;;; FOR EACH PIECE:
+;;; 1. Can move from start?
+;;; 2. Can move home?
+;;; 3. Can move and hit opponent?
+;;; 4. Else, move random piece.
+
 ;;; SORRY-ONE 
 ;;; agent has piece in start and no piece in pos 1 and no opponent in pos 1
 (preconditionForMethod
@@ -244,7 +250,7 @@
       
  (methodForAction
   (moveSorryPiece)
-  
+
   (actionSequence
    (TheList
    (doForget 
