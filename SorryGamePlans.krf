@@ -9,34 +9,13 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (colorOfPiece ?piece2 ?color1)
-      (different ?piece1 ?piece2)
       (piecePosition ?piece1 0)
-      (uninferredSentence (piecePosition ?piece2 1))
-      (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece3 ?color2)
-      (uninferredSentence (piecePosition ?piece3 31))
-<<<<<<< HEAD
-	
-      ;;; get next turn and new card
-      ;;; TODO: fix swapTurn
-      ;;;        right now, saves (whoseTurn (swapTurn ?next)) into KB
-      ;;; (evaluate ?nextTurn (swapTurn ?next))
-	  
-	  ;;; modified 2/23: delete evaluate. because horn clauses can be triggered automatically in precondition part in planner, but not actionSequence part.
-	  (swapTurn ?nextTurn)
-    (evaluate ?newCard 
-		  (RandomMemberFn 
-			  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-=======
-	  
+      (noSameColorAhead ?piece1 1)
+      (noOppoAhead ?piece1 1)
   	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
-      )
->>>>>>> 61bfaae39f587f317e5a2e2e89b329874752f0e6
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
 
  (methodForAction
   (moveSorryPiece)
@@ -60,7 +39,8 @@
 
 ;;; card is SORRY-ONE /and/ agent has piece in start
 ;;; /and/ agent has no piece in pos 1 /and/ THERE IS an opponent piece in pos 1
-;;; 2/24: maybe we don't need to check "agent has no piece in pos 1"
+
+;;; Jing 2/24: maybe we don't need to check "agent has no piece in pos 1"
 
 (preconditionForMethod
  (and
@@ -79,11 +59,11 @@
       ;;;        right now, saves (whoseTurn (swapTurn ?next)) into KB
       ;;; (evaluate ?nextTurn (swapTurn ?next))
 	  
-	  ;;; modified 2/23: delete evaluate. because horn clauses can be triggered automatically in precondition part in planner, but not actionSequence part.
-	  (swapTurn ?nextTurn)
-    (evaluate ?newCard 
-		  (RandomMemberFn 
-			  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+	    ;;; modified 2/23: delete evaluate. because horn clauses can be triggered automatically in precondition part in planner, but not actionSequence part.
+	    (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
 
  (methodForAction
   (moveSorryPiece)
@@ -115,11 +95,10 @@
 
 ;;; 2/24: Horn Clauses almostWin ??
 
-;;; card is SORRY-ONE and agent does not have piece in start
-;;; agent chooses one piece to move forward 1
+;;; TODO : card is SORRY-ONE and agent does not have piece in start
+;;;        agent chooses one piece to move forward 1
 
 ;;; agent has one piece which is one step away from a piece of the opponent
-
 (preconditionForMethod
  (and
       (currCard Sorry-One)  
@@ -132,7 +111,13 @@
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 1) ?position2)))
-      (evaluate ?a (PlusFn ?position1 1)))
+      (evaluate ?a (PlusFn ?position1 1))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+
 
  (methodForAction
   (moveSorryPiece)
@@ -145,7 +130,17 @@
     (doRecord
       (ist-Information SorryFactsMt (piecePosition ?piece1 ?a)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))))))
+      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
 ;;; the piece has no piece and no opponent piece one step in front of it
 
@@ -154,19 +149,16 @@
       (currCard Sorry-One)  
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
-      (piecePosition ?piece1 ?position1)
       (colorOfPiece ?piece1 ?color1)
-      (colorOfPiece ?piece2 ?color1)
-      (different ?piece1 ?piece2)
+      (piecePosition ?piece1 ?position1)
+      (noSameColorAhead ?piece1 1)
+      (noOppoAhead ?piece1 1)
       (evaluate ?nextPosition (PlusFn ?position1 1))
-      (uninferredSentence  (piecePosition ?piece2 ?nextPosition))
-      (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece3 ?color2)
-      (piecePosition ?piece3 ?position2)
-      (evaluate ?b (not (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2))))))
-      
-      ;;;(not (numericallyEquals 30 (AbsoluteValueFn (PlusFn (PlusFn ?position1 1) (MinusFn ?position2)))))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -175,9 +167,20 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))))))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-One)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
 
+      
 
 ;;; SORRY-SORRY
 ;;; if there is a piece in start and an opponent piece to swap with
@@ -273,13 +276,13 @@
 
       ;;; all opponent pieces either in start or safe zone
       (not (greaterThan ?piece2pos 0))
-      (not (lessThan ?piece2pos 61)))
+      (not (lessThan ?piece2pos 61))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
-      )
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
     (methodForAction
       (moveSorryPiece)
       
