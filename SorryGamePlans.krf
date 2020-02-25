@@ -4,9 +4,10 @@
 ;;; 1. Can move from start?
 ;;;    a. can move, nothing on space 1
 ;;;    b. can move, opponent piece on space 1
-;;;    c. can move, opponent piece not on space 1
 ;;; 2. Can move home?
-;;; 3. Can move and hit opponent?
+;;;    a. will not win 
+;;;    b. will win 
+;;; 3. Can move and hit opponent? (opponent is not in the safety zone)
 ;;; 4. Else, move random piece.
 ;;;    BUT: Make sure moving piece does not put it beyond home!
 
