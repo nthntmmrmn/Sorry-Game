@@ -22,3 +22,6 @@
 
 (isa swapTurn Predicate)
 (arity swapTurn 1)
+
+(isa gameWinner Predicate)
+(arity gameWinner 1)
