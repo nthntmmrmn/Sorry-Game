@@ -252,13 +252,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-THREE
 ;;; piece in start CANNOT move 
-;;; Rule 1c:
+;;; Rule 1c & 5:
 (preconditionForMethod
  (and
       (currCard Sorry-Three)  
       (whoseTurn ?agent1)
-      (allAtStart ?agent1)
-
+      (allCannotMove ?agent1 3)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -427,40 +426,6 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
-;;; Rule 5
-
-(preconditionForMethod
- (and
-      (currCard Sorry-Three)  
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
-      (piecePosition ?piece1 ?position1)
-      (noSameColorAhead ?piece1 3)
-      (noOppoAhead ?piece1 3)
-      (evaluate ?nextPosition (PlusFn ?position1 3))
-      (greaterThan ?nextPosition 66)
-      (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-
-  (actionSequence
-   (TheList
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Three)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
 ;;; END SORRY-THREE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -472,12 +437,15 @@
 ;;; 2. Can move home? (Ten steps forward)
 ;;;    a. will not win 
 ;;;    b. will win 
-;;; 3. Can move and hit opponent? (opponent is not in the safety zone)
-;;;    a. ten forward
+;;; 3. Can move and hit opponent? 
+;;;    a. ten forward (opponent is not in the safety zone)
 ;;;    b. one backward
 ;;; 4. Else, move random piece ten.
-;;; 5. If the moving piece will go beyond home, just swap the turn and do nothing.
+;;; 5. If the moving piece will go beyond home, move random piece one backward.
 ;;;    BUT: Make sure moving piece does not put it beyond home!
+
+
+
 ;;; END SORRY-TEN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       
