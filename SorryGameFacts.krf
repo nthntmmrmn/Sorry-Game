@@ -136,7 +136,7 @@
 
 ;;; When a piece is about to get HOME, check if the agent is going to win the game
 (<== (notWinner ?agent1 ?piece1)
-      (colorOfAgent ?agent ?color1)
+      (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
       (uninferredSentence (piecePosition ?piece2 66))
