@@ -174,8 +174,9 @@
       (piecePosition ?piece 0))
 
 (<== (cannotMove ?piece ?step)
-      (piecePosition ?piece ?position)
+      (piecePosition ?piece ?position)                                                                                                                                              
       (greaterThan 66 (PlusFn ?position ?step)))
+
 
 (<== (allCannotMove ?agent1 ?step) 
       (colorOfAgent ?agent1 ?color1)
