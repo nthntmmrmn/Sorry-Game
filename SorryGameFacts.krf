@@ -170,20 +170,12 @@
 
 
 ;;; For Rule 5 (can be used with Rule 1c)
-<<<<<<< HEAD
-
-=======
->>>>>>> 6da3ca8527d21c6a36e92008012c7b52762267df
 (<== (cannotMove ?piece ?step)
       (piecePosition ?piece 0))
 
 (<== (cannotMove ?piece ?step)
       (piecePosition ?piece ?position)
-<<<<<<< HEAD
       (greaterThan 66 (PlusFn ?position ?step)))
-=======
-      (greaterThan 66 (PlusFn ?position)))
->>>>>>> 6da3ca8527d21c6a36e92008012c7b52762267df
 
 (<== (allCannotMove ?agent1 ?step) 
       (colorOfAgent ?agent1 ?color1)
