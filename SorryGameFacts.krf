@@ -154,16 +154,26 @@
       (different ?piece1 ?piece2 ?piece3 ?piece4))
 
 
-;;; To check if the agent's pieces all at the start
-(<== (allAtStart ?agent1)
+;;; To check if the agent's pieces all cannot move
+;;; For both Rule 1c & Rule 5
+
+(<== (cannotMove ?piece ?step)
+      (piecePosition ?piece 0))
+
+(<== (cannotMove ?piece ?step)
+      (piecePosition ?piece ?position)
+      (greaterThan 66 (PlusFn ?position ?step)))
+
+(<== (allCannotMove ?agent1 ?step) 
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
       (colorOfPiece ?piece3 ?color1)
       (colorOfPiece ?piece4 ?color1)
       (different ?piece1 ?piece2 ?piece3 ?piece4)
-      (piecePosition ?piece1 0)
-      (piecePosition ?piece2 0)
-      (piecePosition ?piece3 0)
-      (piecePosition ?piece4 0))
+      (cannotMove ?piece1 ?step)
+      (cannotMove ?piece2 ?step)
+      (cannotMove ?piece3 ?step)
+      (cannotMove ?piece4 ?step)
+      )
 
