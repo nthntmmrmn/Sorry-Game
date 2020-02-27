@@ -145,7 +145,11 @@
       (piecePosition ?piece1 ?position1)
       (evaluate 65 (PlusFn ?position1 1))
       (winner ?agent ?piece1)
-      ;;; no need to swap turn
+      
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
       )
 
  (methodForAction
@@ -187,6 +191,7 @@
       (piecePosition ?piece5 ?position2)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 1) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 1))
+      (lessThan position2 60)
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -364,6 +369,7 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
+      (lessThan position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 3) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 3))
 
@@ -554,6 +560,7 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
+      (lessThan position2 60)
       (evaluate ?nextPosition (PlusFn ?position1 10))
       (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
       (swapTurn ?nextTurn)
@@ -599,6 +606,7 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
+      (lessThan position2 60)
       (evaluate ?nextPosition (DifferenceFn ?position1 1))
       (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
       
@@ -991,6 +999,7 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
+      (lessThan position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
       (evaluate ?a (PlusFn ?position1 2))
 
@@ -1233,7 +1242,7 @@
     (different ?color2 ?color1)
     (colorOfPiece ?piece2 ?color2)
     (piecePosition ?piece2 ?position2)
-    
+    (lessThan position2 60)
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
     
@@ -1431,6 +1440,7 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
+      (lessThan position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 5) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 5))
       (swapTurn ?nextTurn)
@@ -1610,6 +1620,7 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
+      (lessThan position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 8) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 8))
       (swapTurn ?nextTurn)
