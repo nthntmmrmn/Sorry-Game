@@ -1737,7 +1737,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 11))
+      (evaluate 65 (PlusFn ?position1 11))
       (notWinner ?agent1 ?piece1)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1752,7 +1752,7 @@
       (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
       ;;; swap turns and pick new random card
       (doForget 
         (ist-Information SorryFactsMt (whoseTurn ?agent1)))
@@ -1773,7 +1773,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 11))
+      (evaluate 65 (PlusFn ?position1 11))
       (winner ?agent1 ?piece1)
       )
   
@@ -1784,7 +1784,7 @@
       (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
       (doRecord
           (ist-Information SorryFactsMt (gameWinner ?agent1)))
       ))))
@@ -1846,7 +1846,7 @@
       (noSameColorAhead ?piece1 11)
       (findNoOppoSwitch ?piece1 11)
       (evaluate ?nextPosition (PlusFn ?position1 11))
-      (lessThan ?nextPosition 66)
+      (lessThan ?nextPosition 65)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
