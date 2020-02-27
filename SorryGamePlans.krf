@@ -12,7 +12,7 @@
 ;;; 4. Else, move random piece.
 ;;; 5. If the moving piece will go beyond home, just swap the turn and do nothing.
 ;;;    BUT: Make sure moving piece does not put it beyond home!
-;;; 5. If can't move, forfeit turn
+;;; 6. If can't move, forfeit turn
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-ONE 
@@ -106,7 +106,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (notWinner ?agent ?piece1)
-      (evaluate 66 (PlusFn ?position1 1))
+      (evaluate 65 (PlusFn ?position1 1))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -120,7 +120,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
 
     ;;; swap turns and pick new random card
     (doForget 
@@ -143,7 +143,7 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 1))
+      (evaluate 65 (PlusFn ?position1 1))
       (winner ?agent ?piece1)
       ;;; no need to swap turn
       )
@@ -156,7 +156,7 @@
     (doForget 
       (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+      (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
     (doRecord 
     	(ist-Information SorryFactsMt (gameWinner ?agent1)))
    ))))
@@ -298,7 +298,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (notWinner ?agent ?piece1)
-      (evaluate 66 (PlusFn ?position1 3))
+      (evaluate 65 (PlusFn ?position1 3))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -312,7 +312,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
 
     ;;; swap turns and pick new random card
     (doForget 
@@ -334,7 +334,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 3))
+      (evaluate 65 (PlusFn ?position1 3))
       (winner ?agent ?piece1)
       ;;; no need to swap turn
       )
@@ -346,7 +346,7 @@
     (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
     (doRecord 
     	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
 
@@ -409,7 +409,7 @@
       (noSameColorAhead ?piece1 3)
       (noOppoAhead ?piece1 3)
       (evaluate ?nextPosition (PlusFn ?position1 3))
-      (lessThan ?nextPosition 66)
+      (lessThan ?nextPosition 65)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -488,7 +488,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (notWinner ?agent ?piece1)
-      (evaluate 66 (PlusFn ?position1 10))
+      (evaluate 65 (PlusFn ?position1 10))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -502,7 +502,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
 
     ;;; swap turns and pick new random card
     (doForget 
@@ -524,7 +524,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 10))
+      (evaluate 65 (PlusFn ?position1 10))
       (winner ?agent ?piece1)
       ;;; no need to swap turn      
  )
@@ -536,7 +536,7 @@
     (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
     (doRecord 
     	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
 
@@ -643,7 +643,7 @@
       (noSameColorAhead ?piece1 3)
       (noOppoAhead ?piece1 3)
       (evaluate ?nextPosition (PlusFn ?position1 10))
-      (lessThan ?nextPosition 66)
+      (lessThan ?nextPosition 65)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -885,8 +885,8 @@
       (piecePosition ?piece1 0)
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 31)
+      (colorOfPiece ?piece3 ?color2)
+      (piecePosition ?piece3 31)
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -904,11 +904,11 @@
     (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece3 0)))
     (doForget
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 31)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece3 31)))
  
-    ;;; swap turns and pick new random card
+    ;;; pick new random card
     (doForget 
 		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
     (doRecord 
@@ -924,7 +924,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (notWinner ?agent ?piece1)
-      (evaluate 66 (PlusFn ?position1 2))
+      (evaluate 65 (PlusFn ?position1 2))
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -937,7 +937,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
 
     ;;; pick new random card
     (doForget 
@@ -955,8 +955,11 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (winner ?agent ?piece1)
-      (evaluate 66 (PlusFn ?position1 2))
- )
+      (evaluate 65 (PlusFn ?position1 2))
+
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -965,10 +968,120 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+
+    ;;; pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard))))))
     (doRecord
       (ist-Information SorryFactsMt (gameWinner ?agent1)))
     ))))
+
+;;; Rule 3:
+(preconditionForMethod
+ (and
+      (currCard Sorry-Two)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (piecePosition ?piece3 ?position2)
+      (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
+      (evaluate ?a (PlusFn ?position1 2))
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+
+ (methodForAction
+  (moveSorryPiece)
+
+  (actionSequence
+   (TheList
+    (doForget 
+      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doForget 
+      (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
+    (doRecord
+      (ist-Information SorryFactsMt (piecePosition ?piece1 ?a)))
+    (doRecord 
+      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; Rule 4.
+(preconditionForMethod
+ (and
+      (currCard Sorry-Two)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (noSameColorAhead ?piece1 2)
+      (noOppoAhead ?piece1 2)
+      (evaluate ?nextPosition (PlusFn ?position1 2))
+      (lessThan ?nextPosition 65)
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+   (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doRecord 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+
+    ;;; pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; Rule 5a
+(preconditionForMethod
+ (and
+      (currCard Sorry-Two)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (different ?piece1 ?piece2)
+      (piecePosition ?piece1 ?position1)
+      (piecePosition ?piece2 ?position2)
+      (or
+        (evaluate 2 (MinusFn ?position2 ?position1))
+        (greaterThan (PlusFn ?position1 2) 65)
+      )
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+    ;;; pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
 ;;; END SORRY-TWO
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -976,6 +1089,239 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-FOUR
+
+;;; Rule 5b
+(preconditionForMethod 
+  (and 
+      (currCard Sorry-Four)  
+      (whoseTurn ?agent1)
+      (allAtStart ?agent1)
+
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+      )
+  (methodForAction
+    (moveSorryPiece)
+    
+    (actionSequence
+      (TheList
+      ;;; swap turns and pick new random card
+          (doForget 
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+          (doRecord 
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+          (doForget 
+            (ist-Information SorryFactsMt (currCard Sorry-One)))
+          (doRecord 
+            (ist-Information SorryFactsMt (currCard ?newCard)))
+      ))))
+  
+;;; can move backwards behind safe zone rather than going around board
+;;; no opponent piece on that position
+(preconditionForMethod
+  (and
+    (currCard Sorry-Four)
+    (whoseTurn ?agent1)
+    (colorOfAgent ?agent1 ?color1)
+    (colorOfPiece ?piece1 ?color1)
+    (piecePosition ?piece1 ?position1)
+    (colorOfPiece ?piece2 ?color1)
+    (different ?piece1 ?piece2)
+    (lessThan ?position1 4)
+    (greaterThan ?position1 0)
+
+    (uninferredSentence (piecePosition ?piece2 (PlusFn 57 ?position1)))
+    (colorOfAgent ?agent2 ?color2)
+    (different ?color2 ?color1)
+    (colorOfPiece ?piece3 ?color2)
+
+    (uninferredSentence (piecePosition ?piece3 (PlusFn 25 ?position1)))
+    
+    (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+    )
+    
+    (methodForAction
+      (moveSorryPiece)
+      
+    (actionSequence
+      (TheList
+
+      (doForget
+        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (doRecord
+        (ist-Information SorryFactsMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
+
+      ;;; swap turns and pick new random card
+      (doForget 
+        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+      (doRecord 
+        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+      (doForget 
+        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+      (doRecord 
+        (ist-Information SorryFactsMt (currCard ?newCard)))
+      ))))
+
+;;; can move backwards and enter safe zone rather than going around board
+;;; opponent piece on that position so hit back to start
+(preconditionForMethod
+  (and
+    (currCard Sorry-Four)
+    (whoseTurn ?agent1)
+    (colorOfAgent ?agent1 ?color1)
+    (colorOfPiece ?piece1 ?color1)
+    (piecePosition ?piece1 ?position1)
+    (colorOfPiece ?piece2 ?color1)
+    (different ?piece1 ?piece2)
+    (lessThan ?position1 4)
+    (greaterThan ?position1 0)
+
+    (uninferredSentence (piecePosition ?piece2 (PlusFn 57 ?position1)))
+    (colorOfAgent ?agent2 ?color2)
+    (different ?color2 ?color1)
+    (colorOfPiece ?piece3 ?color2)
+
+    (piecePosition ?piece3 (PlusFn 25 ?position1))
+    
+    (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+    )
+    
+    (methodForAction
+      (moveSorryPiece)
+      
+    (actionSequence
+      (TheList
+
+      (doForget
+        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (doRecord
+        (ist-Information SorryFactsMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
+      (doForget
+        (ist-Information SorryFactsMt (piecePosition ?piece3 (PlusFn 25 ?position1))))
+      (doRecord
+        (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+
+      ;;; swap turns and pick new random card
+      (doForget 
+        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+      (doRecord 
+        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+      (doForget 
+        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+      (doRecord 
+        (ist-Information SorryFactsMt (currCard ?newCard)))
+      ))))
+
+;;; Rule 3:
+(preconditionForMethod
+  (and
+    (currCard Sorry-Four)
+    (whoseTurn ?agent1)
+    (colorOfAgent ?agent1 ?color1)
+    (colorOfPiece ?piece1 ?color1)
+    (piecePosition ?piece1 ?position1)
+    (greaterThan ?position1 0)
+    (colorOfAgent ?agent2 ?color2)
+    (different ?color2 ?color1)
+    (colorOfPiece ?piece2 ?color2)
+    (piecePosition ?piece2 ?position2)
+    
+    ;;; check if opponent piece 4 behind
+    (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
+    
+    (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+    )
+    
+    (methodForAction
+      (moveSorryPiece)
+      
+    (actionSequence
+      (TheList
+
+      (doForget
+        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (doRecord
+        (ist-Information SorryFactsMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+      (doForget
+        (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
+      (doRecord
+        (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+
+      ;;; swap turns and pick new random card
+      (doForget 
+        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+      (doRecord 
+        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+      (doForget 
+        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+      (doRecord 
+        (ist-Information SorryFactsMt (currCard ?newCard)))
+      ))))
+
+;;; Rule 4:
+(preconditionForMethod
+  (and
+    (currCard Sorry-Four)
+    (whoseTurn ?agent1)
+    (colorOfAgent ?agent1 ?color1)
+    (colorOfPiece ?piece1 ?color1)
+    (colorOfPiece ?piece3 ?color1)
+    (different ?piece1 ?piece3)
+    (piecePosition ?piece3 ?position3)
+    (piecePosition ?piece1 ?position1)
+    (lessThan ?position3 ?position1)
+    (greaterThan ?position1 0)
+    (lessThan ?position1 65)
+    (colorOfAgent ?agent2 ?color2)
+    (different ?color2 ?color1)
+    (colorOfPiece ?piece2 ?color2)
+    (piecePosition ?piece2 ?position2)
+    
+    ;;; no opponent piece 4 spaces behind
+    (evaluate ?distance1 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
+    (greaterThan ?distance1 56)
+    ;;; no same piece 4 spaces behind
+    (evaluate ?distance2 (DifferenceFn ?position1 ?position3))
+    (greaterThan ?distance2 4)
+    
+    (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+    )
+    
+    (methodForAction
+      (moveSorryPiece)
+      
+    (actionSequence
+      (TheList
+
+      (doForget
+        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (doRecord
+        (ist-Information SorryFactsMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+
+      ;;; swap turns and pick new random card
+      (doForget 
+        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+      (doRecord 
+        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+      (doForget 
+        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+      (doRecord 
+        (ist-Information SorryFactsMt (currCard ?newCard)))
+      ))))
 
 ;;; end SORRY-FOUR
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1019,7 +1365,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 5))
+      (evaluate 65 (PlusFn ?position1 5))
       (notWinner ?agent1 ?piece1)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1034,7 +1380,7 @@
       (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
       ;;; swap turns and pick new random card
       (doForget 
         (ist-Information SorryFactsMt (whoseTurn ?agent1)))
@@ -1054,7 +1400,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 5))
+      (evaluate 65 (PlusFn ?position1 5))
       (winner ?agent1 ?piece1)
       )
   
@@ -1065,7 +1411,7 @@
       (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
       (doRecord
           (ist-Information SorryFactsMt (gameWinner ?agent1)))
       ))))
@@ -1129,7 +1475,7 @@
       (noSameColorAhead ?piece1 5)
       (noOppoAhead ?piece1 5)
       (evaluate ?nextPosition (PlusFn ?position1 5))
-      (lessThan ?nextPosition 66)
+      (lessThan ?nextPosition 65)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -1198,7 +1544,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 8))
+      (evaluate 65 (PlusFn ?position1 8))
       (notWinner ?agent1 ?piece1)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1213,7 +1559,7 @@
       (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
       ;;; swap turns and pick new random card
       (doForget 
         (ist-Information SorryFactsMt (whoseTurn ?agent1)))
@@ -1233,7 +1579,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 66 (PlusFn ?position1 8))
+      (evaluate 65 (PlusFn ?position1 8))
       (winner ?agent1 ?piece1)
       )
   
@@ -1244,7 +1590,7 @@
       (doForget 
           (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
       (doRecord
           (ist-Information SorryFactsMt (gameWinner ?agent1)))
       ))))
@@ -1293,7 +1639,8 @@
     (doForget 
 		  (ist-Information SorryFactsMt (currCard Sorry-Eight)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryFactsMt (currCard ?newCard)))
+      ))))
 
 
 ;;; Rule 4
@@ -1308,7 +1655,7 @@
       (noSameColorAhead ?piece1 8)
       (noOppoAhead ?piece1 8)
       (evaluate ?nextPosition (PlusFn ?position1 8))
-      (lessThan ?nextPosition 66)
+      (lessThan ?nextPosition 65)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -1319,7 +1666,7 @@
 
   (actionSequence
    (TheList
-   (doForget 
+    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
@@ -1566,3 +1913,81 @@
       
 ;;; end SORRY-ELEVEN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; RESET BOARD
+(preconditionForMethod
+  (and
+    (colorOfAgent ?color1)
+    (colorOfAgent ?color2)
+    (different ?color1 ?color2)
+    (colorOfPiece ?p1 ?color1)
+    (colorOfPiece ?p2 ?color1)
+    (colorOfPiece ?p3 ?color1)
+    (colorOfPiece ?p4 ?color1)
+    (different ?p1 ?p2 ?p3 ?p4)
+    (colorOfPiece ?p5 ?color1)
+    (colorOfPiece ?p6 ?color1)
+    (colorOfPiece ?p7 ?color1)
+    (colorOfPiece ?p8 ?color1)
+    (different ?p5 ?p6 ?p7 ?p8)
+
+    (piecePosition ?p1 ?pos1)
+    (piecePosition ?p2 ?pos2)
+    (piecePosition ?p3 ?pos3)
+    (piecePosition ?p4 ?pos4)
+    (piecePosition ?p5 ?pos5)
+    (piecePosition ?p6 ?pos6)
+    (piecePosition ?p7 ?pos7)
+    (piecePosition ?p8 ?pos8)
+
+    (currCard ?card)
+    (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+  
+  )
+
+  (methodForAction
+    (resetSorryBoard)
+    
+  (actionSequence
+    (TheList
+      
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p1 ?pos1)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p1 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p2 ?pos2)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p2 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p3 ?pos3)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p3 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p4 ?pos4)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p4 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p5 ?pos5)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p5 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p6 ?pos6)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p6 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p7 ?pos7)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p7 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p8 ?pos8)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p8 0)))
+
+      (doForget 
+    	  (ist-Information SorryFactsMt (currCard ?card)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (currCard ?newCard)))
+    ))))  
