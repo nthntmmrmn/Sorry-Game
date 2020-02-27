@@ -145,11 +145,6 @@
       (piecePosition ?piece1 ?position1)
       (evaluate 65 (PlusFn ?position1 1))
       (winner ?agent ?piece1)
-      
-      (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
       )
 
  (methodForAction
@@ -964,10 +959,7 @@
       (piecePosition ?piece1 ?position1)
       (winner ?agent ?piece1)
       (evaluate 65 (PlusFn ?position1 2))
-
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+)
       
  (methodForAction
   (moveSorryPiece)
