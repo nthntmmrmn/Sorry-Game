@@ -139,7 +139,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
-      (uninferredSentence (piecePosition ?piece2 66))
+      (uninferredSentence (piecePosition ?piece2 65))
       (different ?piece1 ?piece2))
 
 (<== (winner ?agent1 ?piece1)
@@ -148,9 +148,9 @@
       (colorOfPiece ?piece2 ?color1)
       (colorOfPiece ?piece3 ?color1)
       (colorOfPiece ?piece4 ?color1)
-      (piecePosition ?piece2 66)
-      (piecePosition ?piece3 66)
-      (piecePosition ?piece4 66)
+      (piecePosition ?piece2 65)
+      (piecePosition ?piece3 65)
+      (piecePosition ?piece4 65)
       (different ?piece1 ?piece2 ?piece3 ?piece4))
 
 
@@ -175,7 +175,7 @@
 
 (<== (cannotMove ?piece ?step)
       (piecePosition ?piece ?position)
-      (greaterThan 66 (PlusFn ?position ?step)))
+      (greaterThan 65 (PlusFn ?position ?step)))
 
 (<== (allCannotMove ?agent1 ?step) 
       (colorOfAgent ?agent1 ?color1)
