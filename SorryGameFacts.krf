@@ -190,3 +190,34 @@
       (cannotMove ?piece4 ?step)
       )
 
+
+;;; For Rule 7 (use the remaining steps to recursively select the card)
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 1)
+	 (unifies ?card Sorry-One))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 2)
+	 (unifies ?card Sorry-Two))
+	 
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 3)
+	 (unifies ?card Sorry-Three))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 4)
+	 (unifies ?card Sorry-Four))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 5)
+	 (unifies ?card Sorry-Five))
+
+;;; question: how to represent 6 if the remaining movement is 6??? (use Sorry-Cards???)
+;(<== (chooseCardWithSteps ?card ?steps)
+;	 (equals ?steps 6)
+;	 (unifies ?card Sorry-Six))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 7)
+	 (unifies ?card Sorry-Seven))
+
