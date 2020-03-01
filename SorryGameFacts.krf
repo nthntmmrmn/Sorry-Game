@@ -1,22 +1,26 @@
 (in-microtheory SorryFactsMt)
 (genlMt SorryGameMt SorryFactsMt)
 
-;;; (isa BoardPieces SecondOrderCollection)
+(isa BoardPieces SecondOrderCollection)
+(isa SorryAgents FirstOrderCollection)
+(isa SorryColors FirstOrderCollection)
 
 ;;; define pieces
 ;;;
 ;;; red
 ;;; 2/23: still think we need to define "RedPieces" first?
 (isa RedPieces FirstOrderCollection)
-;;; (isa RedPieces BoardPieces)
+(isa RedPieces BoardPieces)
 (isa Red1 RedPieces)
 (isa Red2 RedPieces)
 (isa Red3 RedPieces)
 (isa Red4 RedPieces)
+(isa red SorryColors)
 (colorOfPiece Red1 red)
 (colorOfPiece Red2 red)
 (colorOfPiece Red3 red)
 (colorOfPiece Red4 red)
+(isa RedAgent SorryAgents)
 (colorOfAgent RedAgent red)
 
 ;;; USE: check if landing on space that has piece of same or different color
@@ -36,10 +40,12 @@
 (isa Yellow2 YellowPieces)
 (isa Yellow3 YellowPieces)
 (isa Yellow4 YellowPieces)
+(isa yellow SorryColors)
 (colorOfPiece Yellow1 yellow)
 (colorOfPiece Yellow2 yellow)
 (colorOfPiece Yellow3 yellow)
 (colorOfPiece Yellow4 yellow)
+(isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
 (piecePosition Yellow1 0)
