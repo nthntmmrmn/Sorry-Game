@@ -199,7 +199,7 @@
       (piecePosition ?piece2 ?position2)
       (lessThanOrEqualTo ?position2 60)
       (evaluate ?destination (PlusFn ?position1 ?step))
-      (evaluate ?distance1 (DifferenceFn 60 ?destination)
+      (evaluate ?distance1 (DifferenceFn 60 ?destination))
       (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
       (greaterThan ?distance2 0)
       (evaluate ?distance3 (DifferenceFn 60 (PlusFn ?position1 ?distance2)))
