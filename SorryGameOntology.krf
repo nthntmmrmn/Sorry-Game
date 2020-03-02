@@ -8,7 +8,7 @@
 (isa piecePosition Predicate)
 (arity piecePosition 2)
 (arg1Isa piecePosition BoardPieces)
-(arg2Isa piecePosition Number)
+(arg2Isa piecePosition Integer)
 
 (isa colorOfAgent Predicate)
 (arity colorOfAgent 2)
