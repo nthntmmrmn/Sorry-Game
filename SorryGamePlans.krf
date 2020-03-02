@@ -988,7 +988,7 @@
 		  (ist-Information SorryFactsMt (currCard ?newCard))))))
     (doRecord
       (ist-Information SorryFactsMt (gameWinner ?agent1)))
-    ))))
+    )
 
 ;;; Rule 3:
 (preconditionForMethod
