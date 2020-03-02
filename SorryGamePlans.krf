@@ -184,10 +184,11 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece5 ?color2)
       (piecePosition ?piece5 ?position2)
+      (lessThan ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 1) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 1))
-      (lessThan position2 60)
-
+      (lessThan ?nextPosition 60)
+      
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -205,7 +206,7 @@
     (doRecord
       (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+      (ist-Information SorryFactsMt (piecePosition ?piece5 0)))
 
     ;;; swap turns and pick new random card
     (doForget 
@@ -213,7 +214,7 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Three)))
+		  (ist-Information SorryFactsMt (currCard Sorry-One)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 
@@ -229,6 +230,7 @@
       (noSameColorAhead ?piece1 1)
       (noOppoAhead ?piece1 1)
       (evaluate ?nextPosition (PlusFn ?position1 1))
+      (lessThan ?nextPosition 65)
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -364,10 +366,10 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan position2 60)
+      (lessThan ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 3) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 3))
-
+      (lessThan ?nextPosition 60)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -438,6 +440,10 @@
 
 ;;; END SORRY-THREE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-TEN
@@ -520,7 +526,7 @@
 ;;; agent has a piece which is TEN steps away from HOME and will win the game
 (preconditionForMethod
  (and
-      (currCard Sorry-Three)  
+      (currCard Sorry-Ten)  
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
@@ -555,7 +561,8 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan position2 60)
+      (lessThan ?position2 60)
+      (lessThan ?nextPosition 60)
       (evaluate ?nextPosition (PlusFn ?position1 10))
       (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
       (swapTurn ?nextTurn)
@@ -601,7 +608,8 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan position2 60)
+      (lessThan ?position2 60)
+      (lessThan ?nextPosition 60)
       (evaluate ?nextPosition (DifferenceFn ?position1 1))
       (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
       
@@ -683,6 +691,8 @@
       (allCannotMove ?agent1 10)
       (noSameColorAhead ?piece1 -1)
       (noOppoAhead ?piece1 -1)
+      (piecePosition ?piece1 ?position1)
+      (lessThan ?position1 65)
       (evaluate ?nextPosition (PlusFn ?position1 -1))
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -711,6 +721,7 @@
       
 ;;; END SORRY-TEN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
       
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SORRY-SORRY
@@ -991,10 +1002,10 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
-      (lessThan position2 60)
+      (lessThan ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
       (evaluate ?a (PlusFn ?position1 2))
-
+      (lessThan ?a 60)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -1234,7 +1245,7 @@
     (different ?color2 ?color1)
     (colorOfPiece ?piece2 ?color2)
     (piecePosition ?piece2 ?position2)
-    (lessThan position2 60)
+    (lessThan ?position2 60)
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
     
@@ -1432,9 +1443,10 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan position2 60)
+      (lessThan ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 5) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 5))
+      (lessThan ?nextPosition 60)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -1612,9 +1624,10 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan position2 60)
+      (lessThan ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 8) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 8))
+      (lessThan ?nextPosition 60)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
