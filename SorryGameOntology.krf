@@ -35,3 +35,49 @@
 (isa gameWinner Predicate)
 (arity gameWinner 1)
 (arg1Isa gameWinner SorryAgents)
+
+(isa noSameColorAhead Predicate)
+(arity noSameColorAhead 2)
+(arg1Isa noSameColorAhead BoardPieces)
+(arg2Isa noSameColorAhead Integer)
+
+(isa noOppoAhead Predicate)
+(arity noOppoAhead 2)
+(arg1Isa noOppoAhead BoardPieces)
+(arg2Isa noOppoAhead Integer)
+
+(isa notWinner Predicate)
+(arity notWinner 2)
+(arg1Isa notWinner SorryAgents)
+(arg2Isa notWinner BoardPieces)
+
+(isa winner Predicate)
+(arity winner 2)
+(arg1Isa winner SorryAgents)
+(arg2Isa winner BoardPieces)
+
+(isa allAtStart Predicate)
+(arity allAtStart 1)
+(arg1Isa allAtStart SorryAgents)
+
+(isa cannotMove Predicate)
+(arity cannotMove 2)
+(arg1Isa cannotMove BoardPieces)
+(arg2Isa cannotMove Integer)
+
+(isa allCannotMove Predicate)
+(arity allCannotMove 2)
+(arg1Isa allCannotMove SorryAgents)
+(arg2Isa allCannotMove Integer)
+
+(isa findOppoSwitch Predicate)
+(arity findOppoSwitch 3)
+(arg1Isa findOppoSwitch BoardPieces)
+(arg2Isa findOppoSwitch Integer)
+(arg3Isa findOppoSwitch BoardPieces)
+
+(isa findNoOppoSwitch Predicate)
+(arity findNoOppoSwitch 2)
+(arg1Isa findNoOppoSwitch BoardPieces)
+(arg2Isa findNoOppoSwitch Integer)
+

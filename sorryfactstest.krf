@@ -1,0 +1,225 @@
+(in-microtheory SorryFactsMt)
+(genlMt SorryGameMt SorryFactsMt)
+
+(isa BoardPieces SecondOrderCollection)
+(isa SorryAgents FirstOrderCollection)
+(isa SorryColors FirstOrderCollection)
+
+;;; define pieces
+;;;
+;;; red
+;;; 2/23: still think we need to define "RedPieces" first?
+(isa RedPieces FirstOrderCollection)
+(isa RedPieces BoardPieces)
+(isa Red1 RedPieces)
+(isa Red2 RedPieces)
+(isa Red3 RedPieces)
+(isa Red4 RedPieces)
+(isa red SorryColors)
+(colorOfPiece Red1 red)
+(colorOfPiece Red2 red)
+(colorOfPiece Red3 red)
+(colorOfPiece Red4 red)
+(isa RedAgent SorryAgents)
+(colorOfAgent RedAgent red)
+
+;;; USE: check if landing on space that has piece of same or different color
+;;;   if same ==> cannot make move
+;;;   if different ==> knock other piece back to start
+
+(piecePosition Red1 0)
+(piecePosition Red2 0)
+(piecePosition Red3 0)
+(piecePosition Red4 0)
+
+;;; yellow
+;;; 2/23: still think we need to define "YellowPieces" first?
+(isa YellowPieces FirstOrderCollection)
+;;; (isa YellowPieces BoardPieces)
+(isa Yellow1 YellowPieces)
+(isa Yellow2 YellowPieces)
+(isa Yellow3 YellowPieces)
+(isa Yellow4 YellowPieces)
+(isa yellow SorryColors)
+(colorOfPiece Yellow1 yellow)
+(colorOfPiece Yellow2 yellow)
+(colorOfPiece Yellow3 yellow)
+(colorOfPiece Yellow4 yellow)
+(isa YellowAgent SorryAgents)
+(colorOfAgent YellowAgent yellow)
+
+(piecePosition Yellow1 0)
+(piecePosition Yellow2 0)
+(piecePosition Yellow3 0)
+(piecePosition Yellow4 0)
+
+
+;;; cards
+;;; added 2/23 below:
+(isa Sorry-Cards FirstOrderCollection)
+(genls Sorry-Cards PlayingCard)
+;;; ended adding below...
+
+(isa Sorry-Two Sorry-Cards)
+(isa Sorry-Four Sorry-Cards)
+(isa Sorry-Sorry Sorry-Cards)
+
+(currCard Sorry-Two)
+;;; RandomMemberFn 
+;;; (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+
+
+;;; start with YellowAgent:
+(whoseTurn YellowAgent)
+
+;;; swap turns:
+(<== (swapTurn ?next)
+      (whoseTurn YellowAgent)
+      (unifies ?next RedAgent))
+
+(<== (swapTurn ?next)
+      (whoseTurn RedAgent)
+      (unifies ?next YellowAgent))
+
+
+;;; check if there is a piece at the destination
+(<== (noSameColorAhead ?piece1 ?step)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (colorOfPiece ?piece3 ?color1)
+      (colorOfPiece ?piece4 ?color1)
+      (different ?piece4 ?piece3 ?piece2 ?piece1)
+      (piecePosition ?piece1 ?position)
+      (evaluate ?destination (PlusFn ?position ?step))
+      (uninferredSentence (piecePosition ?piece2 ?destination))
+      (uninferredSentence (piecePosition ?piece3 ?destination))  
+      (uninferredSentence (piecePosition ?piece4 ?destination))        
+      )
+
+(<== (noOppoAhead ?piece ?step)
+      (piecePosition ?piece ?position)
+      (evaluate ?destination (PlusFn ?position ?step))
+      (greaterThan ?destination 59))
+
+(<== (noOppoAhead ?piece ?step)
+      (colorOfPiece ?piece ?color1)
+      (colorOfPiece ?piece1 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (colorOfPiece ?piece4 ?color2)
+      (piecePosition ?piece1 ?position1)
+      (piecePosition ?piece2 ?position2)
+      (piecePosition ?piece3 ?position3)
+      (piecePosition ?piece4 ?position4)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
+      (piecePosition ?piece ?position)
+      (evaluate ?destination (PlusFn ?position ?step))
+      (evaluate ?distance1 (AbsoluteValueFn (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position1)))))
+      (greaterThan ?distance1 0)
+      (evaluate ?distance2 (AbsoluteValueFn (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2)))))
+      (greaterThan ?distance2 0)
+      (evaluate ?distance3 (AbsoluteValueFn (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position3)))))
+      (greaterThan ?distance3 0)
+      (evaluate ?distance4 (AbsoluteValueFn (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4)))))
+      (greaterThan ?distance4 0))
+
+
+
+;;; When a piece is about to get HOME, check if the agent is going to win the game
+(<== (notWinner ?agent1 ?piece1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (uninferredSentence (piecePosition ?piece2 65))
+      (different ?piece1 ?piece2))
+
+(<== (winner ?agent1 ?piece1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (colorOfPiece ?piece3 ?color1)
+      (colorOfPiece ?piece4 ?color1)
+      (piecePosition ?piece2 65)
+      (piecePosition ?piece3 65)
+      (piecePosition ?piece4 65)
+      (different ?piece1 ?piece2 ?piece3 ?piece4))
+
+
+;;; To check if the agent's pieces all at the start
+;;; For Rule 1c
+(<== (allAtStart ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (colorOfPiece ?piece3 ?color1)
+      (colorOfPiece ?piece4 ?color1)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
+      (piecePosition ?piece1 0)
+      (piecePosition ?piece2 0)
+      (piecePosition ?piece3 0)
+      (piecePosition ?piece4 0))
+
+
+;;; For Rule 5 (can be used with Rule 1c)
+(<== (cannotMove ?piece ?step)
+      (piecePosition ?piece 0))
+
+(<== (cannotMove ?piece ?step)
+      (piecePosition ?piece ?position)
+      (evaluate ?nextPosition (PlusFn ?position ?step))
+      (lessThan 65 ?nextPosition))
+
+(<== (allCannotMove ?agent1 ?step) 
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (colorOfPiece ?piece3 ?color1)
+      (colorOfPiece ?piece4 ?color1)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
+      (cannotMove ?piece1 ?step)
+      (cannotMove ?piece2 ?step)
+      (cannotMove ?piece3 ?step)
+      (cannotMove ?piece4 ?step)
+      )
+
+;;; find an opponent piece that is close to home to switch 
+(<= (findOppoSwitch ?piece1 ?step ?piece2)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (piecePosition ?piece2 ?position2)
+      (lessThanOrEqualTo ?position2 60)
+      (evaluate ?destination (PlusFn ?position1 ?step))
+      (evaluate ?distance1 (DifferenceFn 60 ?destination))
+      (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
+      (greaterThan ?distance2 0)
+      (evaluate ?distance3 (DifferenceFn 60 (PlusFn ?position1 ?distance2)))
+      (greaterThan ?distance1 ?distance3)
+      )
+      
+
+;;; find no opponent to switch
+(<== (findNoOppoSwitch ?piece ?step)
+      (colorOfPiece ?piece ?color1)
+      (colorOfPiece ?piece1 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (colorOfPiece ?piece4 ?color2)
+      (piecePosition ?piece1 ?position1)
+      (piecePosition ?piece2 ?position2)
+      (piecePosition ?piece3 ?position3)
+      (piecePosition ?piece4 ?position4)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
+      (piecePosition ?piece ?position)
+      (evaluate ?destination (PlusFn ?position ?step))
+      (evaluate ?distance1 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position1))))
+      (lessThan ?distance1 0)
+      (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
+      (lessThan ?distance2 0)
+      (evaluate ?distance3 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position3))))
+      (lessThan ?distance3 0)
+      (evaluate ?distance4 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4))))
+      (lessThan ?distance4 0))
