@@ -1933,8 +1933,8 @@
 ;;; RESET BOARD
 (preconditionForMethod
   (and
-    (colorOfAgent ?color1)
-    (colorOfAgent ?color2)
+    (colorOfAgent ?agent1 ?color1)
+    (colorOfAgent ?agent2 ?color2)
     (different ?color1 ?color2)
     (colorOfPiece ?p1 ?color1)
     (colorOfPiece ?p2 ?color1)
