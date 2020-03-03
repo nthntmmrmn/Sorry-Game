@@ -27,10 +27,10 @@
 ;;;   if same ==> cannot make move
 ;;;   if different ==> knock other piece back to start
 
-(piecePosition Red1 0)
-(piecePosition Red2 0)
-(piecePosition Red3 0)
-(piecePosition Red4 0)
+(piecePosition Red1 1)
+(piecePosition Red2 2)
+(piecePosition Red3 3)
+(piecePosition Red4 7)
 
 ;;; yellow
 ;;; 2/23: still think we need to define "YellowPieces" first?
@@ -48,10 +48,10 @@
 (isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
-(piecePosition Yellow1 0)
-(piecePosition Yellow2 0)
-(piecePosition Yellow3 0)
-(piecePosition Yellow4 0)
+(piecePosition Yellow1 38)
+(piecePosition Yellow2 39)
+(piecePosition Yellow3 40)
+(piecePosition Yellow4 44)
 
 
 ;;; cards
@@ -88,8 +88,8 @@
 
 
 ;;; start with YellowAgent:
-(whoseTurn YellowAgent)
-(currCard Sorry-One)
+(whoseTurn RedAgent)
+(currCard Sorry-Seven)
 
 ;;; swap turns:
 (<== (swapTurn ?next)
@@ -114,11 +114,6 @@
       (uninferredSentence (piecePosition ?piece3 ?destination))  
       (uninferredSentence (piecePosition ?piece4 ?destination))        
       )
-
-(<== (noOppoAhead ?piece ?step)
-      (piecePosition ?piece ?position)
-      (evaluate ?destination (PlusFn ?position ?step))
-      (greaterThan ?destination 59))
 
 (<== (noOppoAhead ?piece ?step)
       (colorOfPiece ?piece ?color1)
@@ -186,8 +181,7 @@
 
 (<== (cannotMove ?piece ?step)
       (piecePosition ?piece ?position)
-      (evaluate ?nextPosition (PlusFn ?position ?step))
-      (lessThan 65 ?nextPosition))
+      (greaterThan 65 (PlusFn ?position ?step)))
 
 (<== (allCannotMove ?agent1 ?step) 
       (colorOfAgent ?agent1 ?color1)
@@ -242,3 +236,34 @@
       (lessThan ?distance3 0)
       (evaluate ?distance4 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4))))
       (lessThan ?distance4 0))
+	  
+;;; cathy's horn clauses part
+;;; For Rule 7 (use the remaining steps to recursively select the card)
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 1)
+	 (unifies ?card Sorry-One))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 2)
+	 (unifies ?card Sorry-Two))
+	 
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 3)
+	 (unifies ?card Sorry-Three))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 4)
+	 (unifies ?card Sorry-Four))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 5)
+	 (unifies ?card Sorry-Five))
+
+;;; question: how to represent 6 if the remaining movement is 6??? (use Sorry-Cards???)
+;(<== (chooseCardWithSteps ?card ?steps)
+;	 (equals ?steps 6)
+;	 (unifies ?card Sorry-Six))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 7)
+	 (unifies ?card Sorry-Seven))
