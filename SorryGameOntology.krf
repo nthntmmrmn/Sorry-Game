@@ -5,6 +5,9 @@
 (isa moveSorryPiece ComplexActionPredicate)
 (arity moveSorryPiece 0)
 
+(isa resetSorryBoard ComplexActionPredicate)
+(arity resetSorryBoard 0)
+
 (isa piecePosition Predicate)
 (arity piecePosition 2)
 (arg1Isa piecePosition BoardPieces)
