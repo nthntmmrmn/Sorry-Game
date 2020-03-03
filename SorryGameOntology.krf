@@ -26,7 +26,7 @@
 
 (isa whoseTurn Predicate)
 (arity whoseTurn 1)
-(arg1Isa whoseTurn SorryAgent)
+(arg1Isa whoseTurn SorryAgents)
 
 (isa swapTurn Predicate)
 (arity swapTurn 1)
