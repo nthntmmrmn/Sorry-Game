@@ -89,3 +89,8 @@
 (arg1Isa swapPos Integer)
 (arg2Isa swapPos Integer)
 
+(isa checkSlide Predicate)
+(arity checkSlide 2)
+(arg1Isa checkSlide Integer)
+(arg2Isa checkSlide Integer)
+
