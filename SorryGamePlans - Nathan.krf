@@ -34,6 +34,7 @@
       (greaterThan ?piece2pos 0) ;;; piece not in start
       (lessThan ?piece2pos 61) ;;; piece not in safe zone
 
+      (swapPos ?piece2pos ?newPos)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -45,8 +46,10 @@
       (actionSequence
         (TheList
         
+          ;;;(doRecord
+            ;;;(ist-Information SorryFactsMt (piecePosition ?piece1 (DifferenceFn 30 ?piece2pos)))
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece1 ?piece2pos)))
+            (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
           (doForget
             (ist-Information SorryFactsMt (piecePosition ?piece1 0)))
           (doRecord
@@ -631,3 +634,81 @@
 
 ;;; end SORRY-FOUR
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; RESET BOARD
+(preconditionForMethod
+  (and
+    (isa ?color1 SorryColors)
+    (isa ?color2 SorryColors)
+    (different ?color1 ?color2)
+    (colorOfPiece ?p1 ?color1)
+    (colorOfPiece ?p2 ?color1)
+    (colorOfPiece ?p3 ?color1)
+    (colorOfPiece ?p4 ?color1)
+    (different ?p1 ?p2 ?p3 ?p4)
+    (colorOfPiece ?p5 ?color2)
+    (colorOfPiece ?p6 ?color2)
+    (colorOfPiece ?p7 ?color2)
+    (colorOfPiece ?p8 ?color2)
+    (different ?p5 ?p6 ?p7 ?p8)
+
+    (piecePosition ?p1 ?pos1)
+    (piecePosition ?p2 ?pos2)
+    (piecePosition ?p3 ?pos3)
+    (piecePosition ?p4 ?pos4)
+    (piecePosition ?p5 ?pos5)
+    (piecePosition ?p6 ?pos6)
+    (piecePosition ?p7 ?pos7)
+    (piecePosition ?p8 ?pos8)
+
+    (currCard ?card)
+    (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+  
+  )
+
+  (methodForAction
+    (resetSorryBoard)
+    
+  (actionSequence
+    (TheList
+      
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p1 ?pos1)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p1 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p2 ?pos2)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p2 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p3 ?pos3)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p3 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p4 ?pos4)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p4 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p5 ?pos5)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p5 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p6 ?pos6)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p6 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p7 ?pos7)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p7 0)))
+      (doForget 
+    	  (ist-Information SorryFactsMt (piecePosition ?p8 ?pos8)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (piecePosition ?p8 0)))
+
+      (doForget 
+    	  (ist-Information SorryFactsMt (currCard ?card)))
+      (doRecord 
+    	  (ist-Information SorryFactsMt (currCard ?newCard)))
+    ))))
