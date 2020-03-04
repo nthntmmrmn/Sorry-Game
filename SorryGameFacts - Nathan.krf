@@ -235,3 +235,34 @@
       (evaluate ?pos2 (PlusFn ?pos 30))
       (unifies ?newPos ?pos2)
       )
+
+;;; 3 space slides
+(<== (checkSlide ?pos ?newPos)
+      (or  
+            (equals ?pos 13)
+            (equals ?pos 28)
+            (equals ?pos 43)
+      )
+      (unifies ?newPos (PlusFn ?pos 3))
+      )
+
+;;; 4 space slides
+(<== (checkSlide ?pos ?newPos)
+      (or
+            (equals ?pos 21)
+            (equals ?pos 36)
+            (equals ?pos 51)
+      )
+      (unifies ?newPos (PlusFn ?pos 4))
+      )
+
+;;; not on slide
+(<== (checkSlide ?pos ?newPos)
+      (not (equals ?pos 13))
+      (not (equals ?pos 28))
+      (not (equals ?pos 43))
+      (not (equals ?pos 21))
+      (not (equals ?pos 36))
+      (not (equals ?pos 51))
+      (unifies ?newPos ?pos)
+      )

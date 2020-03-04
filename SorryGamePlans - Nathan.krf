@@ -300,10 +300,14 @@
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
       (lessThan ?position2 60)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
-      (evaluate ?a (PlusFn ?position1 2))
+      ;;; slides
+      (checkSlide (PlusFn ?position1 2) ?newPos)
+      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?newPos ?position2)))
+      ;;; no slides
+      ;;; (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
+      ;;; (evaluate ?a (PlusFn ?position1 2))
       (lessThan ?a 60)
-      (swapTurn ?nextTurn)
+
       (evaluate ?newCard 
 		    (RandomMemberFn 
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
@@ -319,7 +323,7 @@
     (doForget 
       (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?a)))
+      (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
     (doRecord 
       (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
 
@@ -339,7 +343,10 @@
       (piecePosition ?piece1 ?position1)
       (noSameColorAhead ?piece1 2)
       (noOppoAhead ?piece1 2)
-      (evaluate ?nextPosition (PlusFn ?position1 2))
+      ;;; slides
+      (checkSlide (PlusFn ?position1 2) ?newPos)
+      ;;; no slides
+      ;;; (evaluate ?nextPosition (PlusFn ?position1 2))
       (lessThan ?nextPosition 65)
 
       (swapTurn ?nextTurn)
@@ -354,7 +361,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
 
     ;;; pick new random card
     (doForget 
@@ -377,7 +384,7 @@
         (evaluate 2 (MinusFn ?position2 ?position1))
         (greaterThan (PlusFn ?position1 2) 65)
       )
-      (swapTurn ?nextTurn)
+
       (evaluate ?newCard 
 		    (RandomMemberFn 
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
