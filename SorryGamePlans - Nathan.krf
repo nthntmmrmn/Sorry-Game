@@ -63,7 +63,7 @@
           (doRecord 
             (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
           (doRecord 
             (ist-Information SorryFactsMt (currCard ?newCard)))
         ))))
@@ -94,7 +94,7 @@
           (doRecord 
             (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
           (doRecord 
             (ist-Information SorryFactsMt (currCard ?newCard)))
             ))))
@@ -134,7 +134,7 @@
           (doRecord 
             (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
           (doRecord 
             (ist-Information SorryFactsMt (currCard ?newCard)))
         ))))
