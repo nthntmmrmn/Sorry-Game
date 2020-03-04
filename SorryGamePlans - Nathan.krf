@@ -303,10 +303,11 @@
       ;;; slides
       (checkSlide (PlusFn ?position1 2) ?newPos)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn ?newPos ?position2)))
+      (lessThan ?newPos 60)
       ;;; no slides
       ;;; (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
       ;;; (evaluate ?a (PlusFn ?position1 2))
-      (lessThan ?a 60)
+      ;;; (lessThan ?a 60)
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -345,9 +346,10 @@
       (noOppoAhead ?piece1 2)
       ;;; slides
       (checkSlide (PlusFn ?position1 2) ?newPos)
+      (lessThan ?newPos 65)
       ;;; no slides
       ;;; (evaluate ?nextPosition (PlusFn ?position1 2))
-      (lessThan ?nextPosition 65)
+      ;;; (lessThan ?nextPosition 65)
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
