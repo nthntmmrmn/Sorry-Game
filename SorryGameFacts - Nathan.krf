@@ -273,6 +273,7 @@
       (piecePosition ?piece1 ?pos1)
       (piecePosition ?piece2 ?pos2)
       (lessThan ?pos2 61)
+      (greaterThan ?pos2 0)
       (evaluate ?pos1Home (DifferenceFn 66 ?pos1))
       (getOppoPos ?pos2 ?pos2Oppo)
       (evaluate ?pos2Home (DifferenceFn 66 ?pos2Oppo))

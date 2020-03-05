@@ -57,32 +57,50 @@
 ;;; cards
 ;;; added 2/23 below:
 (isa Sorry-Cards FirstOrderCollection)
+(isa Sorry-Cards-Pickable FirstOrderCollection)
 (genls Sorry-Cards PlayingCard)
+(genls Sorry-Cards-Pickable PlayingCard)
 ;;; ended adding below...
 
 (isa Sorry-One Sorry-Cards)
+(isa Sorry-One Sorry-Cards-Pickable)
 
 (isa Sorry-Two Sorry-Cards)
+(isa Sorry-Two Sorry-Cards-Pickable)
 
 (isa Sorry-Three Sorry-Cards)
+(isa Sorry-Three Sorry-Cards-Pickable)
 
 (isa Sorry-Four Sorry-Cards)
+(isa Sorry-Four Sorry-Cards-Pickable)
 
 (isa Sorry-Five Sorry-Cards)
+(isa Sorry-Five Sorry-Cards-Pickable)
 
 (isa Sorry-Seven Sorry-Cards)
+(isa Sorry-Seven Sorry-Cards-Pickable)
+;;; subset:
+(isa Sorry-Seven-Six Sorry-Cards)
+(isa Sorry-Seven-Four Sorry-Cards)
+(isa Sorry-Seven-Two Sorry-Cards)
+(isa Sorry-Seven-One Sorry-Cards)
 
 (isa Sorry-Eight Sorry-Cards)
+(isa Sorry-Eight Sorry-Cards-Pickable)
 
 (isa Sorry-Ten Sorry-Cards)
+(isa Sorry-Ten Sorry-Cards-Pickable)
 
 (isa Sorry-Eleven Sorry-Cards)
+(isa Sorry-Eleven Sorry-Cards-Pickable)
 
 (isa Sorry-Twelve Sorry-Cards)
+(isa Sorry-Twelve Sorry-Cards-Pickable)
 
 (isa Sorry-Sorry Sorry-Cards)
+(isa Sorry-Sorry Sorry-Cards-Pickable)
 
-;;; (RandomMemberFn (TheSet Sorry-Cards))
+;;; (RandomMemberFn (TheSet Sorry-Cards-Pickable))
 ;;; returns a random card
 ;;; game start off with random card in KB
 
