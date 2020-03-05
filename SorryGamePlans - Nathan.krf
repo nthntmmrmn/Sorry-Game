@@ -34,7 +34,7 @@
       (greaterThan ?piece2pos 0) ;;; piece not in start
       (lessThan ?piece2pos 61) ;;; piece not in safe zone
 
-      (swapPos ?piece2pos ?newPos)
+      (getOppoPos ?piece2pos ?newPos)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
