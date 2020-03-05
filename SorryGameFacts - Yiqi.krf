@@ -185,11 +185,11 @@
       )
 
 ;;; find an opponent piece that is close to home to switch 
-(<= (findOppoSwitch ?piece1 ?step ?piece2 ?nextPosition1 ?nextPosition2)
+(<== (findOppoSwitch ?piece1 ?step ?piece2 ?nextPosition1 ?nextPosition2)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
+      (different ?color1 ?color2)
       (piecePosition ?piece2 ?position2)
       (lessThan ?position2 61)
       (evaluate ?destination (PlusFn ?position1 ?step))

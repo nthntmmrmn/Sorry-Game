@@ -570,6 +570,7 @@
       (uninferredSentence (piecePosition ?piece1 0))
       (piecePosition ?piece1 ?position1)
       (findOppoSwitch ?piece1 11 ?piece2 ?nextPosition1 ?nextPosition2)
+      (piecePosition ?piece2 ?position2)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
