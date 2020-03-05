@@ -27,10 +27,10 @@
 ;;;   if same ==> cannot make move
 ;;;   if different ==> knock other piece back to start
 
-(piecePosition Red1 0)
-(piecePosition Red2 0)
-(piecePosition Red3 0)
-(piecePosition Red4 0)
+(piecePosition Red1 4)
+(piecePosition Red2 3)
+(piecePosition Red3 2)
+(piecePosition Red4 1)
 
 ;;; yellow
 ;;; 2/23: still think we need to define "YellowPieces" first?
@@ -64,7 +64,7 @@
 (isa Sorry-Four Sorry-Cards)
 (isa Sorry-Sorry Sorry-Cards)
 
-(currCard Sorry-Two)
+(currCard Sorry-Sorry)
 ;;; RandomMemberFn 
 ;;; (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
 
@@ -268,3 +268,25 @@
       (not (equals ?pos 51))
       (unifies ?newPos ?pos)
       )
+
+(<== (swapExists ?piece1 ?piece2) ;;; piece1 is your piece, piece2 is opponent piece
+      (piecePosition ?piece1 ?pos1)
+      (piecePosition ?piece2 ?pos2)
+      (lessThan ?pos2 61)
+      (evaluate ?pos1Home (DifferenceFn 66 ?pos1))
+      (getOppoPos ?pos2 ?pos2Oppo)
+      (evaluate ?pos2Home (DifferenceFn 66 ?pos2Oppo))
+      (lessThan ?pos2Home ?pos1Home)
+)
+
+(<== (getOppoPos ?myPos ?oppoPos)
+      (greaterThan ?myPos 30)
+      (evaluate ?a (DifferenceFn ?myPos 30))
+      (unifies ?oppoPos ?a)
+)
+
+(<== (getOppoPos ?myPos ?oppoPos)
+      (lessThan ?myPos 31)
+      (evaluate ?a (PlusFn ?myPos 30))
+      (unifies ?oppoPos ?a)
+)
