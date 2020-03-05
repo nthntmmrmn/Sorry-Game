@@ -86,10 +86,10 @@
 (arg1Isa findNoOppoSwitch BoardPieces)
 (arg2Isa findNoOppoSwitch Integer)
 
-(isa swapPos Predicate)
-(arity swapPos 2)
-(arg1Isa swapPos Integer)
-(arg2Isa swapPos Integer)
+;;; (isa swapPos Predicate)
+;;; (arity swapPos 2)
+;;; (arg1Isa swapPos Integer)
+;;; (arg2Isa swapPos Integer)
 
 (isa checkSlide Predicate)
 (arity checkSlide 2)
