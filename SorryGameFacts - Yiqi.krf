@@ -27,10 +27,10 @@
 ;;;   if same ==> cannot make move
 ;;;   if different ==> knock other piece back to start
 
-(piecePosition Red1 3)
-(piecePosition Red2 0)
-(piecePosition Red3 0)
-(piecePosition Red4 0)
+(piecePosition Red1 21)
+(piecePosition Red2 22)
+(piecePosition Red3 23)
+(piecePosition Red4 34)
 
 ;;; yellow
 ;;; 2/23: still think we need to define "YellowPieces" first?
@@ -48,7 +48,7 @@
 (isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
-(piecePosition Yellow1 2)
+(piecePosition Yellow1 47)
 (piecePosition Yellow2 0)
 (piecePosition Yellow3 0)
 (piecePosition Yellow4 0)
@@ -187,18 +187,13 @@
 ;;; find an opponent piece that is close to home to switch 
 (<== (findOppoSwitch ?piece1 ?step ?piece2 ?nextPosition1 ?nextPosition2)
       (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
       (colorOfPiece ?piece2 ?color2)
       (different ?color1 ?color2)
+      (swapExists ?piece1 ?step ?piece2)
+      (piecePosition ?piece1 ?position1)
       (piecePosition ?piece2 ?position2)
-      (lessThan ?position2 61)
-      (evaluate ?destination (PlusFn ?position1 ?step))
-      (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
-      (greaterThan ?distance2 0)
-      (evaluate ?distance3 (DifferenceFn 60 (PlusFn ?destination ?distance2)))
-      (greaterThanOrEqualTo ?distance3 0)
-      (evaluate ?nextPosition1 (PlusFn ?destination ?distance2))
-      (evaluate ?nextPosition2 (AbsoluteValueFn (DifferenceFn (DifferenceFn ?position2 ?distance2) ?step)))
+      (getOppoPos ?position1 ?nextPosition2)
+      (getOppoPos ?position2 ?nextPosition1)
       )
       
 
@@ -206,7 +201,7 @@
 (<== (findNoOppoSwitch ?piece ?step)
       (piecePosition ?piece ?position)
       (evaluate ?destination (PlusFn ?position ?step))
-      (greaterThan ?destination 59))
+      (greaterThan ?destination 60))
 
 (<== (findNoOppoSwitch ?piece ?step)
       (colorOfPiece ?piece ?color1)
@@ -215,19 +210,44 @@
       (colorOfPiece ?piece2 ?color2)
       (colorOfPiece ?piece3 ?color2)
       (colorOfPiece ?piece4 ?color2)
-      (piecePosition ?piece1 ?position1)
-      (piecePosition ?piece2 ?position2)
-      (piecePosition ?piece3 ?position3)
-      (piecePosition ?piece4 ?position4)
       (different ?piece1 ?piece2 ?piece3 ?piece4)
-      (piecePosition ?piece ?position)
-      (evaluate ?destination (PlusFn ?position ?step))
-      (lessThan ?destination 61)
-      (evaluate ?distance1 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position1))))
-      (lessThan ?distance1 0)
-      (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
-      (lessThan ?distance2 0)
-      (evaluate ?distance3 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position3))))
-      (lessThan ?distance3 0)
-      (evaluate ?distance4 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4))))
-      (lessThan ?distance4 0))
+      (swapNotExists ?piece ?step ?piece1)
+      (swapNotExists ?piece ?step ?piece2)
+      (swapNotExists ?piece ?step ?piece3)
+      (swapNotExists ?piece ?step ?piece4))
+
+
+(<== (swapExists ?piece1 ?step ?piece2) ;;; piece1 is your piece, piece2 is opponent piece
+      (piecePosition ?piece1 ?pos1)
+      (evaluate ?destination (PlusFn ?pos1 ?step))
+      (piecePosition ?piece2 ?pos2)
+      (lessThan ?pos2 61)
+      (evaluate ?pos1Home (DifferenceFn 66 ?destination))
+      (getOppoPos ?pos2 ?pos2Oppo)
+      (evaluate ?pos2Home (DifferenceFn 66 ?pos2Oppo))
+      (lessThanOrEqualTo ?pos2Home ?pos1Home)
+)
+
+
+(<== (swapNotExists ?piece1 ?step ?piece2) ;;; piece1 is your piece, piece2 is opponent piece
+      (piecePosition ?piece1 ?pos1)
+      (evaluate ?destination (PlusFn ?pos1 ?step))
+      (piecePosition ?piece2 ?pos2)
+      (lessThan ?pos2 61)
+      (evaluate ?pos1Home (DifferenceFn 66 ?destination))
+      (getOppoPos ?pos2 ?pos2Oppo)
+      (evaluate ?pos2Home (DifferenceFn 66 ?pos2Oppo))
+      (greaterThan ?pos2Home ?pos1Home)
+)
+
+(<== (getOppoPos ?myPos ?oppoPos)
+      (greaterThan ?myPos 30)
+      (evaluate ?a (DifferenceFn ?myPos 30))
+      (unifies ?oppoPos ?a)
+)
+
+(<== (getOppoPos ?myPos ?oppoPos)
+      (lessThan ?myPos 31)
+      (evaluate ?a (PlusFn ?myPos 30))
+      (unifies ?oppoPos ?a)
+)
