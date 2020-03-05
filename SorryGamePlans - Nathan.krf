@@ -267,7 +267,7 @@
       (piecePosition ?piece1 ?position1)
       (winner ?agent ?piece1)
       (evaluate 65 (PlusFn ?position1 2))
-)
+  )
       
  (methodForAction
   (moveSorryPiece)
@@ -282,10 +282,10 @@
     (doForget 
 		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard))))))
+		  (ist-Information SorryFactsMt (currCard ?newCard)))
     (doRecord
       (ist-Information SorryFactsMt (gameWinner ?agent1)))
-    )
+    ))))
 
 ;;; Rule 3:
 (preconditionForMethod
@@ -300,14 +300,14 @@
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
       (lessThan ?position2 60)
-      ;;; slides
-      (checkSlide (PlusFn ?position1 2) ?newPos)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?newPos ?position2)))
-      (lessThan ?newPos 60)
+      ;;; slides (if lands on slide start, knocks only opponent piece at end of slide)
+      ;;; (checkSlide (PlusFn ?position1 2) ?newPos)
+      ;;; (evaluate 30 (AbsoluteValueFn (DifferenceFn ?newPos ?position2)))
+      ;;; (lessThan ?newPos 60)
       ;;; no slides
-      ;;; (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
-      ;;; (evaluate ?a (PlusFn ?position1 2))
-      ;;; (lessThan ?a 60)
+      (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
+      (evaluate ?a (PlusFn ?position1 2))
+      (lessThan ?a 60)
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -345,11 +345,11 @@
       (noSameColorAhead ?piece1 2)
       (noOppoAhead ?piece1 2)
       ;;; slides
-      (checkSlide (PlusFn ?position1 2) ?newPos)
-      (lessThan ?newPos 65)
+      ;;; (checkSlide (PlusFn ?position1 2) ?newPos)
+      ;;; (lessThan ?newPos 65)
       ;;; no slides
-      ;;; (evaluate ?nextPosition (PlusFn ?position1 2))
-      ;;; (lessThan ?nextPosition 65)
+      (evaluate ?nextPosition (PlusFn ?position1 2))
+      (lessThan ?nextPosition 65)
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -382,10 +382,36 @@
       (different ?piece1 ?piece2)
       (piecePosition ?piece1 ?position1)
       (piecePosition ?piece2 ?position2)
-      (or
-        (evaluate 2 (MinusFn ?position2 ?position1))
-        (greaterThan (PlusFn ?position1 2) 65)
-      )
+      (uninferredSentence (piecePosition ?piece1 0))
+      (uninferredSentence (piecePosition ?piece2 0))
+      (greaterThan ?position1 ?position2)
+      (lessThan ?position1 65)
+      (evaluate 2 (DifferenceFn ?position1 ?position2))
+      (greaterThan (PlusFn ?position1 2) 65)
+
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+      
+ (methodForAction
+  (moveSorryPiece)
+  (actionSequence
+   (TheList
+    ;;; pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; Rule 5a.2
+(preconditionForMethod
+ (and
+      (currCard Sorry-Two)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (uninferredSentence (piecePosition ?piece1 0))
+      (allCannotMove ?agent1 2)
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -437,7 +463,7 @@
       ))))
   
 ;;; can move backwards behind safe zone rather than going around board
-;;; no opponent piece on that position
+;;; no opponent piece on that position, no own piece on that pos
 (preconditionForMethod
   (and
     (currCard Sorry-Four)
@@ -570,7 +596,7 @@
       (doForget
         (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+        (ist-Information SorryFactsMt (piecePosition ?piece1 (DifferenceFn ?position1 4))))
       (doForget
         (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
       (doRecord
@@ -596,11 +622,13 @@
     (colorOfPiece ?piece1 ?color1)
     (colorOfPiece ?piece3 ?color1)
     (different ?piece1 ?piece3)
-    (piecePosition ?piece3 ?position3)
     (piecePosition ?piece1 ?position1)
-    (lessThan ?position3 ?position1)
     (greaterThan ?position1 0)
     (lessThan ?position1 65)
+
+    ;;; no same piece 4 spaces behind
+    (uninferredSentence (piecePosition ?piece3 (DifferenceFn ?position1 4)))
+
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
     (colorOfPiece ?piece2 ?color2)
@@ -608,11 +636,9 @@
     
     ;;; no opponent piece 4 spaces behind
     (evaluate ?distance1 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
-    (greaterThan ?distance1 56)
-    ;;; no same piece 4 spaces behind
-    (evaluate ?distance2 (DifferenceFn ?position1 ?position3))
-    (greaterThan ?distance2 4)
+    (not (equals ?distance1 56))
     
+    (evaluate ?newPos (DifferenceFn ?position1 4))
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -628,7 +654,7 @@
       (doForget
         (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+        (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
 
       ;;; swap turns and pick new random card
       (doForget 

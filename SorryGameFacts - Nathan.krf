@@ -48,10 +48,10 @@
 (isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
-(piecePosition Yellow1 0)
-(piecePosition Yellow2 0)
-(piecePosition Yellow3 0)
-(piecePosition Yellow4 0)
+(piecePosition Yellow1 65)
+(piecePosition Yellow2 65)
+(piecePosition Yellow3 64)
+(piecePosition Yellow4 65)
 
 
 ;;; cards
@@ -131,19 +131,21 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
+      (different ?piece1 ?piece2)
       (uninferredSentence (piecePosition ?piece2 65))
-      (different ?piece1 ?piece2))
+      )
 
 (<== (winner ?agent1 ?piece1)
-      (colorOfAgent ?agent1 ?color1)
+      ;;; (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
       (colorOfPiece ?piece3 ?color1)
       (colorOfPiece ?piece4 ?color1)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
       (piecePosition ?piece2 65)
       (piecePosition ?piece3 65)
       (piecePosition ?piece4 65)
-      (different ?piece1 ?piece2 ?piece3 ?piece4))
+      )
 
 
 ;;; To check if the agent's pieces all at the start
