@@ -104,13 +104,14 @@
 (arg1Isa checkSlide Integer)
 (arg2Isa checkSlide Integer)
 
+(isa swapExists Predicate)
+(arity swapExists 3)
+(arg1Isa swapExists BoardPieces)
+(arg2Isa swapExists Integer)
+(arg3Isa swapExists BoardPieces)
+
 (isa getOppoPos Predicate)
 (arity getOppoPos 2)
 (arg1Isa getOppoPos Integer)
 (arg2Isa getOppoPos Integer)
-
-(isa swapExists Predicate)
-(arity swapExists 2)
-(arg1Isa swapExists BoardPieces)
-(arg2Isa swapExists BoardPieces)
 
