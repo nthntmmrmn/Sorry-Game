@@ -569,8 +569,7 @@
       (colorOfPiece ?piece1 ?color1)
       (uninferredSentence (piecePosition ?piece1 0))
       (piecePosition ?piece1 ?position1)
-      (findOppoSwitch ?piece1 11 ?piece2)
-      (piecePosition ?piece2 ?position2)
+      (findOppoSwitch ?piece1 11 ?piece2 ?nextPosition1 ?nextPosition2)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -586,9 +585,9 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position2)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 ?position1)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece2 ?nextPosition2)))
 
     ;;; swap turns and pick new random card
     (doForget 

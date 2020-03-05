@@ -74,10 +74,12 @@
 (arg2Isa allCannotMove Integer)
 
 (isa findOppoSwitch Predicate)
-(arity findOppoSwitch 3)
+(arity findOppoSwitch 5)
 (arg1Isa findOppoSwitch BoardPieces)
 (arg2Isa findOppoSwitch Integer)
 (arg3Isa findOppoSwitch BoardPieces)
+(arg4Isa findOppoSwitch Integer)
+(arg5Isa findOppoSwitch Integer)
 
 (isa findNoOppoSwitch Predicate)
 (arity findNoOppoSwitch 2)

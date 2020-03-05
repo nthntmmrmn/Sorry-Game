@@ -27,7 +27,7 @@
 ;;;   if same ==> cannot make move
 ;;;   if different ==> knock other piece back to start
 
-(piecePosition Red1 20)
+(piecePosition Red1 3)
 (piecePosition Red2 0)
 (piecePosition Red3 0)
 (piecePosition Red4 0)
@@ -48,7 +48,7 @@
 (isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
-(piecePosition Yellow1 15)
+(piecePosition Yellow1 2)
 (piecePosition Yellow2 0)
 (piecePosition Yellow3 0)
 (piecePosition Yellow4 0)
@@ -185,23 +185,29 @@
       )
 
 ;;; find an opponent piece that is close to home to switch 
-(<= (findOppoSwitch ?piece1 ?step ?piece2)
+(<= (findOppoSwitch ?piece1 ?step ?piece2 ?nextPosition1 ?nextPosition2)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThanOrEqualTo ?position2 60)
+      (lessThan ?position2 61)
       (evaluate ?destination (PlusFn ?position1 ?step))
-      (evaluate ?distance1 (DifferenceFn 60 ?destination))
       (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
       (greaterThan ?distance2 0)
       (evaluate ?distance3 (DifferenceFn 60 (PlusFn ?destination ?distance2)))
-      (greaterThan ?distance3 0)
+      (greaterThanOrEqualTo ?distance3 0)
+      (evaluate ?nextPosition1 (PlusFn ?destination ?distance2))
+      (evaluate ?nextPosition2 (AbsoluteValueFn (DifferenceFn (DifferenceFn ?position2 ?distance2) ?step)))
       )
       
 
 ;;; find no opponent to switch
+(<== (findNoOppoSwitch ?piece ?step)
+      (piecePosition ?piece ?position)
+      (evaluate ?destination (PlusFn ?position ?step))
+      (greaterThan ?destination 59))
+
 (<== (findNoOppoSwitch ?piece ?step)
       (colorOfPiece ?piece ?color1)
       (colorOfPiece ?piece1 ?color2)
@@ -216,6 +222,7 @@
       (different ?piece1 ?piece2 ?piece3 ?piece4)
       (piecePosition ?piece ?position)
       (evaluate ?destination (PlusFn ?position ?step))
+      (lessThan ?destination 61)
       (evaluate ?distance1 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position1))))
       (lessThan ?distance1 0)
       (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
