@@ -5,6 +5,10 @@
 (isa SorryAgents FirstOrderCollection)
 (isa SorryColors FirstOrderCollection)
 
+;;; define pieces
+;;;
+;;; red
+;;; 2/23: still think we need to define "RedPieces" first?
 (isa RedPieces FirstOrderCollection)
 (isa RedPieces BoardPieces)
 (isa Red1 RedPieces)
@@ -53,32 +57,50 @@
 ;;; cards
 ;;; added 2/23 below:
 (isa Sorry-Cards FirstOrderCollection)
+(isa Sorry-Cards-Pickable FirstOrderCollection)
 (genls Sorry-Cards PlayingCard)
+(genls Sorry-Cards-Pickable PlayingCard)
 ;;; ended adding below...
 
 (isa Sorry-One Sorry-Cards)
+(isa Sorry-One Sorry-Cards-Pickable)
 
 (isa Sorry-Two Sorry-Cards)
+(isa Sorry-Two Sorry-Cards-Pickable)
 
 (isa Sorry-Three Sorry-Cards)
+(isa Sorry-Three Sorry-Cards-Pickable)
 
 (isa Sorry-Four Sorry-Cards)
+(isa Sorry-Four Sorry-Cards-Pickable)
 
 (isa Sorry-Five Sorry-Cards)
+(isa Sorry-Five Sorry-Cards-Pickable)
 
 (isa Sorry-Seven Sorry-Cards)
+(isa Sorry-Seven Sorry-Cards-Pickable)
+;;; subset:
+(isa Sorry-Seven-Six Sorry-Cards)
+(isa Sorry-Seven-Four Sorry-Cards)
+(isa Sorry-Seven-Two Sorry-Cards)
+(isa Sorry-Seven-One Sorry-Cards)
 
 (isa Sorry-Eight Sorry-Cards)
+(isa Sorry-Eight Sorry-Cards-Pickable)
 
 (isa Sorry-Ten Sorry-Cards)
+(isa Sorry-Ten Sorry-Cards-Pickable)
 
 (isa Sorry-Eleven Sorry-Cards)
+(isa Sorry-Eleven Sorry-Cards-Pickable)
 
 (isa Sorry-Twelve Sorry-Cards)
+(isa Sorry-Twelve Sorry-Cards-Pickable)
 
 (isa Sorry-Sorry Sorry-Cards)
+(isa Sorry-Sorry Sorry-Cards-Pickable)
 
-;;; (RandomMemberFn (TheSet Sorry-Cards))
+;;; (RandomMemberFn (TheSet Sorry-Cards-Pickable))
 ;;; returns a random card
 ;;; game start off with random card in KB
 
@@ -198,38 +220,55 @@
       (cannotMove ?piece4 ?step)
       )
 
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; SLIDE HORN CLAUSES
-
-;;; 3 space slides
-(<== (checkSlide ?pos ?newPos)
-      (or  
-            (equals ?pos 13)
-            (equals ?pos 28)
-            (equals ?pos 43)
+;;; find an opponent piece that is close to home to switch 
+(<= (findOppoSwitch ?piece1 ?step ?piece2)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (piecePosition ?piece2 ?position2)
+      (lessThanOrEqualTo ?position2 60)
+      (evaluate ?destination (PlusFn ?position1 ?step))
+      (evaluate ?distance1 (DifferenceFn 60 ?destination))
+      (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
+      (greaterThan ?distance2 0)
+      (evaluate ?distance3 (DifferenceFn 60 (PlusFn ?position1 ?distance2)))
+      (greaterThan ?distance1 ?distance3)
       )
-      (unifies ?newPos (PlusFn ?pos 3))
-      )
+      
 
-;;; 4 space slides
-(<== (checkSlide ?pos ?newPos)
-      (or
-            (equals ?pos 21)
-            (equals ?pos 36)
-            (equals ?pos 51)
-      )
-      (unifies ?newPos (PlusFn ?pos 4))
-      )
+;;; find no opponent to switch
+(<== (findNoOppoSwitch ?piece ?step)
+      (colorOfPiece ?piece ?color1)
+      (colorOfPiece ?piece1 ?color2)
+      (different ?color1 ?color2)
+      (colorOfPiece ?piece2 ?color2)
+      (colorOfPiece ?piece3 ?color2)
+      (colorOfPiece ?piece4 ?color2)
+      (piecePosition ?piece1 ?position1)
+      (piecePosition ?piece2 ?position2)
+      (piecePosition ?piece3 ?position3)
+      (piecePosition ?piece4 ?position4)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
+      (piecePosition ?piece ?position)
+      (evaluate ?destination (PlusFn ?position ?step))
+      (evaluate ?distance1 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position1))))
+      (lessThan ?distance1 0)
+      (evaluate ?distance2 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position2))))
+      (lessThan ?distance2 0)
+      (evaluate ?distance3 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position3))))
+      (lessThan ?distance3 0)
+      (evaluate ?distance4 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4))))
+      (lessThan ?distance4 0))
 
-;;; not on slide
-(<== (checkSlide ?pos ?newPos)
-      (not (equals ?pos 13))
-      (not (equals ?pos 28))
-      (not (equals ?pos 43))
-      (not (equals ?pos 21))
-      (not (equals ?pos 36))
-      (not (equals ?pos 51))
-      (unifies ?newPos ?pos)
-      )
+(<== (getOppoPos ?myPos ?oppoPos)
+      (greaterThan ?myPos 30)
+      (evaluate ?a (DifferenceFn ?myPos 30))
+      (unifies ?oppoPos ?a)
+)
+
+(<== (getOppoPos ?myPos ?oppoPos)
+      (lessThan ?myPos 31)
+      (evaluate ?a (PlusFn ?myPos 30))
+      (unifies ?oppoPos ?a)
+)

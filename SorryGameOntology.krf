@@ -8,13 +8,26 @@
 (isa resetSorryBoard ComplexActionPredicate)
 (arity resetSorryBoard 0)
 
-(isa playerMovePiece ComplexActionPredicate)
-(arity playerMovePiece 2)
-(arg1Isa playerMovePiece BoardPieces)
-(arg2Isa playerMovePiece Integer)
+(isa movePlayerPiece ComplexActionPredicate)
+(arity movePlayerPiece 2)
+(arg1Isa movePlayerPiece BoardPieces)
+(arg2Isa movePlayerPiece Integer)
 
 (isa newTurn ComplexActionPredicate)
 (arity newTurn 0)
+
+(isa playerMoveTwoPieces ComplexActionPredicate)
+(arity playerMoveTwoPieces 4)
+(arg1Isa playerMoveTwoPieces BoardPieces)
+(arg2Isa playerMoveTwoPieces Integer)
+(arg3Isa playerMoveTwoPieces BoardPieces)
+(arg4Isa playerMoveTwoPieces Integer)
+
+(isa knockOppo ComplexActionPredicate)
+(arity knockOppo 2)
+(arg1Isa knockOppo BoardPieces)
+(arg2Isa knockOppo Integer)
+
 
 (isa piecePosition Predicate)
 (arity piecePosition 2)
