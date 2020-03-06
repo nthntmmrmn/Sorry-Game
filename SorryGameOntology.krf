@@ -28,6 +28,10 @@
 (arg1Isa knockOppo BoardPieces)
 (arg2Isa knockOppo Integer)
 
+(isa switchForEleven ComplexActionPredicate)
+(arity switchForEleven 2)
+(arg1Isa switchForEleven BoardPieces)
+(arg2Isa switchForEleven BoardPieces)
 
 (isa piecePosition Predicate)
 (arity piecePosition 2)

@@ -647,9 +647,9 @@
         (doForget
           (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))  
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos1)))
+          (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos2)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece2 ?newPos2)))
+          (ist-Information SorryFactsMt (piecePosition ?piece2 ?newPos1)))
         (doAgentPlan
           (newTurn))))))
 
