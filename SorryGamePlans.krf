@@ -1661,7 +1661,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceEleven)
+  (moveSorryPiece11)
   (actionSequence
    (TheList
     ;;; swap turns and pick new random card
@@ -1692,7 +1692,7 @@
       )
   
   (methodForAction
-    (moveSorryPieceEleven)
+    (moveSorryPiece11)
     (actionSequence
       (TheList
       (doForget 
@@ -1724,7 +1724,7 @@
       )
   
   (methodForAction
-    (moveSorryPieceEleven)
+    (moveSorryPiece11)
     (actionSequence
       (TheList
       (doForget 
@@ -1756,7 +1756,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
 
  (methodForAction
-  (moveSorryPieceEleven)
+  (moveSorryPiece11)
 
   (actionSequence
    (TheList
@@ -1799,7 +1799,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceEleven)
+  (moveSorryPiece11)
 
   (actionSequence
    (TheList
@@ -1836,7 +1836,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceEleven)
+  (moveSorryPiece11)
 
   (actionSequence
    (TheList
@@ -1963,7 +1963,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceTwelve)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
    (doForget 
@@ -2206,7 +2206,7 @@
 	  ;;; (noSameColorAhead ?piece1 7)
       ;;; (noOppoAhead ?piece1 7)  [don't need this check for card 7 in video]
  (methodForAction
-  (moveSorryPieceSeven)
+  (moveSorryPiece7)
   (actionSequence
    (TheList
     ;;; update current position
@@ -2237,7 +2237,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceSeven)
+  (moveSorryPiece7)
   (actionSequence
    (TheList
     ;;; update current position
@@ -2878,7 +2878,7 @@
 	  (chooseCardWithSteps ?newCard ?remainingSteps))
       
  (methodForAction
-  (moveSorryPieceSeven)
+  (moveSorryPiece7)
   (actionSequence
    (TheList
     ;;; update current agent piece position
@@ -2913,7 +2913,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceSeven)
+  (moveSorryPiece7)
   (actionSequence
    (TheList
     ;;; update current position
@@ -2950,7 +2950,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceSeven)
+  (moveSorryPiece7)
   (actionSequence
    (TheList
     ;;; swap turns and pick new random card
@@ -2973,7 +2973,7 @@
 		    (RandomMemberFn 
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
  (methodForAction
-  (moveSorryPieceSeven)
+  (moveSorryPiece7)
   (actionSequence
   (TheList
    ;;; swap turns and pick new random card
