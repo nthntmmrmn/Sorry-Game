@@ -229,6 +229,14 @@
       (evaluate ?destination (PlusFn ?position ?step))
       (greaterThan ?destination 60))
 
+
+(<== (findNoOppoSwitch ?piece ?step)
+      (colorOfPiece ?piece ?color1)
+      (colorOfAgent ?agent2 ?color2)
+      (different ?color1 ?color2)
+      (allAtStart ?agent2)
+      )
+
 (<== (findNoOppoSwitch ?piece ?step)
       (colorOfPiece ?piece ?color1)
       (colorOfPiece ?piece1 ?color2)
