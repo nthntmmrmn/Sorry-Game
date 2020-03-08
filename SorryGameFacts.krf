@@ -187,6 +187,23 @@
       (piecePosition ?piece3 0)
       (piecePosition ?piece4 0))
 
+(<== (noneAtStart ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (colorOfPiece ?piece2 ?color1)
+      (colorOfPiece ?piece3 ?color1)
+      (colorOfPiece ?piece4 ?color1)
+      (different ?piece1 ?piece2 ?piece3 ?piece4)
+      (piecePosition ?piece1 ?pos1)
+      (piecePosition ?piece2 ?pos2)
+      (piecePosition ?piece3 ?pos3)
+      (piecePosition ?piece4 ?pos4)
+      (greaterThan ?pos1 0)
+      (greaterThan ?pos2 0)
+      (greaterThan ?pos3 0)
+      (greaterThan ?pos4 0)
+      )
+
 
 ;;; For Rule 5 (can be used with Rule 1c)
 (<== (cannotMove ?piece ?step)
