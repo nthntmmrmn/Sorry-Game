@@ -2059,7 +2059,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
-	  (lessThanOrEqualTo ?nextPosition 59)		;;; Question: Fix this to be lessThanOrEqualTo "Safe Zone" [it's equal to 59]
+	  (lessThanOrEqualTo ?nextPosition 60)		;;; Question: Fix this to be lessThanOrEqualTo "Safe Zone" [it's equal to 59]
 	  (colorOfPiece ?piece2 ?color2)			;;; this one should be before the "different" judgement, otherwise it won't retrieve the correct answer.
 	  (different ?color1 ?color2)
 	  (piecePosition ?piece2 ?nextPosition)
@@ -2870,7 +2870,7 @@
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?diffDistance (DifferenceFn 66 ?position1))
 	  (lessThan ?diffDistance 7)
-	  (evaluate ?remainingSteps (DifferenceFn ?position1 59)) ;;; check the remaining steps we still have...
+	  (evaluate ?remainingSteps (DifferenceFn ?position1 60)) ;;; check the remaining steps we still have...
 	  
 	  (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
 	  ;;; not swap the turn in this scenario...
