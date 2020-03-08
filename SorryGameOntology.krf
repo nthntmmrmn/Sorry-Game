@@ -2,8 +2,41 @@
 (genlMt SorryGameMt SorryGameOntologyMt)
 (genlMt Session-ReasonerPlanMt SorryGameMt)
 
-(isa moveSorryPiece ComplexActionPredicate)
-(arity moveSorryPiece 0)
+;;; (isa moveSorryPiece ComplexActionPredicate)
+;;; (arity moveSorryPiece 0)
+
+(isa moveSorry1 ComplexActionPredicate)
+(arity moveSorryPiece1 0)
+
+(isa moveSorryPiece2 ComplexActionPredicate)
+(arity moveSorryPiece2 0)
+
+(isa moveSorryPiece3 ComplexActionPredicate)
+(arity moveSorryPiece3 0)
+
+(isa moveSorryPiece4 ComplexActionPredicate)
+(arity moveSorryPiece4 0)
+
+(isa moveSorryPiece5 ComplexActionPredicate)
+(arity moveSorryPiece5 0)
+
+(isa moveSorryPiece7 ComplexActionPredicate)
+(arity moveSorryPiece7 0)
+
+(isa moveSorryPiece8 ComplexActionPredicate)
+(arity moveSorryPiece8 0)
+
+(isa moveSorryPiece10 ComplexActionPredicate)
+(arity moveSorryPiece10 0)
+
+(isa moveSorryPiece11 ComplexActionPredicate)
+(arity moveSorryPiece11 0)
+
+(isa moveSorryPiece12 ComplexActionPredicate)
+(arity moveSorryPiece12 0)
+
+(isa moveSorryPieceSorry ComplexActionPredicate)
+(arity moveSorryPieceSorry 0)
 
 ;;; added for card 7 - to move remaining steps
 (isa moveRemainingSteps ComplexActionPredicate)
