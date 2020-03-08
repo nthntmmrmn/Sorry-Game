@@ -1104,12 +1104,17 @@
     (lessThan ?position1 4)
     (greaterThan ?position1 0)
 
-    (uninferredSentence (piecePosition ?piece2 (PlusFn 57 ?position1)))
+    ;;; (uninferredSentence (piecePosition ?piece2 (PlusFn 57 ?position1)))
+    (evaluate ?notAgent1Pos (PlusFn 57 ?position1))
+    (allNotAsPos ?agent1 ?notAgent1Pos)
+
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
     (colorOfPiece ?piece3 ?color2)
 
-    (uninferredSentence (piecePosition ?piece3 (PlusFn 25 ?position1)))
+    ;;; (uninferredSentence (piecePosition ?piece3 (PlusFn 25 ?position1)))
+    (evaluate ?notAgent2Pos (PlusFn 25 ?position1))
+    (allNotPos ?agent2 ?notAgent2Pos)
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1126,7 +1131,7 @@
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryStateMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?notAgent1Pos))
 
       ;;; swap turns and pick new random card
       (doForget 
@@ -1153,12 +1158,16 @@
     (lessThan ?position1 4)
     (greaterThan ?position1 0)
 
-    (uninferredSentence (piecePosition ?piece2 (PlusFn 57 ?position1)))
+    ;;; (uninferredSentence (piecePosition ?piece2 (PlusFn 57 ?position1)))
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
     (colorOfPiece ?piece3 ?color2)
 
+    (evaluate ?oppoPos (PlusFn 25 ?position1))
+    (evaluate ?newPos (PlusFn 57 ?position1))
+
     (piecePosition ?piece3 (PlusFn 25 ?position1))
+
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1175,9 +1184,9 @@
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryStateMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos)))
       (doForget
-        (ist-Information SorryStateMt (piecePosition ?piece3 (PlusFn 25 ?position1))))
+        (ist-Information SorryStateMt (piecePosition ?piece3 ?oppoPos)))
       (doRecord
         (ist-Information SorryStateMt (piecePosition ?piece3 0)))
 
@@ -1208,6 +1217,8 @@
     (lessThan ?position2 61)
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
+
+    (evaluate ?newPos (MinusFn ?position1 4))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1224,7 +1235,7 @@
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryStateMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos)))
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece3 ?position2)))
       (doRecord
@@ -1266,6 +1277,8 @@
     ;;; no same piece 4 spaces behind
     (evaluate ?distance2 (DifferenceFn ?position1 ?position3))
     (greaterThan ?distance2 4)
+
+    (evaluate ?newPos (MinusFn ?position1 4))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1282,7 +1295,7 @@
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryStateMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos)))
 
       ;;; swap turns and pick new random card
       (doForget 
