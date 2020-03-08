@@ -226,6 +226,18 @@
       (evaluate ?distance4 (DifferenceFn 30 (AbsoluteValueFn (DifferenceFn ?destination ?position4))))
       (lessThan ?distance4 0))
 
+;;; (<== (swapPos ?pos ?newPos)
+;;;      (greaterThanOrEqualTo ?pos 31)
+;;;      (evaluate ?pos2 (DifferenceFn ?pos 30))
+;;;      (unifies ?newPos ?pos2)
+;;;      )
+
+;;; (<== (swapPos ?pos ?newPos)
+;;;      (lessThan ?pos 31)
+;;;      (evaluate ?pos2 (PlusFn ?pos 30))
+;;;      (unifies ?newPos ?pos2)
+;;;      )
+
 ;;; 3 space slides
 (<== (checkSlide ?pos ?newPos)
       (or  
@@ -279,34 +291,3 @@
       (evaluate ?a (PlusFn ?myPos 30))
       (unifies ?oppoPos ?a)
 )
-
-;;; cathy's horn clauses part
-;;; For Rule 7 (use the remaining steps to recursively select the card)
-(<== (chooseCardWithSteps ?card ?steps)
-	 (equals ?steps 1)
-	 (unifies ?card Sorry-One))
-
-(<== (chooseCardWithSteps ?card ?steps)
-	 (equals ?steps 2)
-	 (unifies ?card Sorry-Two))
-	 
-(<== (chooseCardWithSteps ?card ?steps)
-	 (equals ?steps 3)
-	 (unifies ?card Sorry-Three))
-
-(<== (chooseCardWithSteps ?card ?steps)
-	 (equals ?steps 4)
-	 (unifies ?card Sorry-Four))
-
-(<== (chooseCardWithSteps ?card ?steps)
-	 (equals ?steps 5)
-	 (unifies ?card Sorry-Five))
-
-;;; question: how to represent 6 if the remaining movement is 6??? (use Sorry-Cards???)
-;(<== (chooseCardWithSteps ?card ?steps)
-;	 (equals ?steps 6)
-;	 (unifies ?card Sorry-Six))
-
-(<== (chooseCardWithSteps ?card ?steps)
-	 (equals ?steps 7)
-	 (unifies ?card Sorry-Seven))
