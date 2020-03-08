@@ -5,6 +5,10 @@
 (isa moveSorryPiece ComplexActionPredicate)
 (arity moveSorryPiece 0)
 
+;;; added for card 7 - to move remaining steps
+(isa moveRemainingSteps ComplexActionPredicate)
+(arity moveRemainingSteps 2)
+
 (isa resetSorryBoard ComplexActionPredicate)
 (arity resetSorryBoard 0)
 
@@ -132,3 +136,10 @@
 (arg1Isa getOppoPos Integer)
 (arg2Isa getOppoPos Integer)
 
+
+;;; cathy's part
+(isa checkisValidRemainingMove Predicate)
+(arity checkisValidRemainingMove 3)
+
+(isa chooseCardWithSteps Predicate)
+(arity chooseCardWithSteps 2)
