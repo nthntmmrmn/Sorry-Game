@@ -32,9 +32,9 @@
    (TheList
     ;;; update piece position
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 1)))
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 0)))
     (doAgentPlan
       (newTurn))))))
 
@@ -56,13 +56,13 @@
    (TheList
     ;;; update piece position
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 1)))
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 0)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+    	(ist-Information SorryStateMt (piecePosition ?piece2 0)))
     (doForget
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 31)))
+    	(ist-Information SorryStateMt (piecePosition ?piece2 31)))
     (doAgentPlan
       (newTurn))))))
 
@@ -83,9 +83,9 @@
   (actionSequence
    (TheList
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
     (doAgentPlan
       (newTurn))))))
 
@@ -106,11 +106,11 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 66)))
     (doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 
 ;;; Rule 3
 
@@ -145,13 +145,13 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece5 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece5 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece5 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece5 0)))
     (doAgentPlan
       (newTurn))))))
 
@@ -173,9 +173,9 @@
   (actionSequence
    (TheList
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doAgentPlan
       (newTurn))))))
 
@@ -216,9 +216,9 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
     (doAgentPlan
       (newTurn))))))
 
@@ -239,11 +239,11 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 66)))
     (doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 
 ;;; Rule 3
 
@@ -268,13 +268,13 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 0)))
     (doAgentPlan
       (newTurn))))))
 
@@ -297,9 +297,9 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
      (doAgentPlan
       (newTurn))))))
 
@@ -352,9 +352,9 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
     (doAgentPlan
       (newTurn))))))
 
@@ -375,11 +375,11 @@
   (actionSequence
    (TheList
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 66)))
     (doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 
 
 ;;; Rule 3a:
@@ -404,13 +404,13 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 0)))
     (doAgentPlan
       (newTurn))))))
 
@@ -437,13 +437,13 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 0)))
     (doAgentPlan
       (newTurn))))))
 
@@ -465,9 +465,9 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doAgentPlan
       (newTurn))))))
 
@@ -490,9 +490,9 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doAgentPlan
       (newTurn))))))
       
@@ -518,13 +518,13 @@
       (TheList
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard ?oldCard)))
+            (ist-Information SorryStateMt (currCard ?oldCard)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))))))
+            (ist-Information SorryStateMt (currCard ?newCard)))))))
  
 
 ;;; currCard == Sorry-Two
@@ -542,13 +542,13 @@
         (doAgentPlan 
           (knockOppo ?piece1 ?newPosition))
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPosition)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?newPosition)))
         (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Two)))
+            (ist-Information SorryStateMt (currCard Sorry-Two)))
         (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))))))
+            (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; action only knock opponent's piece home
 
@@ -563,9 +563,9 @@
     (actionSequence
       (TheList
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))))))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))))))
 
 (preconditionForMethod
   (and
@@ -583,9 +583,9 @@
     (actionSequence
       (TheList
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+          (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece2 0)))))))
+          (ist-Information SorryStateMt (piecePosition ?piece2 0)))))))
 
 ;;; action move player's own piece
 (preconditionForMethod
@@ -599,9 +599,9 @@
         (doAgentPlan 
           (knockOppo ?piece1 ?newPosition))
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPosition)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?newPosition)))
         (doAgentPlan
           (newTurn))))))
 
@@ -620,13 +620,13 @@
         (doAgentPlan
           (knockOppo ?piece2 ?newPos2))
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))  
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))  
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))  
+          (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))  
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos1)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece2 ?newPos2)))
+          (ist-Information SorryStateMt (piecePosition ?piece2 ?newPos2)))
         (doAgentPlan
           (newTurn))))))
 
@@ -643,13 +643,13 @@
     (actionSequence
       (TheList
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))  
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))  
         (doForget
-          (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))  
+          (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))  
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos2)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos2)))
         (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece2 ?newPos1)))
+          (ist-Information SorryStateMt (piecePosition ?piece2 ?newPos1)))
         (doAgentPlan
           (newTurn))))))
 
@@ -685,23 +685,23 @@
         (TheList
         
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece1 ?piece2pos)))
+            (ist-Information SorryStateMt (piecePosition ?piece1 ?piece2pos)))
           (doForget
-            (ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+            (ist-Information SorryStateMt (piecePosition ?piece1 0)))
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+            (ist-Information SorryStateMt (piecePosition ?piece2 0)))
           (doForget
-            (ist-Information SorryFactsMt (piecePosition ?piece2 ?piece2pos)))
+            (ist-Information SorryStateMt (piecePosition ?piece2 ?piece2pos)))
             
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryStateMt (currCard Sorry-One)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
         ))))
 
 ;;; if there is no piece in start, just swap turns and pick new card
@@ -726,13 +726,13 @@
         
         ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryStateMt (currCard Sorry-One)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
             ))))
 
 ;;; if piece in start, but no opponent piece to swap with
@@ -766,13 +766,13 @@
 
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryStateMt (currCard Sorry-One)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
         ))))
 
 ;;; END SORRY-SORRY
@@ -811,15 +811,15 @@
 
     ;;; update piece position
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 1)))
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 0)))
  
     ;;; pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))
+		  (ist-Information SorryStateMt (currCard ?newCard)))
               ))))
 
 ;;; Rule 1b:
@@ -847,19 +847,19 @@
    (TheList
     ;;; update piece position
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 1)))
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 0)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+    	(ist-Information SorryStateMt (piecePosition ?piece3 0)))
     (doForget
-    	(ist-Information SorryFactsMt (piecePosition ?piece3 31)))
+    	(ist-Information SorryStateMt (piecePosition ?piece3 31)))
  
     ;;; pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard))))))
+		  (ist-Information SorryStateMt (currCard ?newCard))))))
   )
 
 ;;; Rule 2a
@@ -882,15 +882,15 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
 
     ;;; pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard))))))
+		  (ist-Information SorryStateMt (currCard ?newCard))))))
     )
 
 ;;; Rule 2b
@@ -910,17 +910,17 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
 
     ;;; pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard))))))
+		  (ist-Information SorryStateMt (currCard ?newCard))))))
     (doRecord
-      (ist-Information SorryFactsMt (gameWinner ?agent1)))
+      (ist-Information SorryStateMt (gameWinner ?agent1)))
     )
 
 ;;; Rule 3:
@@ -951,19 +951,19 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece3 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?a)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?a)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece3 0)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; Rule 4.
 (preconditionForMethod
@@ -988,15 +988,15 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 
     ;;; pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; Rule 5a
 (preconditionForMethod
@@ -1024,9 +1024,9 @@
    (TheList
     ;;; pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; END SORRY-TWO
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1054,13 +1054,13 @@
       (TheList
       ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Four)))
+            (ist-Information SorryStateMt (currCard Sorry-Four)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
   
 ;;; can move backwards behind safe zone rather than going around board
@@ -1097,19 +1097,19 @@
       (TheList
 
       (doForget
-        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
 
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+        (ist-Information SorryStateMt (currCard Sorry-Four)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 ;;; can move backwards and enter safe zone rather than going around board
@@ -1146,23 +1146,23 @@
       (TheList
 
       (doForget
-        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 (PlusFn 57 ?position1))))
       (doForget
-        (ist-Information SorryFactsMt (piecePosition ?piece3 (PlusFn 25 ?position1))))
+        (ist-Information SorryStateMt (piecePosition ?piece3 (PlusFn 25 ?position1))))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+        (ist-Information SorryStateMt (piecePosition ?piece3 0)))
 
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+        (ist-Information SorryStateMt (currCard Sorry-Four)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 ;;; Rule 3:
@@ -1195,23 +1195,23 @@
       (TheList
 
       (doForget
-        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 (MinusFn ?position1 4))))
       (doForget
-        (ist-Information SorryFactsMt (piecePosition ?piece3 ?position2)))
+        (ist-Information SorryStateMt (piecePosition ?piece3 ?position2)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece3 0)))
+        (ist-Information SorryStateMt (piecePosition ?piece3 0)))
 
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+        (ist-Information SorryStateMt (currCard Sorry-Four)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 ;;; Rule 4:
@@ -1253,19 +1253,19 @@
       (TheList
 
       (doForget
-        (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryFactsMt (piecePosition ?piece1 (MinusFn ?position1 4))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 (MinusFn ?position1 4))))
 
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Four)))
+        (ist-Information SorryStateMt (currCard Sorry-Four)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 ;;; end SORRY-FOUR
@@ -1292,13 +1292,13 @@
    (TheList
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Five)))
+		  (ist-Information SorryStateMt (currCard Sorry-Five)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 
@@ -1323,18 +1323,18 @@
     (actionSequence
       (TheList
       (doForget 
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 66)))
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Five)))
+        (ist-Information SorryStateMt (currCard Sorry-Five)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 ;;; Rule 2b
@@ -1354,11 +1354,11 @@
     (actionSequence
       (TheList
       (doForget 
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 66)))
       (doRecord
-          (ist-Information SorryFactsMt (gameWinner ?agent1)))
+          (ist-Information SorryStateMt (gameWinner ?agent1)))
       ))))
 
 
@@ -1391,23 +1391,23 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Five)))
+		  (ist-Information SorryStateMt (currCard Sorry-Five)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 ;;; Rule 4
@@ -1434,19 +1434,19 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Five)))
+		  (ist-Information SorryStateMt (currCard Sorry-Five)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 ;;; end SORRY-FIVE
@@ -1473,13 +1473,13 @@
    (TheList
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eight)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eight)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 
@@ -1504,18 +1504,18 @@
     (actionSequence
       (TheList
       (doForget 
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 66)))
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Eight)))
+        (ist-Information SorryStateMt (currCard Sorry-Eight)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 ;;; Rule 2b
@@ -1535,11 +1535,11 @@
     (actionSequence
       (TheList
       (doForget 
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 66)))
       (doRecord
-          (ist-Information SorryFactsMt (gameWinner ?agent1)))
+          (ist-Information SorryStateMt (gameWinner ?agent1)))
       ))))
 
 
@@ -1572,23 +1572,23 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eight)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eight)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))
+		  (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 
@@ -1616,19 +1616,19 @@
   (actionSequence
    (TheList
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eight)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eight)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 ;;; end SORRY-EIGHT
@@ -1666,13 +1666,13 @@
    (TheList
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eleven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eleven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 ;;; Rule 2a
@@ -1696,18 +1696,18 @@
     (actionSequence
       (TheList
       (doForget 
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 66)))
       ;;; swap turns and pick new random card
       (doForget 
-        (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+        (ist-Information SorryStateMt (whoseTurn ?agent1)))
       (doRecord 
-        (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+        (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
       (doForget 
-        (ist-Information SorryFactsMt (currCard Sorry-Eleven)))
+        (ist-Information SorryStateMt (currCard Sorry-Eleven)))
       (doRecord 
-        (ist-Information SorryFactsMt (currCard ?newCard)))
+        (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
 
 
@@ -1728,11 +1728,11 @@
     (actionSequence
       (TheList
       (doForget 
-          (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-          (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+          (ist-Information SorryStateMt (piecePosition ?piece1 66)))
       (doRecord
-          (ist-Information SorryFactsMt (gameWinner ?agent1)))
+          (ist-Information SorryStateMt (gameWinner ?agent1)))
       ))))
 
 ;;; Rule 3
@@ -1761,23 +1761,23 @@
   (actionSequence
    (TheList
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doForget 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+      (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     (doRecord 
-      (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+      (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eleven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eleven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 ;;; Rule 4a
@@ -1804,19 +1804,19 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eleven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eleven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 
 ;;; Rule 4b
@@ -1841,23 +1841,23 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+    	(ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 ?nextPosition2)))
+    	(ist-Information SorryStateMt (piecePosition ?piece2 ?nextPosition2)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Eleven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Eleven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
       
 ;;; end SORRY-ELEVEN
@@ -1903,42 +1903,42 @@
     (TheList
       
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p1 ?pos1)))
+    	  (ist-Information SorryStateMt (piecePosition ?p1 ?pos1)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p1 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p1 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p2 ?pos2)))
+    	  (ist-Information SorryStateMt (piecePosition ?p2 ?pos2)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p2 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p2 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p3 ?pos3)))
+    	  (ist-Information SorryStateMt (piecePosition ?p3 ?pos3)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p3 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p3 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p4 ?pos4)))
+    	  (ist-Information SorryStateMt (piecePosition ?p4 ?pos4)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p4 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p4 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p5 ?pos5)))
+    	  (ist-Information SorryStateMt (piecePosition ?p5 ?pos5)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p5 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p5 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p6 ?pos6)))
+    	  (ist-Information SorryStateMt (piecePosition ?p6 ?pos6)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p6 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p6 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p7 ?pos7)))
+    	  (ist-Information SorryStateMt (piecePosition ?p7 ?pos7)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p7 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p7 0)))
       (doForget 
-    	  (ist-Information SorryFactsMt (piecePosition ?p8 ?pos8)))
+    	  (ist-Information SorryStateMt (piecePosition ?p8 ?pos8)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (piecePosition ?p8 0)))
+    	  (ist-Information SorryStateMt (piecePosition ?p8 0)))
 
       (doForget 
-    	  (ist-Information SorryFactsMt (currCard ?card)))
+    	  (ist-Information SorryStateMt (currCard ?card)))
       (doRecord 
-    	  (ist-Information SorryFactsMt (currCard ?newCard)))
+    	  (ist-Information SorryStateMt (currCard ?newCard)))
     ))))
 	
 
@@ -1967,19 +1967,19 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
 
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))
+		  (ist-Information SorryStateMt (currCard ?newCard)))
 		  
 	;;; that represents it's the end of the game
     (doRecord
-      (ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+      (ist-Information SorryStateMt (gameWinner ?agent1)))))))
 	  
 ;;; 1-2. If after moving 12 steps, it's at home but not the winner yet.
 ;;; Just swap the turn and start picking up random number again.
@@ -2002,19 +2002,19 @@
   (actionSequence
    (TheList
    (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 66)))
 
     ;;; swap turns and pick new random card
 	(doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2. If after moving 12 steps, it lands on the same color, can't do that,
 ;;; then just swap the turn.
@@ -2041,13 +2041,13 @@
    (TheList
     ;;; swap turns and pick new random card
 	(doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 3. If after moving 12 steps, it lands on different color, knock that one
 ;;; back to start, and then swap the turn.
@@ -2059,7 +2059,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
-	  (lessThanOrEqualTo ?nextPosition 59)		;;; Question: Fix this to be lessThanOrEqualTo "Safe Zone" [it's equal to 59]
+	  (lessThanOrEqualTo ?nextPosition 60)		;;; Question: Fix this to be lessThanOrEqualTo "Safe Zone" [it's equal to 59]
 	  (colorOfPiece ?piece2 ?color2)			;;; this one should be before the "different" judgement, otherwise it won't retrieve the correct answer.
 	  (different ?color1 ?color2)
 	  (piecePosition ?piece2 ?nextPosition)
@@ -2074,23 +2074,23 @@
    (TheList
     ;;; knock ?piece2 back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?nextPosition)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; update ?piece1 position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     ;;; swap turns and pick new random card
 	(doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 4. Distance to home < 12 steps, do nothing, just swap the turn. (least preference...)
 (preconditionForMethod
@@ -2113,13 +2113,13 @@
    (TheList
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 5. Otherwise, just move forward 12 steps.
 (preconditionForMethod
@@ -2144,18 +2144,18 @@
    (TheList
     ;;; update ?piece1 position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
 ;;; 3/2: added preferInContext to prefer the 5th rule before the 4th rule
 ;;; feel like it's a stupid way to write this... any suggestions???
@@ -2164,28 +2164,28 @@
 	 (unifies ?seq1 (actionSequence 
 						(TheList
 							(doForget
-								  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+								  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 							(doRecord
-								  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+								  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 							(doForget 
-								  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+								  (ist-Information SorryStateMt (whoseTurn ?agent1)))
 							(doRecord 
-								  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+								  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
 							(doForget 
-								  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+								  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
 							(doRecord 
-								  (ist-Information SorryFactsMt (currCard ?newCard))))))
+								  (ist-Information SorryStateMt (currCard ?newCard))))))
 	 (unifies ?seq2 (actionSequence
 					   (TheList
 						;;; swap turns and pick new random card
 						(doForget 
-							  (ist-Information SorryFactsMt (whoseTurn ?agent2)))
+							  (ist-Information SorryStateMt (whoseTurn ?agent2)))
 						(doRecord 
-							  (ist-Information SorryFactsMt (whoseTurn ?nextTurn2)))
+							  (ist-Information SorryStateMt (whoseTurn ?nextTurn2)))
 						(doForget 
-							  (ist-Information SorryFactsMt (currCard Sorry-Twelve)))
+							  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
 						(doRecord 
-							  (ist-Information SorryFactsMt (currCard ?newCard2)))))))
+							  (ist-Information SorryStateMt (currCard ?newCard2)))))))
 
 ;;; end SORRY-TWELVE
 
@@ -2211,12 +2211,12 @@
    (TheList
     ;;; update current position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     ;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 1-2. Move forward 7 steps with arriving home (current agent is not the winner)
 (preconditionForMethod
@@ -2242,18 +2242,18 @@
    (TheList
     ;;; update current position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		
 
 ;;; 2. Split between 2 pawns
@@ -2276,12 +2276,12 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 2-1-1: moving forward 1 step (while knock other back)
 (preconditionForMethod
@@ -2309,23 +2309,23 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; knock other piece back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-One)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-One)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-1: moving forward 1 step (otherwise, and it's not the winner)
 (preconditionForMethod
@@ -2346,18 +2346,18 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-One)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-One)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-2: moving forward 2 steps (it's at home, it's the winner)
 (preconditionForMethod
@@ -2376,12 +2376,12 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 2-1-2: moving forward 2 step (while knock other back)
 (preconditionForMethod
@@ -2409,23 +2409,23 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; knock other piece back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-2: moving forward 2 step (otherwise, and it's not the winner)
 (preconditionForMethod
@@ -2446,18 +2446,18 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Two)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Two)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
 ;;; 2-1-3: moving forward 3 steps (it's at home, it's the winner)
 (preconditionForMethod
@@ -2476,12 +2476,12 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 2-1-3: moving forward 3 step (while knock other back)
 (preconditionForMethod
@@ -2509,23 +2509,23 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; knock other piece back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Three)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Three)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-3: moving forward 3 step (otherwise, and it's not the winner)
 (preconditionForMethod
@@ -2546,18 +2546,18 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Three)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Three)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
 ;;; 2-1-4: moving forward 4 steps (it's at home, it's the winner)
 (preconditionForMethod
@@ -2576,12 +2576,12 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 2-1-4: moving forward 4 steps (while knock other back)
 (preconditionForMethod
@@ -2609,23 +2609,23 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; knock other piece back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Four)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Four)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-4: moving forward 4 steps (otherwise, and it's not the winner)
 (preconditionForMethod
@@ -2646,18 +2646,18 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Four)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Four)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-5: moving forward 5 steps (it's at home, it's the winner)
 (preconditionForMethod
@@ -2676,12 +2676,12 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 2-1-5: moving forward 5 steps (while knock other back)
 (preconditionForMethod
@@ -2709,23 +2709,23 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; knock other piece back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Five)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Five)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-5: moving forward 5 steps (otherwise, and it's not the winner)
 (preconditionForMethod
@@ -2746,18 +2746,18 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Five)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Five)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
 ;;; 2-1-6: moving forward 6 steps (it's at home, it's the winner)
 (preconditionForMethod
@@ -2776,12 +2776,12 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; we have the winner!
 	(doRecord 
-    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+    	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 		
 ;;; 2-1-6: moving forward 6 steps (while knock other back)
 (preconditionForMethod
@@ -2809,23 +2809,23 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; knock other piece back
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Six)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Six)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 
 ;;; 2-1-6: moving forward 6 steps (otherwise, and it's not the winner)
 (preconditionForMethod
@@ -2846,18 +2846,18 @@
     (TheList
 	 ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
 	;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Six)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven-Six)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; 3. if this piece arrives at home with extra steps, check whether we can move some piece with that steps, then call the corresponding Sorry-Cards planner.
@@ -2870,7 +2870,7 @@
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?diffDistance (DifferenceFn 66 ?position1))
 	  (lessThan ?diffDistance 7)
-	  (evaluate ?remainingSteps (DifferenceFn ?position1 59)) ;;; check the remaining steps we still have...
+	  (evaluate ?remainingSteps (DifferenceFn ?position1 60)) ;;; check the remaining steps we still have...
 	  
 	  (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
 	  ;;; not swap the turn in this scenario...
@@ -2883,14 +2883,14 @@
    (TheList
     ;;; update current agent piece position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 66)))
 	;;; forget old card, and select the special card
 	(doForget
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven)))
 	(doRecord
-		  (ist-Information SorryFactsMt (currCard ?newCard)))
+		  (ist-Information SorryStateMt (currCard ?newCard)))
 	(doAgentPlan (moveRemainingSteps ?agent1 ?piece2))))))
 	
 ;;; 3.7: modified the order a little bit
@@ -2918,18 +2918,18 @@
    (TheList
     ;;; update current position
 	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
 	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
 ;;; 1-4: if we have same color ahead, then do nothing, just swap the turn
 ;;; think this one is useless, because we can always choose the leading one in this scenario.
@@ -2955,13 +2955,13 @@
    (TheList
     ;;; swap turns and pick new random card
     (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
     (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
+		  (ist-Information SorryStateMt (currCard Sorry-Seven)))
     (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
 ;;; default planner??? [not sure whether this is a good idea or not]
 (preconditionForMethod
@@ -2978,11 +2978,11 @@
   (TheList
    ;;; swap turns and pick new random card
 	(doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
 	(doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
 	(doForget 
-		  (ist-Information SorryFactsMt (currCard ?currCard)))
+		  (ist-Information SorryStateMt (currCard ?currCard)))
 	(doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 ;;; end SORRY-SEVEN
