@@ -27,10 +27,10 @@
 ;;;   if same ==> cannot make move
 ;;;   if different ==> knock other piece back to start
 
-(piecePosition Red1 0)
-(piecePosition Red2 0)
-(piecePosition Red3 0)
-(piecePosition Red4 0)
+(piecePosition Red1 61)
+(piecePosition Red2 66)
+(piecePosition Red3 66)
+(piecePosition Red4 65)
 
 ;;; yellow
 ;;; 2/23: still think we need to define "YellowPieces" first?
@@ -48,10 +48,10 @@
 (isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
-(piecePosition Yellow1 0)
-(piecePosition Yellow2 0)
-(piecePosition Yellow3 0)
-(piecePosition Yellow4 0)
+(piecePosition Yellow1 1)
+(piecePosition Yellow2 28)
+(piecePosition Yellow3 3)
+(piecePosition Yellow4 4)
 
 
 ;;; cards
@@ -81,7 +81,9 @@
 (isa Sorry-Seven Sorry-Cards-Pickable)
 ;;; subset:
 (isa Sorry-Seven-Six Sorry-Cards)
+(isa Sorry-Seven-Five Sorry-Cards)
 (isa Sorry-Seven-Four Sorry-Cards)
+(isa Sorry-Seven-Three Sorry-Cards)
 (isa Sorry-Seven-Two Sorry-Cards)
 (isa Sorry-Seven-One Sorry-Cards)
 
@@ -106,8 +108,8 @@
 
 
 ;;; start with YellowAgent:
-(whoseTurn YellowAgent)
-(currCard Sorry-One)
+(whoseTurn RedAgent)
+(currCard Sorry-Seven)
 
 ;;; swap turns:
 (<== (swapTurn ?next)
@@ -168,7 +170,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
-      (uninferredSentence (piecePosition ?piece2 65))
+      (uninferredSentence (piecePosition ?piece2 66))
       (different ?piece1 ?piece2))
 
 (<== (winner ?agent1 ?piece1)
@@ -177,9 +179,9 @@
       (colorOfPiece ?piece2 ?color1)
       (colorOfPiece ?piece3 ?color1)
       (colorOfPiece ?piece4 ?color1)
-      (piecePosition ?piece2 65)
-      (piecePosition ?piece3 65)
-      (piecePosition ?piece4 65)
+      (piecePosition ?piece2 66)
+      (piecePosition ?piece3 66)
+      (piecePosition ?piece4 66)
       (different ?piece1 ?piece2 ?piece3 ?piece4))
 
 
@@ -294,3 +296,52 @@
       (not (equals ?pos 51))
       (unifies ?newPos ?pos)
       )
+	  
+;;; cathy's horn clauses part
+;;; used in card 7 when arrives at home with extra steps, then check whether this extra steps can be used or not.
+;;; 1) not same color ahead (without arriving home)
+(<== (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
+	 (colorOfPiece ?piece1 ?color)
+	 (colorOfPiece ?piece2 ?color)
+	 (colorOfPiece ?piece3 ?color)
+	 (different ?piece1 ?piece2 ?piece3)
+	 (piecePosition ?piece2 ?pos2)
+	 (evaluate ?newPos (PlusFn ?pos2 ?remainingSteps))
+	 (lessThan ?newPos 66)
+	 (uninferredSentence (piecePosition ?piece3 ?newPos)))
+
+;;; 2) with arriving home
+(<== (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
+	 (colorOfPiece ?piece1 ?color)
+	 (colorOfPiece ?piece2 ?color)
+	 (different ?piece1 ?piece2)
+	 (piecePosition ?piece2 ?pos2)
+	 (evaluate ?newPos (PlusFn ?pos2 ?remainingSteps))
+	 (equals ?newPos 66))
+	 
+	 
+;;; cathy's horn clauses part
+;;; For Rule 7 (use the remaining steps to recursively select the card)
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 1)
+	 (unifies ?card Sorry-Seven-One))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 2)
+	 (unifies ?card Sorry-Seven-Two))
+	 
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 3)
+	 (unifies ?card Sorry-Seven-Three))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 4)
+	 (unifies ?card Sorry-Seven-Four))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 5)
+	 (unifies ?card Sorry-Seven-Five))
+
+(<== (chooseCardWithSteps ?card ?steps)
+	 (equals ?steps 6)
+	 (unifies ?card Sorry-Seven-Six))
