@@ -136,7 +136,7 @@
 (<== (noOppoAhead ?piece ?step)
       (piecePosition ?piece ?position)
       (evaluate ?destination (PlusFn ?position ?step))
-      (greaterThan ?destination 59))
+      (greaterThan ?destination 60))
 
 (<== (noOppoAhead ?piece ?step)
       (colorOfPiece ?piece ?color1)
@@ -168,7 +168,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (colorOfPiece ?piece2 ?color1)
-      (uninferredSentence (piecePosition ?piece2 65))
+      (uninferredSentence (piecePosition ?piece2 66))
       (different ?piece1 ?piece2))
 
 (<== (winner ?agent1 ?piece1)
@@ -177,9 +177,9 @@
       (colorOfPiece ?piece2 ?color1)
       (colorOfPiece ?piece3 ?color1)
       (colorOfPiece ?piece4 ?color1)
-      (piecePosition ?piece2 65)
-      (piecePosition ?piece3 65)
-      (piecePosition ?piece4 65)
+      (piecePosition ?piece2 66)
+      (piecePosition ?piece3 66)
+      (piecePosition ?piece4 66)
       (different ?piece1 ?piece2 ?piece3 ?piece4))
 
 
@@ -205,7 +205,7 @@
 (<== (cannotMove ?piece ?step)
       (piecePosition ?piece ?position)
       (evaluate ?nextPosition (PlusFn ?position ?step))
-      (lessThan 65 ?nextPosition))
+      (lessThan 66 ?nextPosition))
 
 (<== (allCannotMove ?agent1 ?step) 
       (colorOfAgent ?agent1 ?color1)
