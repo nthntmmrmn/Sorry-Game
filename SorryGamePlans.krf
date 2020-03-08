@@ -686,25 +686,25 @@
         (TheList
         
           ;;;(doRecord
-            ;;;(ist-Information SorryFactsMt (piecePosition ?piece1 (DifferenceFn 30 ?piece2pos)))
+            ;;;(ist-Information SorryStateMt (piecePosition ?piece1 (DifferenceFn 30 ?piece2pos)))
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
+            (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos)))
           (doForget
-            (ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+            (ist-Information SorryStateMt (piecePosition ?piece1 0)))
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+            (ist-Information SorryStateMt (piecePosition ?piece2 0)))
           (doForget
-            (ist-Information SorryFactsMt (piecePosition ?piece2 ?piece2pos)))
+            (ist-Information SorryStateMt (piecePosition ?piece2 ?piece2pos)))
             
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
+            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
         ))))
 
 ;;; if there is no piece in start, just swap turns and pick new card
@@ -730,13 +730,13 @@
         
         ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
+            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
             ))))
 
 ;;; if piece in start, but no opponent piece to swap with
@@ -770,13 +770,13 @@
 
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
+            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
         ))))
 
 ;;; END SORRY-SORRY
