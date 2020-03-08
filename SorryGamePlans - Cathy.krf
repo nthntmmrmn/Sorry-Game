@@ -28,7 +28,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 65 (PlusFn ?position1 12))
+      (evaluate 66 (PlusFn ?position1 12))
       (winner ?agent1 ?piece1)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -41,7 +41,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
 
     ;;; swap turns and pick new random card
     (doForget 
@@ -62,7 +62,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (evaluate 65 (PlusFn ?position1 12))
+      (evaluate 66 (PlusFn ?position1 12))
 	  (notWinner ?agent1 ?piece1)
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -76,7 +76,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
 
     ;;; swap turns and pick new random card
 	(doForget 
@@ -98,7 +98,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
-	  (lessThanOrEqualTo ?nextPosition 65)
+	  (lessThanOrEqualTo ?nextPosition 66)
 	  (colorOfPiece ?piece2 ?color1)
 	  (different ?piece1 ?piece2)
 	  (piecePosition ?piece2 ?nextPosition)
@@ -173,7 +173,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
-	  (greaterThan ?nextPosition 65)
+	  (greaterThan ?nextPosition 66)
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -202,7 +202,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
-	  (lessThanOrEqualTo ?nextPosition 65)
+	  (lessThanOrEqualTo ?nextPosition 66)
 	  (noSameColorAhead ?piece1 12)
       (noOppoAhead ?piece1 12)
 	  (swapTurn ?nextTurn)
@@ -976,7 +976,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 7))
-	  (lessThan ?nextPosition 65)
+	  (lessThan ?nextPosition 66)
 	  (noSameColorAhead ?piece1 7)
       (noOppoAhead ?piece1 7)
 	  (swapTurn ?nextTurn)
