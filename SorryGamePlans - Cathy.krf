@@ -329,8 +329,77 @@
 		
 
 ;;; 2. Split between 2 pawns
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; TODO: Define plans for moving forward...
-;;; 2-1-1: moving forward 1 step
+;;; 2-1-1: moving forward 1 step (it's at home, it's the winner)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-One)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 1))
+	  (equals 66 ?nextPosition)
+	  
+	  ;;; we have the winner!
+	  (winner ?agent1 ?piece1))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; we have the winner!
+	(doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+		
+;;; 2-1-1: moving forward 1 step (while knock other back)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-One)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 1))
+	  
+	  ;;; other piece with different color
+	  (colorOfPiece ?piece1 ?color1)
+	  (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  
+	  ;;; after movement, swap turn
+	  (swapTurn ?nextTurn)
+	  (evaluate ?newCard
+			(RandomMemberFn
+				(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock other piece back
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+	;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Seven-One)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; 2-1-1: moving forward 1 step (otherwise, and it's not the winner)
 (preconditionForMethod
  (and
 	  (currCard Sorry-Seven-One)
@@ -361,12 +430,80 @@
 		  (ist-Information SorryFactsMt (currCard Sorry-Seven-One)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-		  
-;;; 2-1-2: moving forward 2 steps
+
+;;; 2-1-2: moving forward 2 steps (it's at home, it's the winner)
 (preconditionForMethod
  (and
 	  (currCard Sorry-Seven-Two)
-	  ;;; check whether it's a valid movement will happened before this part.
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 2))
+	  (equals 66 ?nextPosition)
+	  
+	  ;;; we have the winner!
+	  (winner ?agent1 ?piece1))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; we have the winner!
+	(doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+		
+;;; 2-1-2: moving forward 2 step (while knock other back)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Two)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 2))
+	  
+	  ;;; other piece with different color
+	  (colorOfPiece ?piece1 ?color1)
+	  (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  
+	  ;;; after movement, swap turn
+	  (swapTurn ?nextTurn)
+	  (evaluate ?newCard
+			(RandomMemberFn
+				(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock other piece back
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+	;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Two)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; 2-1-2: moving forward 2 step (otherwise, and it's not the winner)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Two)
+	  ;;; check whether it's a valid movement happened before.
 	  (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 2))
 	  
@@ -393,12 +530,80 @@
 		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Two)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-;;; 2-1-3: moving forward 3 steps
+		  
+;;; 2-1-3: moving forward 3 steps (it's at home, it's the winner)
 (preconditionForMethod
  (and
 	  (currCard Sorry-Seven-Three)
-	  ;;; check whether it's a valid movement will happened before this part.
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 3))
+	  (equals 66 ?nextPosition)
+	  
+	  ;;; we have the winner!
+	  (winner ?agent1 ?piece1))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; we have the winner!
+	(doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+		
+;;; 2-1-3: moving forward 3 step (while knock other back)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Three)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 3))
+	  
+	  ;;; other piece with different color
+	  (colorOfPiece ?piece1 ?color1)
+	  (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  
+	  ;;; after movement, swap turn
+	  (swapTurn ?nextTurn)
+	  (evaluate ?newCard
+			(RandomMemberFn
+				(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock other piece back
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+	;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Three)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; 2-1-3: moving forward 3 step (otherwise, and it's not the winner)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Three)
+	  ;;; check whether it's a valid movement happened before.
 	  (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 3))
 	  
@@ -425,12 +630,80 @@
 		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Three)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-;;; 2-1-4: moving forward 4 steps
+		  
+;;; 2-1-4: moving forward 4 steps (it's at home, it's the winner)
 (preconditionForMethod
  (and
 	  (currCard Sorry-Seven-Four)
-	  ;;; check whether it's a valid movement will happened before this part.
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 4))
+	  (equals 66 ?nextPosition)
+	  
+	  ;;; we have the winner!
+	  (winner ?agent1 ?piece1))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; we have the winner!
+	(doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+		
+;;; 2-1-4: moving forward 4 steps (while knock other back)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Four)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 4))
+	  
+	  ;;; other piece with different color
+	  (colorOfPiece ?piece1 ?color1)
+	  (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  
+	  ;;; after movement, swap turn
+	  (swapTurn ?nextTurn)
+	  (evaluate ?newCard
+			(RandomMemberFn
+				(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock other piece back
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+	;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Four)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; 2-1-4: moving forward 4 steps (otherwise, and it's not the winner)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Four)
+	  ;;; check whether it's a valid movement happened before.
 	  (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 4))
 	  
@@ -457,12 +730,80 @@
 		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Four)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-		  
-;;; 2-1-5: moving forward 5 steps
+
+;;; 2-1-5: moving forward 5 steps (it's at home, it's the winner)
 (preconditionForMethod
  (and
 	  (currCard Sorry-Seven-Five)
-	  ;;; check whether it's a valid movement will happened before this part.
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 5))
+	  (equals 66 ?nextPosition)
+	  
+	  ;;; we have the winner!
+	  (winner ?agent1 ?piece1))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; we have the winner!
+	(doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+		
+;;; 2-1-5: moving forward 5 steps (while knock other back)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Five)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 5))
+	  
+	  ;;; other piece with different color
+	  (colorOfPiece ?piece1 ?color1)
+	  (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  
+	  ;;; after movement, swap turn
+	  (swapTurn ?nextTurn)
+	  (evaluate ?newCard
+			(RandomMemberFn
+				(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock other piece back
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+	;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Five)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; 2-1-5: moving forward 5 steps (otherwise, and it's not the winner)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Five)
+	  ;;; check whether it's a valid movement happened before.
 	  (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 5))
 	  
@@ -490,11 +831,79 @@
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
 		  
-;;; 2-1-6: moving forward 6 steps
+;;; 2-1-6: moving forward 6 steps (it's at home, it's the winner)
 (preconditionForMethod
  (and
 	  (currCard Sorry-Seven-Six)
-	  ;;; check whether it's a valid movement will happened before this part.
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 6))
+	  (equals 66 ?nextPosition)
+	  
+	  ;;; we have the winner!
+	  (winner ?agent1 ?piece1))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; we have the winner!
+	(doRecord 
+    	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
+		
+;;; 2-1-6: moving forward 6 steps (while knock other back)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Six)
+	  ;;; check whether it's a valid movement happened before.
+	  (piecePosition ?piece1 ?position1)
+	  (evaluate ?nextPosition (PlusFn ?position1 6))
+	  
+	  ;;; other piece with different color
+	  (colorOfPiece ?piece1 ?color1)
+	  (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  
+	  ;;; after movement, swap turn
+	  (swapTurn ?nextTurn)
+	  (evaluate ?newCard
+			(RandomMemberFn
+				(TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+ (methodForAction
+   (moveRemainingSteps ?agent1 ?piece1)
+   (actionSequence
+    (TheList
+	 ;;; update current agent piece position
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock other piece back
+	(doForget
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+	;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Six)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
+
+;;; 2-1-6: moving forward 6 steps (otherwise, and it's not the winner)
+(preconditionForMethod
+ (and
+	  (currCard Sorry-Seven-Six)
+	  ;;; check whether it's a valid movement happened before.
 	  (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 6))
 	  
@@ -521,336 +930,7 @@
 		  (ist-Information SorryFactsMt (currCard Sorry-Seven-Six)))
     (doRecord 
 		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-#|
-;;; 2-1: only knock back 1 step forward
-;;; test case:
-;;; (piecePosition Red1 1)
-;;; (piecePosition Red2 2)
-;;; (piecePosition Red3 3)
-;;; (piecePosition Red4 7)
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 1))
-	  
-	  ;;; check whether 1 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))   ;;; Question: is this the correct way to check collision?
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-;;; 2-1: knock back 2 step forward
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 2))
-	  
-	  ;;; check whether 2 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-		  
-;;; 2-1: knock back 3 step forward
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 3))
-	  
-	  ;;; check whether 2 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-		  
-;;; 2-1: knock back 4 step forward
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 4))
-	  
-	  ;;; check whether 2 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-		  
-;;; 2-1: knock back 5 step forward
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 5))
-	  
-	  ;;; check whether 2 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-;;; 2-1: knock back 6 step forward
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 6))
-	  
-	  ;;; check whether 2 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-;;; 2-1: knock back 7 step forward
-(preconditionForMethod
- (and
-      (currCard Sorry-Seven)
-      (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (piecePosition ?piece1 ?position1)
-	  (evaluate ?nextPosition (PlusFn ?position1 7))
-	  
-	  ;;; check whether 2 step forward has opponent
-	  (colorOfAgent ?agent2 ?color2)
-      (different ?color1 ?color2)
-      (colorOfPiece ?piece2 ?color2)
-      (piecePosition ?piece2 ?position2)
-      (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
-	  
-	  (swapTurn ?nextTurn)
-      (evaluate ?newCard 
-		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
-      
- (methodForAction
-  (moveSorryPiece)
-  (actionSequence
-   (TheList
-    ;;; update current agent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition)))
-	;;; update opponent piece position
-	(doForget
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
-	(doRecord
-		  (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
-    ;;; swap turns and pick new random card
-    (doForget 
-		  (ist-Information SorryFactsMt (whoseTurn ?agent1)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
-    (doForget 
-		  (ist-Information SorryFactsMt (currCard Sorry-Seven)))
-    (doRecord 
-		  (ist-Information SorryFactsMt (currCard ?newCard)))))))
-
-|#
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; 3. if this piece arrives at home with extra steps, check whether we can move some piece with that steps, then call the corresponding Sorry-Cards planner.
 (preconditionForMethod
