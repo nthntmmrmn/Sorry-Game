@@ -140,6 +140,10 @@
 ;;; cathy's part
 (isa checkisValidRemainingMove Predicate)
 (arity checkisValidRemainingMove 3)
+(arg1Isa checkisValidRemainingMove BoardPieces)
+(arg2Isa checkisValidRemainingMove BoardPieces)
+(arg3Isa checkisValidRemainingMove Integer)
 
 (isa chooseCardWithSteps Predicate)
 (arity chooseCardWithSteps 2)
+(arg1Isa chooseCardWithSteps Sorry-Cards-Pickable)
