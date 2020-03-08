@@ -27,7 +27,7 @@
       (noSameColorAhead ?piece1 1)
       (noOppoAhead ?piece1 1))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece1)
   (actionSequence
    (TheList
     ;;; update piece position
@@ -51,7 +51,7 @@
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 31))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece1)
   (actionSequence
    (TheList
     ;;; update piece position
@@ -79,7 +79,7 @@
       (notWinner ?agent ?piece1)
       (evaluate 66 (PlusFn ?position1 1)))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece1)
   (actionSequence
    (TheList
     (doForget 
@@ -102,7 +102,7 @@
       (evaluate 66 (PlusFn ?position1 1))
       (winner ?agent ?piece1))
 (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece1)
   (actionSequence
    (TheList
     (doForget 
@@ -141,7 +141,7 @@
       (evaluate ?nextPosition (PlusFn ?position1 1))
       (lessThan ?nextPosition 61))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece1)
   (actionSequence
    (TheList
     (doForget 
@@ -169,7 +169,7 @@
       (evaluate ?nextPosition (PlusFn ?position1 1))
       (lessThan ?nextPosition 66))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece1)
   (actionSequence
    (TheList
     (doForget 
@@ -194,7 +194,7 @@
       (whoseTurn ?agent1)
       (allCannotMove ?agent1 3))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece3)
   (actionSequence
    (TheList
      (doAgentPlan
@@ -212,7 +212,7 @@
       (notWinner ?agent ?piece1)
       (evaluate 66 (PlusFn ?position1 3)))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece3)
   (actionSequence
    (TheList
    (doForget 
@@ -235,7 +235,7 @@
       (evaluate 66 (PlusFn ?position1 3))
       (winner ?agent ?piece1))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece3)
   (actionSequence
    (TheList
     (doForget 
@@ -264,7 +264,7 @@
       (evaluate ?nextPosition (PlusFn ?position1 3))
       (lessThan ?nextPosition 61))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece3)
   (actionSequence
    (TheList
     (doForget 
@@ -293,7 +293,7 @@
       (evaluate ?nextPosition (PlusFn ?position1 3))
       (lessThan ?nextPosition 66))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece3)
   (actionSequence
    (TheList
    (doForget 
@@ -330,7 +330,7 @@
       (whoseTurn ?agent1)
       (allAtStart ?agent1))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
      (doAgentPlan
@@ -348,7 +348,7 @@
       (notWinner ?agent ?piece1)
       (evaluate 66 (PlusFn ?position1 10)))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
    (doForget 
@@ -371,7 +371,7 @@
       (evaluate 66 (PlusFn ?position1 10))
       (winner ?agent ?piece1))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
     (doForget 
@@ -400,7 +400,7 @@
       (evaluate ?nextPosition (PlusFn ?position1 10))
       (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2))))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
     (doForget 
@@ -433,7 +433,7 @@
     (evaluate ?nextPosition (DifferenceFn ?position1 1))
     (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2))))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
     (doForget 
@@ -461,7 +461,7 @@
     (evaluate ?nextPosition (PlusFn ?position1 10))
     (lessThan ?nextPosition 66))
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
    (doForget 
@@ -486,7 +486,7 @@
     (lessThan ?position1 66)
     (evaluate ?nextPosition (PlusFn ?position1 -1)))
  (methodForActin
-  (moveSorryPiece)
+  (moveSorryPiece10)
   (actionSequence
    (TheList
    (doForget 
@@ -679,7 +679,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPieceSorry)
       
       (actionSequence
         (TheList
@@ -719,7 +719,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPieceSorry)
     
     (actionSequence
       (TheList
@@ -759,7 +759,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPieceSorry)
       
       (actionSequence
         (TheList
@@ -804,7 +804,7 @@
       )
 
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
 
   (actionSequence
    (TheList
@@ -841,7 +841,7 @@
       )
 
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
 
   (actionSequence
    (TheList
@@ -878,7 +878,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
   (actionSequence
    (TheList
    (doForget 
@@ -906,7 +906,7 @@
 )
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
   (actionSequence
    (TheList
    (doForget 
@@ -946,7 +946,7 @@
       )
 
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
 
   (actionSequence
    (TheList
@@ -984,7 +984,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
   (actionSequence
    (TheList
    (doForget 
@@ -1019,7 +1019,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece2)
   (actionSequence
    (TheList
     ;;; pick new random card
@@ -1048,7 +1048,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPiece4)
     
     (actionSequence
       (TheList
@@ -1091,7 +1091,7 @@
     )
     
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPiece4)
       
     (actionSequence
       (TheList
@@ -1140,7 +1140,7 @@
     )
     
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPiece4)
       
     (actionSequence
       (TheList
@@ -1189,7 +1189,7 @@
     )
     
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPiece4)
       
     (actionSequence
       (TheList
@@ -1247,7 +1247,7 @@
     )
     
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPiece4)
       
     (actionSequence
       (TheList
@@ -1287,7 +1287,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece5)
   (actionSequence
    (TheList
     ;;; swap turns and pick new random card
@@ -1319,7 +1319,7 @@
       )
   
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPiece5)
     (actionSequence
       (TheList
       (doForget 
@@ -1350,7 +1350,7 @@
       )
   
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPiece5)
     (actionSequence
       (TheList
       (doForget 
@@ -1386,7 +1386,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
 
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece5)
 
   (actionSequence
    (TheList
@@ -1429,7 +1429,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece5)
 
   (actionSequence
    (TheList
@@ -1468,7 +1468,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece8)
   (actionSequence
    (TheList
     ;;; swap turns and pick new random card
@@ -1500,7 +1500,7 @@
       )
   
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPiece8)
     (actionSequence
       (TheList
       (doForget 
@@ -1531,7 +1531,7 @@
       )
   
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPiece8)
     (actionSequence
       (TheList
       (doForget 
@@ -1567,7 +1567,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
 
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece8)
 
   (actionSequence
    (TheList
@@ -1611,7 +1611,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece8)
 
   (actionSequence
    (TheList
