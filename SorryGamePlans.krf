@@ -680,7 +680,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPiece12)
       
       (actionSequence
         (TheList
@@ -722,7 +722,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPiece12)
     
     (actionSequence
       (TheList
@@ -762,7 +762,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPiece12)
       
       (actionSequence
         (TheList
@@ -2001,7 +2001,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
    (doForget 
