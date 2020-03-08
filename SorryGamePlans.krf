@@ -2168,7 +2168,7 @@
 ;;; 3/2: added preferInContext to prefer the 5th rule before the 4th rule
 ;;; feel like it's a stupid way to write this... any suggestions???
 ;;; be careful, two different horn clauses their variable name should be different!
-(<== (preferInContext (moveSorryPiece) ?seq1 ?seq2)
+(<== (preferInContext (moveSorryPiece12) ?seq1 ?seq2)
 	 (unifies ?seq1 (actionSequence 
 						(TheList
 							(doForget
