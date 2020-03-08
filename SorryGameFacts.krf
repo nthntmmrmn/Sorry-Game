@@ -35,7 +35,7 @@
 ;;; yellow
 ;;; 2/23: still think we need to define "YellowPieces" first?
 (isa YellowPieces FirstOrderCollection)
-;;; (isa YellowPieces BoardPieces)
+(isa YellowPieces BoardPieces)
 (isa Yellow1 YellowPieces)
 (isa Yellow2 YellowPieces)
 (isa Yellow3 YellowPieces)
