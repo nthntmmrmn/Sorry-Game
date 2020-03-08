@@ -673,35 +673,38 @@
       (greaterThan ?piece2pos 0) ;;; piece not in start
       (lessThan ?piece2pos 61) ;;; piece not in safe zone
 
+      (getOppoPos ?piece2pos ?newPos)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
     (methodForAction
-      (moveSorryPieceSorry)
+      (moveSorryPiece)
       
       (actionSequence
         (TheList
         
+          ;;;(doRecord
+            ;;;(ist-Information SorryFactsMt (piecePosition ?piece1 (DifferenceFn 30 ?piece2pos)))
           (doRecord
-            (ist-Information SorryStateMt (piecePosition ?piece1 ?piece2pos)))
+            (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
           (doForget
-            (ist-Information SorryStateMt (piecePosition ?piece1 0)))
+            (ist-Information SorryFactsMt (piecePosition ?piece1 0)))
           (doRecord
-            (ist-Information SorryStateMt (piecePosition ?piece2 0)))
+            (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
           (doForget
-            (ist-Information SorryStateMt (piecePosition ?piece2 ?piece2pos)))
+            (ist-Information SorryFactsMt (piecePosition ?piece2 ?piece2pos)))
             
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryStateMt (whoseTurn ?agent1)))
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
+            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryStateMt (currCard ?newCard)))
+            (ist-Information SorryFactsMt (currCard ?newCard)))
         ))))
 
 ;;; if there is no piece in start, just swap turns and pick new card
@@ -719,20 +722,20 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
-    (moveSorryPieceSorry)
+    (moveSorryPiece)
     
     (actionSequence
       (TheList
         
         ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryStateMt (whoseTurn ?agent1)))
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
+            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryStateMt (currCard ?newCard)))
+            (ist-Information SorryFactsMt (currCard ?newCard)))
             ))))
 
 ;;; if piece in start, but no opponent piece to swap with
@@ -759,20 +762,20 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
     (methodForAction
-      (moveSorryPieceSorry)
+      (moveSorryPiece)
       
       (actionSequence
         (TheList
 
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryStateMt (whoseTurn ?agent1)))
+            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
+            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryStateMt (currCard ?newCard)))
+            (ist-Information SorryFactsMt (currCard ?newCard)))
         ))))
 
 ;;; END SORRY-SORRY
