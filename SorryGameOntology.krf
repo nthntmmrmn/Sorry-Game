@@ -125,6 +125,10 @@
 (arity allAtStart 1)
 (arg1Isa allAtStart SorryAgents)
 
+(isa noneAtStart Predicate)
+(arity noneAtStart 1)
+(arg1Isa noneAtStart SorryAgents)
+
 (isa cannotMove Predicate)
 (arity cannotMove 2)
 (arg1Isa cannotMove BoardPieces)

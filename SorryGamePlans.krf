@@ -712,9 +712,10 @@
   (and
       (currCard Sorry-Sorry)
       (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (colorOfAgent ?agent1 ?color1)
+      ;;; (colorOfPiece ?piece1 ?color1)
+      (noneAtStart ?agent1)
+      ;;;(uninferredSentence (piecePosition ?piece1 0))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
