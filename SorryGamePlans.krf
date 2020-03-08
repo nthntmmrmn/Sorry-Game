@@ -481,7 +481,7 @@
     (noSameColorAhead ?piece1 10)
     (noOppoAhead ?piece1 10)
     (evaluate ?nextPosition (PlusFn ?position1 10))
-    (greatThan ?nextPosition 66))
+    (lessThan ?nextPosition 66))
  (methodForAction
   (moveSorryPiece10)
   (actionSequence
@@ -506,7 +506,7 @@
     (noOppoAhead ?piece1 -1)
     (piecePosition ?piece1 ?position1)
     (greaterThan ?position1 1)
-    (lessThan ?position1 66)
+    (greaterThan ?position1 66)
     (evaluate ?nextPosition (PlusFn ?position1 -1)))
  (methodForActin
   (moveSorryPiece10)
