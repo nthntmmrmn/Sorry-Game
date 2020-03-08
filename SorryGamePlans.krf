@@ -2904,7 +2904,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?nextPosition (PlusFn ?position1 7))
-	  (lessThan ?nextPosition 65)
+	  (lessThan ?nextPosition 66)
 	  (noSameColorAhead ?piece1 7)
       (noOppoAhead ?piece1 7)
 	  (swapTurn ?nextTurn)
