@@ -256,6 +256,7 @@
       (evaluate ?destination (PlusFn ?pos1 ?step))
       (piecePosition ?piece2 ?pos2)
       (lessThan ?pos2 61)
+      (greaterThan ?po2 0)
       (evaluate ?pos1Home (DifferenceFn 66 ?destination))
       (getOppoPos ?pos2 ?pos2Oppo)
       (evaluate ?pos2Home (DifferenceFn 66 ?pos2Oppo))

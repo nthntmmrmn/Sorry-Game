@@ -12,10 +12,5 @@
 (piecePosition Yellow3 0)
 (piecePosition Yellow4 12)
 
-<<<<<<< HEAD
-(whoseTurn YellowAgent)
-(currCard Sorry-Five)
-=======
 (whoseTurn RedAgent)
 (currCard Sorry-Twelve)
->>>>>>> bfc665932e58a67581bcd918fe7b953bb2671f39
