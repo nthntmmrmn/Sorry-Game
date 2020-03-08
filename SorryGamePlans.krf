@@ -2025,6 +2025,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
+	  (uninferredSentence (piecePosition ?piece1 0))
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
 	  (lessThanOrEqualTo ?nextPosition 66)
 	  (colorOfPiece ?piece2 ?color1)
@@ -2058,6 +2059,8 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
+	  ;;; 3/8 added
+	  (uninferredSentence (piecePosition ?piece1 0))
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
 	  (lessThanOrEqualTo ?nextPosition 60)		;;; Question: Fix this to be lessThanOrEqualTo "Safe Zone" [it's equal to 59]
 	  (colorOfPiece ?piece2 ?color2)			;;; this one should be before the "different" judgement, otherwise it won't retrieve the correct answer.
@@ -2129,6 +2132,8 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
+	  ;;; 3/8 added
+	  (uninferredSentence (piecePosition ?piece1 0))
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
 	  (lessThanOrEqualTo ?nextPosition 66)
 	  (noSameColorAhead ?piece1 12)
