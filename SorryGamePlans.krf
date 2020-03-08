@@ -2036,7 +2036,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceTwelve)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
     ;;; swap turns and pick new random card
@@ -2069,7 +2069,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceTwelve)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
     ;;; knock ?piece2 back
@@ -2108,7 +2108,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceTwelve)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
     ;;; swap turns and pick new random card
@@ -2139,7 +2139,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPieceTwelve)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
     ;;; update ?piece1 position
