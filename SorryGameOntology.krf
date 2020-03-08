@@ -5,7 +5,7 @@
 ;;; (isa moveSorryPiece ComplexActionPredicate)
 ;;; (arity moveSorryPiece 0)
 
-(isa moveSorry1 ComplexActionPredicate)
+(isa moveSorryPiece1 ComplexActionPredicate)
 (arity moveSorryPiece1 0)
 
 (isa moveSorryPiece2 ComplexActionPredicate)
