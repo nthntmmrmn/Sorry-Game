@@ -2195,6 +2195,31 @@
 						(doRecord 
 							  (ist-Information SorryStateMt (currCard ?newCard2)))))))
 
+;;; 3/8: if all can't move, swap turn
+(preconditionForMethod
+ (and
+      (currCard Sorry-Twelve)  
+      (whoseTurn ?agent1)
+      (allCannotMove ?agent1 12)
+      (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+      
+ (methodForAction
+  (moveSorryPiece12)
+  (actionSequence
+   (TheList
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryStateMt (currCard Sorry-Twelve)))
+    (doRecord 
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
+
 ;;; end SORRY-TWELVE
 
 

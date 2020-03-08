@@ -10,7 +10,7 @@
 (piecePosition Yellow1 0)
 (piecePosition Yellow2 0)
 (piecePosition Yellow3 0)
-(piecePosition Yellow4 0)
+(piecePosition Yellow4 12)
 
-(whoseTurn YellowAgent)
-(currCard Sorry-One)
+(whoseTurn RedAgent)
+(currCard Sorry-Twelve)
