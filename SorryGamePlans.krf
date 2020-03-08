@@ -751,7 +751,7 @@
 
       ;;; all opponent pieces either in start or safe zone
       (not (greaterThan ?piece2pos 0))
-      (not (lessThan ?piece2pos 61))
+      (not (lessThan 61 ?piece2pos))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
