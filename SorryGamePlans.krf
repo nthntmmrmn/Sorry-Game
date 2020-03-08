@@ -254,7 +254,10 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
@@ -286,8 +289,11 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;;(uninferredSentence (piecePosition ?piece1 0))
       (piecePosition ?piece1 ?position1)
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (noSameColorAhead ?piece1 3)
       (noOppoAhead ?piece1 3)
       (evaluate ?nextPosition (PlusFn ?position1 3))
@@ -411,7 +417,10 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
@@ -1411,7 +1420,9 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8
+      (greaterThan ?position1 0)
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
@@ -1457,7 +1468,11 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (piecePosition ?piece1 ?position1)
+      (greaterThan ?position1 0)
+
       (piecePosition ?piece1 ?position1)
       (noSameColorAhead ?piece1 5)
       (noOppoAhead ?piece1 5)
@@ -1592,7 +1607,10 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
@@ -1639,8 +1657,11 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;;(uninferredSentence (piecePosition ?piece1 0))
       (piecePosition ?piece1 ?position1)
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (noSameColorAhead ?piece1 8)
       (noOppoAhead ?piece1 8)
       (evaluate ?nextPosition (PlusFn ?position1 8))
@@ -1783,7 +1804,10 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
@@ -1827,7 +1851,10 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+
       (piecePosition ?piece1 ?position1)
       (noSameColorAhead ?piece1 11)
       (findNoOppoSwitch ?piece1 11)
@@ -1866,7 +1893,10 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (uninferredSentence (piecePosition ?piece1 0))
+      ;;; 3/8:
+      (greaterThan ?position1 0)
+       
       (piecePosition ?piece1 ?position1)
       (findOppoSwitch ?piece1 11 ?piece2 ?nextPosition1 ?nextPosition2)
       (piecePosition ?piece2 ?position2)
@@ -2065,7 +2095,9 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
-	  (uninferredSentence (piecePosition ?piece1 0))
+	  ;;; (uninferredSentence (piecePosition ?piece1 0))
+    ;;; 3/8:
+      (greaterThan ?position1 0)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
 	  (lessThanOrEqualTo ?nextPosition 66)
 	  (colorOfPiece ?piece2 ?color1)
@@ -2100,7 +2132,9 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  ;;; 3/8 added
-	  (uninferredSentence (piecePosition ?piece1 0))
+	  ;;; (uninferredSentence (piecePosition ?piece1 0))
+    ;;; 3/8:
+      (greaterThan ?position1 0)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
 	  (lessThanOrEqualTo ?nextPosition 60)		;;; Question: Fix this to be lessThanOrEqualTo "Safe Zone" [it's equal to 59]
 	  (colorOfPiece ?piece2 ?color2)			;;; this one should be before the "different" judgement, otherwise it won't retrieve the correct answer.
@@ -2173,7 +2207,9 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
 	  ;;; 3/8 added
-	  (uninferredSentence (piecePosition ?piece1 0))
+	  ;;; (uninferredSentence (piecePosition ?piece1 0))
+    ;;; 3/8:
+      (greaterThan ?position1 0)
 	  (evaluate ?nextPosition (PlusFn ?position1 12))
 	  (lessThanOrEqualTo ?nextPosition 66)
 	  (noSameColorAhead ?piece1 12)
