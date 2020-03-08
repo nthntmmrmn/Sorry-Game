@@ -27,10 +27,6 @@
 ;;;   if same ==> cannot make move
 ;;;   if different ==> knock other piece back to start
 
-(piecePosition Red1 0)
-(piecePosition Red2 0)
-(piecePosition Red3 0)
-(piecePosition Red4 0)
 
 ;;; yellow
 ;;; 2/23: still think we need to define "YellowPieces" first?
@@ -48,10 +44,6 @@
 (isa YellowAgent SorryAgents)
 (colorOfAgent YellowAgent yellow)
 
-(piecePosition Yellow1 0)
-(piecePosition Yellow2 0)
-(piecePosition Yellow3 0)
-(piecePosition Yellow4 0)
 
 
 ;;; cards
@@ -106,10 +98,6 @@
 ;;; returns a random card
 ;;; game start off with random card in KB
 
-
-;;; start with YellowAgent:
-(whoseTurn YellowAgent)
-(currCard Sorry-One)
 
 ;;; swap turns:
 (<== (swapTurn ?next)
