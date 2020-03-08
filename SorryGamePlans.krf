@@ -676,7 +676,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
     (methodForAction
       (moveSorryPiece)
@@ -716,7 +716,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
     (moveSorryPiece)
@@ -756,7 +756,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
     (methodForAction
       (moveSorryPiece)
@@ -800,7 +800,7 @@
 	  
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
 
  (methodForAction
@@ -837,7 +837,7 @@
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
 
  (methodForAction
@@ -875,7 +875,7 @@
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -935,14 +935,14 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
-      (lessThan ?position2 60)
+      (lessThan ?position2 61)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
       (evaluate ?a (PlusFn ?position1 2))
-      (lessThan ?a 60)
+      (lessThan ?a 61)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
 
  (methodForAction
@@ -981,7 +981,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1016,7 +1016,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1045,7 +1045,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
     (moveSorryPiece)
@@ -1087,7 +1087,7 @@
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
     )
     
     (methodForAction
@@ -1136,7 +1136,7 @@
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
     )
     
     (methodForAction
@@ -1178,14 +1178,14 @@
     (different ?color2 ?color1)
     (colorOfPiece ?piece2 ?color2)
     (piecePosition ?piece2 ?position2)
-    (lessThan ?position2 60)
+    (lessThan ?position2 61)
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
     )
     
     (methodForAction
@@ -1243,7 +1243,7 @@
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
     )
     
     (methodForAction
@@ -1284,7 +1284,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1315,7 +1315,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   
   (methodForAction
@@ -1376,14 +1376,14 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan ?position2 60)
+      (lessThanOrEqualTo ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 5) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 5))
-      (lessThan ?nextPosition 60)
+      (lessThanOrEqualTo ?nextPosition 60)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
 
  (methodForAction
   (moveSorryPiece)
@@ -1426,7 +1426,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1465,7 +1465,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1496,7 +1496,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   
   (methodForAction
@@ -1557,14 +1557,14 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece2 ?color2)
       (piecePosition ?piece2 ?position2)
-      (lessThan ?position2 60)
+      (lessThanOrEqualTo ?position2 60)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 8) ?position2)))
       (evaluate ?nextPosition (PlusFn ?position1 8))
-      (lessThan ?nextPosition 60)
+      (lessThanOrEqualTo ?nextPosition 60)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
 
  (methodForAction
   (moveSorryPiece)
@@ -1608,7 +1608,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1658,7 +1658,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1688,7 +1688,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   
   (methodForAction
@@ -1753,7 +1753,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
 
  (methodForAction
   (moveSorryPiece)
@@ -1796,7 +1796,7 @@
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1828,12 +1828,12 @@
       (colorOfPiece ?piece1 ?color1)
       (uninferredSentence (piecePosition ?piece1 0))
       (piecePosition ?piece1 ?position1)
-      (findOppoSwitch ?piece1 11 ?piece2)
+      (findOppoSwitch ?piece1 11 ?piece2 ?nextPosition1 ?nextPosition2)
       (piecePosition ?piece2 ?position2)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1845,9 +1845,9 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece2 ?position2)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position2)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?nextPosition1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece2 ?position1)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece2 ?nextPosition2)))
 
     ;;; swap turns and pick new random card
     (doForget 
@@ -1892,7 +1892,7 @@
     (currCard ?card)
     (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
   
   )
 
@@ -1960,7 +1960,7 @@
       (winner ?agent1 ?piece1)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -1995,7 +1995,7 @@
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -2033,7 +2033,7 @@
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -2066,7 +2066,7 @@
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -2105,7 +2105,7 @@
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
@@ -2136,7 +2136,7 @@
 	  (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
-			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards)))))
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
   (moveSorryPiece)
