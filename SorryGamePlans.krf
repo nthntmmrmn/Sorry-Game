@@ -935,10 +935,10 @@
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
       (piecePosition ?piece3 ?position2)
-      (lessThan ?position2 60)
+      (lessThan ?position2 61)
       (evaluate 30 (AbsoluteValueFn (DifferenceFn (PlusFn ?position1 2) ?position2)))
       (evaluate ?a (PlusFn ?position1 2))
-      (lessThan ?a 60)
+      (lessThan ?a 61)
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -1178,7 +1178,7 @@
     (different ?color2 ?color1)
     (colorOfPiece ?piece2 ?color2)
     (piecePosition ?piece2 ?position2)
-    (lessThan ?position2 60)
+    (lessThan ?position2 61)
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
     
