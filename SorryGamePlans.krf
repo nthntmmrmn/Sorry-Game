@@ -456,8 +456,8 @@
     (colorOfPiece ?piece1 ?color1)
     (uninferredSentence (piecePosition ?piece1 0))
     (piecePosition ?piece1 ?position1)
-    (noSameColorAhead ?piece1 3)
-    (noOppoAhead ?piece1 3)
+    (noSameColorAhead ?piece1 10)
+    (noOppoAhead ?piece1 10)
     (evaluate ?nextPosition (PlusFn ?position1 10))
     (lessThan ?nextPosition 66))
  (methodForAction
