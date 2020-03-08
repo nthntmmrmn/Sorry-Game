@@ -680,31 +680,31 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPieceSorry)
       
       (actionSequence
         (TheList
         
           ;;;(doRecord
-            ;;;(ist-Information SorryFactsMt (piecePosition ?piece1 (DifferenceFn 30 ?piece2pos)))
+            ;;;(ist-Information SorryStateMt (piecePosition ?piece1 (DifferenceFn 30 ?piece2pos)))
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece1 ?newPos)))
+            (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos)))
           (doForget
-            (ist-Information SorryFactsMt (piecePosition ?piece1 0)))
+            (ist-Information SorryStateMt (piecePosition ?piece1 0)))
           (doRecord
-            (ist-Information SorryFactsMt (piecePosition ?piece2 0)))
+            (ist-Information SorryStateMt (piecePosition ?piece2 0)))
           (doForget
-            (ist-Information SorryFactsMt (piecePosition ?piece2 ?piece2pos)))
+            (ist-Information SorryStateMt (piecePosition ?piece2 ?piece2pos)))
             
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
+            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
         ))))
 
 ;;; if there is no piece in start, just swap turns and pick new card
@@ -712,9 +712,10 @@
   (and
       (currCard Sorry-Sorry)
       (whoseTurn ?agent1)
-      (colorOfAgent ?agent1 ?color1)
-      (colorOfPiece ?piece1 ?color1)
-      (uninferredSentence (piecePosition ?piece1 0))
+      ;;; (colorOfAgent ?agent1 ?color1)
+      ;;; (colorOfPiece ?piece1 ?color1)
+      (noneAtStart ?agent1)
+      ;;;(uninferredSentence (piecePosition ?piece1 0))
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -722,20 +723,20 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
   (methodForAction
-    (moveSorryPiece)
+    (moveSorryPieceSorry)
     
     (actionSequence
       (TheList
         
         ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
+            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
             ))))
 
 ;;; if piece in start, but no opponent piece to swap with
@@ -762,20 +763,20 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPieceSorry)
       
       (actionSequence
         (TheList
 
           ;;; swap turns and pick new random card
           (doForget 
-            (ist-Information SorryFactsMt (whoseTurn ?agent1)))
+            (ist-Information SorryStateMt (whoseTurn ?agent1)))
           (doRecord 
-            (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
+            (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-Sorry)))
+            (ist-Information SorryStateMt (currCard Sorry-Sorry)))
           (doRecord 
-            (ist-Information SorryFactsMt (currCard ?newCard)))
+            (ist-Information SorryStateMt (currCard ?newCard)))
         ))))
 
 ;;; END SORRY-SORRY
@@ -2001,7 +2002,7 @@
 			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
       
  (methodForAction
-  (moveSorryPiece)
+  (moveSorryPiece12)
   (actionSequence
    (TheList
    (doForget 
@@ -2168,7 +2169,7 @@
 ;;; 3/2: added preferInContext to prefer the 5th rule before the 4th rule
 ;;; feel like it's a stupid way to write this... any suggestions???
 ;;; be careful, two different horn clauses their variable name should be different!
-(<== (preferInContext (moveSorryPiece) ?seq1 ?seq2)
+(<== (preferInContext (moveSorryPiece12) ?seq1 ?seq2)
 	 (unifies ?seq1 (actionSequence 
 						(TheList
 							(doForget
