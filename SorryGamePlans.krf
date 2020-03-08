@@ -85,7 +85,7 @@
     (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
     (doAgentPlan
       (newTurn))))))
 
@@ -108,7 +108,7 @@
     (doForget 
       (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+      (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
     (doRecord 
     	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
 
@@ -210,7 +210,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (notWinner ?agent ?piece1)
-      (evaluate 65 (PlusFn ?position1 3)))
+      (evaluate 66 (PlusFn ?position1 3)))
  (methodForAction
   (moveSorryPiece)
   (actionSequence
@@ -218,7 +218,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
     (doAgentPlan
       (newTurn))))))
 
@@ -241,7 +241,7 @@
     (doForget 
       (ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord
-      (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+      (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
     (doRecord 
     	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
 
@@ -354,7 +354,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
     (doAgentPlan
       (newTurn))))))
 
@@ -377,7 +377,7 @@
     (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 66)))
     (doRecord 
     	(ist-Information SorryFactsMt (gameWinner ?agent1)))))))
 
@@ -527,7 +527,7 @@
             (ist-Information SorryFactsMt (currCard ?newCard)))))))
  
 
-;;; currCard == Sorry-Two and there's nothing in newPos
+;;; currCard == Sorry-Two
 (preconditionForMethod
   (and
     (piecePosition ?piece1 ?position1)
@@ -871,7 +871,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (notWinner ?agent ?piece1)
-      (evaluate 65 (PlusFn ?position1 2))
+      (evaluate 66 (PlusFn ?position1 2))
 
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -884,7 +884,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
 
     ;;; pick new random card
     (doForget 
@@ -902,7 +902,7 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
       (winner ?agent ?piece1)
-      (evaluate 65 (PlusFn ?position1 2))
+      (evaluate 66 (PlusFn ?position1 2))
 )
       
  (methodForAction
@@ -912,7 +912,7 @@
    (doForget 
     	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 65)))
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 66)))
 
     ;;; pick new random card
     (doForget 
@@ -976,7 +976,7 @@
       (noSameColorAhead ?piece1 2)
       (noOppoAhead ?piece1 2)
       (evaluate ?nextPosition (PlusFn ?position1 2))
-      (lessThan ?nextPosition 65)
+      (lessThan ?nextPosition 66)
 
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1011,7 +1011,7 @@
       (piecePosition ?piece2 ?position2)
       (or
         (evaluate 2 (MinusFn ?position2 ?position1))
-        (greaterThan (PlusFn ?position1 2) 65)
+        (greaterThan (PlusFn ?position1 2) 66)
       )
       (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1058,7 +1058,7 @@
           (doRecord 
             (ist-Information SorryFactsMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryFactsMt (currCard Sorry-One)))
+            (ist-Information SorryFactsMt (currCard Sorry-Four)))
           (doRecord 
             (ist-Information SorryFactsMt (currCard ?newCard)))
       ))))
@@ -1227,7 +1227,7 @@
     (piecePosition ?piece1 ?position1)
     (lessThan ?position3 ?position1)
     (greaterThan ?position1 0)
-    (lessThan ?position1 65)
+    (lessThan ?position1 66)
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
     (colorOfPiece ?piece2 ?color2)
