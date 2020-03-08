@@ -316,12 +316,14 @@
 ;;; 2. Can move home? (Ten steps forward)
 ;;;    a. will not win 
 ;;;    b. will win 
-;;; 3. Can move and hit opponent? 
+;;; 3. If there is a piece at pos1, move one step backwards to 60.
+;;; 4. Can move and hit opponent? 
 ;;;    a. ten forward (opponent is not in the safety zone)
-;;;    b. one backward
-;;; 4. Else, move random piece ten. (Ten steps forward)
-;;; 5. If the moving piece will go beyond home, move random piece one backward.
+;;;    b. one backward 
+;;; 5. Else, move random piece ten. (Ten steps forward)
+;;; 6. If the moving piece will go beyond home, move random piece one backward.
 ;;;    BUT: Make sure moving piece does not put it beyond home!
+
 
 ;;; Rule 1c:
 (preconditionForMethod
@@ -381,8 +383,27 @@
     (doRecord 
     	(ist-Information SorryStateMt (gameWinner ?agent1)))))))
 
+;;; Rule 3
+(preconditionForMethod
+ (and
+      (currCard Sorry-Ten)  
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 1)
+      (noSameColorAhead ?piece1 -1))
+ (methodForAction
+  (moveSorryPiece10)
+  (actionSequence
+   (TheList
+    (doAgentPlan
+      (knockOppo ?piece1 60))
+    (doForget 
+    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    (doRecord 
+		  (ist-Information SorryFactsMt (piecePosition ?piece1 60)))))))
 
-;;; Rule 3a:
+;;; Rule 4a:
 (preconditionForMethod
  (and
       (currCard Sorry-Ten)  
@@ -415,7 +436,7 @@
       (newTurn))))))
 
 
-;;; Rule 3b:
+;;; Rule 4b:
 (preconditionForMethod
  (and
     (currCard Sorry-Ten)  
@@ -423,7 +444,7 @@
     (colorOfAgent ?agent1 ?color1)
     (colorOfPiece ?piece1 ?color1)
     (piecePosition ?piece1 ?position1)
-    (uninferredSentence (piecePosition ?piece1 0))
+    (greaterThan ?position1 1)
     (colorOfAgent ?agent2 ?color2)
     (different ?color1 ?color2)
     (colorOfPiece ?piece2 ?color2)
@@ -447,15 +468,16 @@
     (doAgentPlan
       (newTurn))))))
 
-;;; Rule 4:
+;;; Rule 5:
 (preconditionForMethod
  (and
     (currCard Sorry-Ten)  
     (whoseTurn ?agent1)
     (colorOfAgent ?agent1 ?color1)
     (colorOfPiece ?piece1 ?color1)
-    (uninferredSentence (piecePosition ?piece1 0))
+    ;;; (uninferredSentence (piecePosition ?piece1 0))
     (piecePosition ?piece1 ?position1)
+    (greaterThan ?position1 1)
     (noSameColorAhead ?piece1 10)
     (noOppoAhead ?piece1 10)
     (evaluate ?nextPosition (PlusFn ?position1 10))
@@ -471,18 +493,19 @@
     (doAgentPlan
       (newTurn))))))
 
-;;; Rule 5:
+;;; Rule 6:
 (preconditionForMethod
  (and
     (currCard Sorry-Ten)  
     (whoseTurn ?agent1)
     (colorOfAgent ?agent1 ?color1)
     (colorOfPiece ?piece1 ?color1)
-    (uninferredSentence (piecePosition ?piece1 0))
+    ;;; (uninferredSentence (piecePosition ?piece1 0))
     (allCannotMove ?agent1 10)
     (noSameColorAhead ?piece1 -1)
     (noOppoAhead ?piece1 -1)
     (piecePosition ?piece1 ?position1)
+    (greaterThan ?position1 1)
     (lessThan ?position1 66)
     (evaluate ?nextPosition (PlusFn ?position1 -1)))
  (methodForActin
