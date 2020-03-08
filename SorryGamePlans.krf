@@ -527,7 +527,7 @@
             (ist-Information SorryFactsMt (currCard ?newCard)))))))
  
 
-;;; currCard == Sorry-Two and there's nothing in newPos
+;;; currCard == Sorry-Two
 (preconditionForMethod
   (and
     (piecePosition ?piece1 ?position1)
