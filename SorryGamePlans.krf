@@ -1139,7 +1139,7 @@
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryStateMt (piecePosition ?piece1 ?notAgent1Pos))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?notAgent1Pos)))
 
       ;;; swap turns and pick new random card
       (doForget 
