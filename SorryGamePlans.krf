@@ -405,7 +405,7 @@
     (doAgentPlan
       (knockOppo ?piece1 60))
     (doForget 
-    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 1)))
     (doRecord 
 		  (ist-Information SorryStateMt (piecePosition ?piece1 60)))
     (doAgentPlan
