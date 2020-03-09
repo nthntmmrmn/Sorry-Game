@@ -407,7 +407,9 @@
     (doForget 
     	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-		  (ist-Information SorryStateMt (piecePosition ?piece1 60)))))))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 60)))
+    (doAgentPlan
+      (newTurn))))))
 
 ;;; Rule 4a:
 (preconditionForMethod
