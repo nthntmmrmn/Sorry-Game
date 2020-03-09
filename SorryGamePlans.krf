@@ -405,9 +405,9 @@
     (doAgentPlan
       (knockOppo ?piece1 60))
     (doForget 
-    	(ist-Information SorryFactsMt (piecePosition ?piece1 ?position1)))
+    	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
-		  (ist-Information SorryFactsMt (piecePosition ?piece1 60)))))))
+		  (ist-Information SorryStateMt (piecePosition ?piece1 60)))))))
 
 ;;; Rule 4a:
 (preconditionForMethod
