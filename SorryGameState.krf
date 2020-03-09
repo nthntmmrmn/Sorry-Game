@@ -1,16 +1,16 @@
 (in-microtheory SorryStateMt)
 (genlMt SorryGameMt SorryStateMt)
 
-(piecePosition Red1 60)
-(piecePosition Red2 8)
-(piecePosition Red3 66)
-(piecePosition Red4 66)
+(piecePosition Red1 0)
+(piecePosition Red2 0)
+(piecePosition Red3 0)
+(piecePosition Red4 0)
 
 
-(piecePosition Yellow1 7)
-(piecePosition Yellow2 30)
+(piecePosition Yellow1 0)
+(piecePosition Yellow2 0)
 (piecePosition Yellow3 0)
-(piecePosition Yellow4 38)
+(piecePosition Yellow4 0)
 
-(whoseTurn RedAgent)
-(currCard Sorry-Seven)
+(whoseTurn YellowAgent)
+(currCard Sorry-One)
