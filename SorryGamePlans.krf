@@ -1130,7 +1130,7 @@
           (doRecord 
             (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
           (doForget 
-            (ist-Information SorryStateMt (currCard Sorry-One)))
+            (ist-Information SorryStateMt (currCard Sorry-Four)))
           (doRecord 
             (ist-Information SorryStateMt (currCard ?newCard)))
       ))))
