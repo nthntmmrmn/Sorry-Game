@@ -511,10 +511,9 @@
     (whoseTurn ?agent1)
     (colorOfAgent ?agent1 ?color1)
     (colorOfPiece ?piece1 ?color1)
-    ;;; (uninferredSentence (piecePosition ?piece1 0))
     (allCannotMove ?agent1 10)
     (noSameColorAhead ?piece1 -1)
-    (noOppoAhead ?piece1 -1)
+    ;;; (noOppoAhead ?piece1 -1)
     (piecePosition ?piece1 ?position1)
     (greaterThan ?position1 66)
     (evaluate ?nextPosition (PlusFn ?position1 -1)))
@@ -522,6 +521,8 @@
   (moveSorryPiece10)
   (actionSequence
    (TheList
+    (doAgentPlan
+      (knockOppo ?piece1 ?nextPosition))
    (doForget 
     	(ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
     (doRecord 
@@ -594,11 +595,7 @@
   (methodForAction
     (knockOppo ?piece1 ?newPosition)
     (actionSequence
-      (TheList
-        (doForget
-          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
-        (doRecord
-          (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))))))
+      (TheList))))
 
 (preconditionForMethod
   (and
