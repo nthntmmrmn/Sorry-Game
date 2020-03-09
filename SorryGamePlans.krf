@@ -1044,7 +1044,7 @@
       (piecePosition ?piece1 ?position1)
       (piecePosition ?piece2 ?position2)
       (or
-        (evaluate 2 (MinusFn ?position2 ?position1))
+        (evaluate 2 (DifferenceFn ?position2 ?position1))
         (greaterThan (PlusFn ?position1 2) 66)
       )
       (swapTurn ?nextTurn)
@@ -1225,7 +1225,7 @@
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
 
-    (evaluate ?newPos (MinusFn ?position1 4))
+    (evaluate ?newPos (DifferenceFn ?position1 4))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1285,7 +1285,7 @@
     (evaluate ?distance2 (DifferenceFn ?position1 ?position3))
     (greaterThan ?distance2 4)
 
-    (evaluate ?newPos (MinusFn ?position1 4))
+    (evaluate ?newPos (DifferenceFn ?position1 4))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
