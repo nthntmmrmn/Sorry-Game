@@ -967,6 +967,7 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (piecePosition ?piece1 ?position1)
+      (greaterThan ?position1 0)
       (colorOfPiece ?piece1 ?color1)
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
@@ -1015,6 +1016,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
+      (greaterThan ?position1 0)
       (noSameColorAhead ?piece1 2)
       (noOppoAhead ?piece1 2)
       ;;; slides
