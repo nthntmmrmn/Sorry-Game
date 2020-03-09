@@ -355,3 +355,12 @@
 (<== (chooseCardWithSteps ?card ?steps)
 	 (equals ?steps 6)
 	 (unifies ?card Sorry-Seven-Six))
+	 
+(<== (notInKB ?fact ?piece1)
+	 (colorOfPiece ?piece1 ?color1)
+	 (colorOfPiece ?piece2 ?color1)
+     (different ?piece2 ?piece1)
+	 (evaluate ?set
+		(TheClosedRetrievalSetOf ?piece2 ?fact))
+	 (equals (TheSet) ?set))
+	 
