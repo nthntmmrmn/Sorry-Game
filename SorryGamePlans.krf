@@ -391,7 +391,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 1)
-      (noSameColorAhead ?piece1 -1))
+      (noSameColorAhead ?piece1 59))
  (methodForAction
   (moveSorryPiece10)
   (actionSequence
@@ -505,7 +505,6 @@
     (noSameColorAhead ?piece1 -1)
     (noOppoAhead ?piece1 -1)
     (piecePosition ?piece1 ?position1)
-    (greaterThan ?position1 1)
     (greaterThan ?position1 66)
     (evaluate ?nextPosition (PlusFn ?position1 -1)))
  (methodForActin
