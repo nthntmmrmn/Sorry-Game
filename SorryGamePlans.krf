@@ -1257,6 +1257,8 @@
     (lessThan ?position2 61)
     ;;; check if opponent piece 4 behind
     (evaluate 56 (DifferenceFn 30 (DifferenceFn ?position1 ?position2)))
+
+    (evaluate ?newPos (DifferenceFn ?position1 4))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1273,7 +1275,7 @@
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
       (doRecord
-        (ist-Information SorryStateMt (piecePosition ?piece1 (DifferenceFn ?position1 4))))
+        (ist-Information SorryStateMt (piecePosition ?piece1 ?newPos)))
       (doForget
         (ist-Information SorryStateMt (piecePosition ?piece3 ?position2)))
       (doRecord

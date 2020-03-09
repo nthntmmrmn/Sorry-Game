@@ -41,7 +41,7 @@
 	  		  (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable))))
       )
     (methodForAction
-      (moveSorryPiece)
+      (moveSorryPieceSorry)
       
       (actionSequence
         (TheList
