@@ -2298,7 +2298,7 @@
 ;;; 3/8: if all can't move, swap turn
 (preconditionForMethod
  (and
-      (currCard Sorry-Twelve)  
+      (currCard Sorry-Twelve)
       (whoseTurn ?agent1)
       (allCannotMove ?agent1 12)
       (swapTurn ?nextTurn)
@@ -3003,7 +3003,7 @@
       (piecePosition ?piece1 ?position1)
 	  (evaluate ?diffDistance (DifferenceFn 66 ?position1))
 	  (lessThan ?diffDistance 7)
-	  (evaluate ?remainingSteps (DifferenceFn ?position1 60)) ;;; check the remaining steps we still have...
+	  (evaluate ?remainingSteps (DifferenceFn 7 ?diffDistance)) ;;; check the remaining steps we still have...
 	  
 	  (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
 	  ;;; not swap the turn in this scenario...
@@ -3036,6 +3036,8 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
+	  ;;; 3/9 added: should ensure it's not at the start point
+	  (greaterThan ?position1 0)
 	  (evaluate ?nextPosition (PlusFn ?position1 7))
 	  (lessThan ?nextPosition 66)
 	  (noSameColorAhead ?piece1 7)
@@ -3064,6 +3066,52 @@
     (doRecord 
 		  (ist-Information SorryStateMt (currCard ?newCard)))))))
 		  
+;;; 3/9 added: if we have opponent ahead without arriving home, then knock it back
+(preconditionForMethod
+ (and
+      (currCard Sorry-Seven)
+      (whoseTurn ?agent1)
+      (colorOfAgent ?agent1 ?color1)
+      (colorOfPiece ?piece1 ?color1)
+      (piecePosition ?piece1 ?position1)
+	  ;;; 3/9 added: should ensure it's not at the start point
+	  (greaterThan ?position1 0)
+	  (evaluate ?nextPosition (PlusFn ?position1 7))
+	  (lessThan ?nextPosition 66)
+	  (noSameColorAhead ?piece1 7)
+      (colorOfPiece ?piece2 ?color2)
+	  (different ?color1 ?color2)
+	  (piecePosition ?piece2 ?position2)
+	  (evaluate 30 (AbsoluteValueFn (DifferenceFn ?nextPosition ?position2)))
+	  (swapTurn ?nextTurn)
+      (evaluate ?newCard 
+		    (RandomMemberFn 
+			    (TheClosedRetrievalSetOf ?card (isa ?card Sorry-Cards-Pickable)))))
+      
+ (methodForAction
+  (moveSorryPiece7)
+  (actionSequence
+   (TheList
+    ;;; update current position
+	(doForget
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?position1)))
+	(doRecord
+		  (ist-Information SorryStateMt (piecePosition ?piece1 ?nextPosition)))
+	;;; knock opponent piece back
+	(doForget
+		  (ist-Information SorryStateMt (piecePosition ?piece2 ?position2)))
+	(doRecord
+		  (ist-Information SorryStateMt (piecePosition ?piece2 0)))
+    ;;; swap turns and pick new random card
+    (doForget 
+		  (ist-Information SorryStateMt (whoseTurn ?agent1)))
+    (doRecord 
+		  (ist-Information SorryStateMt (whoseTurn ?nextTurn)))
+    (doForget 
+		  (ist-Information SorryStateMt (currCard Sorry-Seven)))
+    (doRecord 
+		  (ist-Information SorryStateMt (currCard ?newCard)))))))
+		  
 ;;; 1-4: if we have same color ahead, then do nothing, just swap the turn
 ;;; think this one is useless, because we can always choose the leading one in this scenario.
 (preconditionForMethod
@@ -3073,6 +3121,7 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 ?position1)
+	  (greaterThan ?position1 0)
 	  (evaluate ?nextPosition (PlusFn ?position1 7))
 	  (colorOfPiece ?piece2 ?color1)
 	  (different ?piece1 ?piece2)

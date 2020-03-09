@@ -306,16 +306,20 @@
 
 ;;; cathy's horn clauses part
 ;;; used in card 7 when arrives at home with extra steps, then check whether this extra steps can be used or not.
-;;; 1) not same color ahead (without arriving home)
+;;; 1) not same color ahead (without arriving home), also the piece we can move shouldn't be at home.
 (<== (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
 	 (colorOfPiece ?piece1 ?color)
 	 (colorOfPiece ?piece2 ?color)
 	 (colorOfPiece ?piece3 ?color)
-	 (different ?piece1 ?piece2 ?piece3)
+	 (colorOfPiece ?piece4 ?color)
+	 (different ?piece1 ?piece2 ?piece3 ?piece4)
 	 (piecePosition ?piece2 ?pos2)
+	 ;;; 3/9 added: should ensure it's not at the start point
+	 (greaterThan ?pos2 0)
 	 (evaluate ?newPos (PlusFn ?pos2 ?remainingSteps))
 	 (lessThan ?newPos 66)
-	 (uninferredSentence (piecePosition ?piece3 ?newPos)))
+	 (uninferredSentence (piecePosition ?piece3 ?newPos))
+	 (uninferredSentence (piecePosition ?piece4 ?newPos)))
 
 ;;; 2) with arriving home
 (<== (checkisValidRemainingMove ?piece1 ?piece2 ?remainingSteps)
