@@ -292,6 +292,11 @@
       (greaterThan ?pos2Home ?pos1Home)
 )
 
+(<== (swapNotExists ?piece1 ?step ?piece2) ;;; piece1 is your piece, piece2 is opponent piece
+      (piecePosition ?piece2 ?pos2)
+      (greaterThan ?pos2 60)
+	  )
+
 (<== (getOppoPos ?myPos ?oppoPos)
       (greaterThan ?myPos 30)
       (evaluate ?a (DifferenceFn ?myPos 30))

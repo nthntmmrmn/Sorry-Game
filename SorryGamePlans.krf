@@ -516,9 +516,9 @@
     (noSameColorAhead ?piece1 -1)
     (noOppoAhead ?piece1 -1)
     (piecePosition ?piece1 ?position1)
-    (greaterThan ?position1 66)
+    (greaterThan ?position1 1)
     (evaluate ?nextPosition (PlusFn ?position1 -1)))
- (methodForActin
+ (methodForAction
   (moveSorryPiece10)
   (actionSequence
    (TheList
@@ -1908,10 +1908,10 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       ;;; (uninferredSentence (piecePosition ?piece1 0))
-      ;;; 3/8:
-      (greaterThan ?position1 0)
 
       (piecePosition ?piece1 ?position1)
+	  ;;; 3/8:
+      (greaterThan ?position1 0)
       (noSameColorAhead ?piece1 11)
       (findNoOppoSwitch ?piece1 11)
       (evaluate ?nextPosition (PlusFn ?position1 11))
@@ -1950,10 +1950,10 @@
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
       ;;; (uninferredSentence (piecePosition ?piece1 0))
-      ;;; 3/8:
-      (greaterThan ?position1 0)
        
       (piecePosition ?piece1 ?position1)
+	  ;;; 3/8:
+      (greaterThan ?position1 0)
       (findOppoSwitch ?piece1 11 ?piece2 ?nextPosition1 ?nextPosition2)
       (piecePosition ?piece2 ?position2)
       (swapTurn ?nextTurn)
