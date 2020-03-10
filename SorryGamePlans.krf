@@ -837,10 +837,11 @@
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
       (colorOfPiece ?piece3 ?color2)
-      ;(uninferredSentence (piecePosition ?piece3 31))
-	  (evaluate ?set2
-          (TheClosedRetrievalSetOf ?piece3 (piecePosition ?piece3 31)))
-	  (equals ?set2 (TheSet))
+      (notInKBOppo (piecePosition ?piece3 31) ?piece1) 
+      ;;;(uninferredSentence (piecePosition ?piece3 31))
+	  ;;;(evaluate ?set2
+          ;;;(TheClosedRetrievalSetOf ?piece3 (piecePosition ?piece3 31)))
+	  ;;;(equals ?set2 (TheSet))
 	  
       (evaluate ?newCard 
 		    (RandomMemberFn 
