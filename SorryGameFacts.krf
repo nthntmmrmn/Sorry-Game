@@ -363,4 +363,12 @@
 	 (evaluate ?set
 		(TheClosedRetrievalSetOf ?piece2 ?fact))
 	 (equals (TheSet) ?set))
+
+(<== (notInKBOppo ?fact ?piece1)
+	 (colorOfPiece ?piece1 ?color1)
+	 (colorOfPiece ?piece2 ?color2)
+       (different ?color1 ?color2)
+	 (evaluate ?set
+		(TheClosedRetrievalSetOf ?piece2 ?fact))
+	 (equals (TheSet) ?set))
 	 

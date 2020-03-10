@@ -826,13 +826,13 @@
       (whoseTurn ?agent1)
       (colorOfAgent ?agent1 ?color1)
       (colorOfPiece ?piece1 ?color1)
-      ;(colorOfPiece ?piece2 ?color1)
-      ;(different ?piece1 ?piece2)
+      ;;;(colorOfPiece ?piece2 ?color1)
+      ;;;(different ?piece1 ?piece2)
       (piecePosition ?piece1 0)
       ;(uninferredSentence (piecePosition ?piece2 1))
-	  ;(evaluate ?set1
-      ;    (TheClosedRetrievalSetOf ?piece1 (piecePosition ?piece2 1)))
-	  ;(equals ?set1 (TheSet))
+	  ;;;(evaluate ?set1
+     ;;;     (TheClosedRetrievalSetOf ?piece1 (piecePosition ?piece2 1)))
+	  ;;;(equals ?set1 (TheSet))
 	  (notInKB (piecePosition ?piece2 1) ?piece1) 
       (colorOfAgent ?agent2 ?color2)
       (different ?color1 ?color2)
@@ -1168,14 +1168,16 @@
     (greaterThan ?position1 0)
 
     (evaluate ?a (PlusFn 56 ?position1))
-    (uninferredSentence (piecePosition ?piece2 ?a))
+    ;;; (uninferredSentence (piecePosition ?piece2 ?a))
+    (notInKB (piecePosition ?piece2 ?a) ?piece1) 
 
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
     (colorOfPiece ?piece3 ?color2)
 
     (evaluate ?b (PlusFn 26 ?position1))
-    (uninferredSentence (piecePosition ?piece3 ?b))
+    ;;; (uninferredSentence (piecePosition ?piece3 ?b))
+    (notInKBOppo (piecePosition ?piece3 ?b) ?piece1) 
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1219,8 +1221,11 @@
     (lessThan ?position1 5)
     (greaterThan ?position1 0)
 
+    ;;; (evaluate ?a (PlusFn 56 ?position1))
+    ;;; (uninferredSentence (piecePosition ?piece2 ?a))
     (evaluate ?a (PlusFn 56 ?position1))
-    (uninferredSentence (piecePosition ?piece2 ?a))
+    (notInKB (piecePosition ?piece2 ?a) ?piece1) 
+
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
     (colorOfPiece ?piece3 ?color2)
@@ -1326,7 +1331,8 @@
 
     ;;; no same piece 4 spaces behind
     (evaluate ?a (DifferenceFn ?position1 4))
-    (uninferredSentence (piecePosition ?piece3 a))
+    ;;; (uninferredSentence (piecePosition ?piece3 a))
+    (notInKB (piecePosition ?piece3 ?a) ?piece1) 
 
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
