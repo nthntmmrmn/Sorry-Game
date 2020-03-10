@@ -828,8 +828,8 @@
       (colorOfPiece ?piece1 ?color1)
       (piecePosition ?piece1 0)
 
-	    (notInKB (piecePosition ?piece2 1) ?piece1) 
-      (notInKBOppo (piecePosition ?piece3 31) ?piece1) 
+	    (notInKB ?piece1 1) 
+      (notInKBOppo ?piece1 31) 
 	  
       (evaluate ?newCard 
 		    (RandomMemberFn 
@@ -1157,16 +1157,10 @@
     (greaterThan ?position1 0)
 
     (evaluate ?a (PlusFn 56 ?position1))
-    ;;; (uninferredSentence (piecePosition ?piece2 ?a))
-    (notInKB (piecePosition ?piece2 ?a) ?piece1) 
-
-    (colorOfAgent ?agent2 ?color2)
-    (different ?color2 ?color1)
-    (colorOfPiece ?piece3 ?color2)
+    (notInKB ?piece1 ?a) 
 
     (evaluate ?b (PlusFn 26 ?position1))
-    ;;; (uninferredSentence (piecePosition ?piece3 ?b))
-    (notInKBOppo (piecePosition ?piece3 ?b) ?piece1) 
+    (notInKBOppo ?piece1 ?b) 
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1210,10 +1204,8 @@
     (lessThan ?position1 5)
     (greaterThan ?position1 0)
 
-    ;;; (evaluate ?a (PlusFn 56 ?position1))
-    ;;; (uninferredSentence (piecePosition ?piece2 ?a))
     (evaluate ?a (PlusFn 56 ?position1))
-    (notInKB (piecePosition ?piece2 ?a) ?piece1) 
+    (notInKB ?piece1 ?a) 
 
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
@@ -1320,8 +1312,7 @@
 
     ;;; no same piece 4 spaces behind
     (evaluate ?a (DifferenceFn ?position1 4))
-    ;;; (uninferredSentence (piecePosition ?piece3 a))
-    (notInKB (piecePosition ?piece3 ?a) ?piece1) 
+    (notInKB ?piece1 ?a)
 
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
