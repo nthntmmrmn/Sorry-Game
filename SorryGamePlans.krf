@@ -1174,7 +1174,8 @@
     (different ?color2 ?color1)
     (colorOfPiece ?piece3 ?color2)
 
-    (uninferredSentence (piecePosition ?piece3 (PlusFn 26 ?position1)))
+    (evaluate ?b (PlusFn 26 ?position1))
+    (uninferredSentence (piecePosition ?piece3 ?b))
     
     (swapTurn ?nextTurn)
       (evaluate ?newCard 
@@ -1324,7 +1325,8 @@
     (lessThan ?position1 66)
 
     ;;; no same piece 4 spaces behind
-    (uninferredSentence (piecePosition ?piece3 (DifferenceFn ?position1 4)))
+    (evaluate ?a (DifferenceFn ?position1 4))
+    (uninferredSentence (piecePosition ?piece3 a))
 
     (colorOfAgent ?agent2 ?color2)
     (different ?color2 ?color1)
