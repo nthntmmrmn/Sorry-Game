@@ -184,3 +184,13 @@
 (isa chooseCardWithSteps Predicate)
 (arity chooseCardWithSteps 2)
 (arg1Isa chooseCardWithSteps Sorry-Cards-Pickable)
+
+(isa notInKB Predicate)
+(arity notInKB 2)
+(arg1Isa notInKB BoardPieces)
+(arg2Isa notInKB Integer)
+
+(isa notInKBOppo Predicate)
+(arity notInKBOppo 2)
+(arg1Isa notInKBOppo BoardPieces)
+(arg2Isa notInKBOppo Integer)
